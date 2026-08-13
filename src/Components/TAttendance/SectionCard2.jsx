@@ -1,18 +1,7 @@
 
-const SCHOOL_YEAR = "2026 - 2027";
-const SectionCard = ({ sections, selectedId, onSelect }) => {
-
+const SectionCard2 = ({ sections, selectedId, onSelect }) => {  
   return (
     <div className="flex w-full flex-col gap-4 p-4 md:p-6">
-      <h2 className="flex items-center gap-2 text-md font-[PoppinsBold] uppercase tracking-wide text-swamp-green">
-        <span> 
-            Class Sections: 
-        </span>
-        <span className="text-gray-600">
-            S.Y.{SCHOOL_YEAR}
-        </span>
-      </h2>
-
       <div className="flex flex-wrap gap-5">
         {sections.map((section) => {
           const isSelected = section.id === selectedId;
@@ -41,4 +30,4 @@ const SectionCard = ({ sections, selectedId, onSelect }) => {
   );
 }
 
-export default SectionCard;
+export default SectionCard2;

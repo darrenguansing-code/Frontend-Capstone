@@ -1,5 +1,6 @@
 
 const Announcement = ({ title, posted, message, date, time, venue }) => {
+  
   return (
     <div className="min-w-70 md:min-w-96 lg:min-w-100 snap-start font-[Poppins] cursor-default h-full">
       <div className="flex h-full flex-col gap-2 rounded-2xl bg-bone p-3 shadow-sm sm:gap-4 sm:p-5 lg:p-6">

@@ -1,8 +1,7 @@
-import React from "react";
 
 const StudentTable = ({ students }) => {
   return (
-    <section className="rounded-3xl border border-swamp-green/10 bg-white p-4 shadow-sm md:p-6">
+    <div className="rounded-3xl border border-swamp-green/10 bg-white p-4 shadow-sm md:p-6">
       <div className="flex flex-col gap-2">
         <div className="grid grid-cols-[0.5fr_1.5fr_2fr_1.2fr_1.2fr_0.5fr] gap-6 rounded-xl bg-[#e4e6f0] px-6 py-3 text-left text-xs font-[PoppinsBold] uppercase tracking-wide text-swamp-green">
           <span>No.</span>
@@ -29,7 +28,7 @@ const StudentTable = ({ students }) => {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

@@ -1,6 +1,7 @@
 import { ChevronDown } from "lucide-react";
 
 const StudentCard = ({ student, spin, setSpin, infoFields, summaryFields }) => {
+  
   return (
     <div className="flex flex-col gap-3 rounded-3xl border border-swamp-green/10 bg-bone p-3 md:gap-6 md:p-6">
 

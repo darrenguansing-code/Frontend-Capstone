@@ -1,9 +1,235 @@
+import { useState } from "react";
+import axios from "axios";
+
+import SectionCard2 from "../Components/TAttendance/SectionCard2";
+import AttendanceToolbar from "../Components/TAttendance/AttendanceToolbar";
+import AttendanceChecker from "../Components/TAttendance/AttendanceChecker";
+
+const CLASS_SECTIONS = [
+  { id: "sampaguita", name: "Sampaguita", level: "Nursery" },
+  { id: "gumamela", name: "Gumamela", level: "Nursery" },
+  { id: "waling-waling", name: "Waling - Waling", level: "Nursery" },
+];
+
+const ATTENDANCE_OPTIONS = [
+  { value: "Present", label: "Present" },
+  { value: "Absent", label: "Absent" },
+];
+
+const STUDENTS = [
+  {
+    id: 1,
+    sectionId: "sampaguita",
+    schoolId: "GCA-2026-001",
+    lrn: "1204567891011",
+    fullName: "Rosaline Romasanta",
+    gender: "Female",
+    attendance: "Present",
+  },
+  {
+    id: 2,
+    sectionId: "sampaguita",
+    schoolId: "GCA-2026-002",
+    lrn: "1204567891012",
+    fullName: "Angela Cruz",
+    gender: "Female",
+    attendance: "Present",
+  },
+  {
+    id: 3,
+    sectionId: "sampaguita",
+    schoolId: "GCA-2026-003",
+    lrn: "1204567891013",
+    fullName: "Miguel Santos",
+    gender: "Male",
+    attendance: "",
+  },
+  {
+    id: 4,
+    sectionId: "gumamela",
+    schoolId: "GCA-2026-004",
+    lrn: "1345698721234",
+    fullName: "Jake Macasinag",
+    gender: "Male",
+    attendance: "Absent",
+  },
+  {
+    id: 5,
+    sectionId: "gumamela",
+    schoolId: "GCA-2026-005",
+    lrn: "1345698721235",
+    fullName: "Bella Reyes",
+    gender: "Female",
+    attendance: "",
+  },
+  {
+    id: 6,
+    sectionId: "waling-waling",
+    schoolId: "GCA-2026-006",
+    lrn: "1232173271321",
+    fullName: "Harold Mendez",
+    gender: "Male",
+    attendance: "Absent",
+  },
+  {
+    id: 7,
+    sectionId: "waling-waling",
+    schoolId: "GCA-2026-007",
+    lrn: "1232173271322",
+    fullName: "Liza Bautista",
+    gender: "Female",
+    attendance: "",
+  },
+];
 
 const TAttendance = () => {
+  const [sections] = useState(CLASS_SECTIONS);
+  const [students] = useState(STUDENTS);
+  const [attendanceOptions] = useState(ATTENDANCE_OPTIONS);
+  const [selectedId, setSelectedId] = useState(CLASS_SECTIONS[0].id);
+  const [studentName, setStudentName] = useState("");
+  const [selectedDate, setSelectedDate] = useState(
+    new Date().toISOString().slice(0, 10)
+  );
+
+  const [attendance, setAttendance] = useState({});
+  const [loading] = useState(false);
+  const [error] = useState("");
+
+  // FETCH ATTENDANCE DATA
+  // useEffect(() => {
+  //   const fetchAttendance = async () => {
+  //     try {
+  //       setLoading(true);
+  //       setError("");
+  //
+  //       const response = await axios.get(
+  //         ""
+  //       );
+  //
+  //       setSections(response.data.sections);
+  //       setStudents(response.data.students);
+  //       setAttendanceOptions(response.data.attendanceOptions);
+  //
+  //       // Select first section automatically
+  //       if (response.data.sections.length > 0) {
+  //         setSelectedId(response.data.sections[0].id);
+  //       }
+  //     } catch (error) {
+  //       console.error("Failed attendance:", error);
+  //       setError("Unable to load attendance data.");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //
+  //   fetchAttendance();
+  // }, []);
+
+  // FILTER STUDENTS
+  const filteredStudents = students.filter(
+    (student) =>
+      student.sectionId === selectedId &&
+      student.fullName
+        .toLowerCase()
+        .includes(studentName.toLowerCase())
+  );
+
+  // ATTENDANCE CHANGE
+  const handleAttendanceChange = (id, value) => {
+    setAttendance((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+
+  // SEARCH
+  const handleSearch = () => {
+    console.log("Searching:", studentName);
+  };
+
+  // SAVE
+  const handleSave = async () => {
+    try {
+      await axios.post("", {
+        date: selectedDate,
+        attendance,
+      });
+
+      console.log("Attendance saved.");
+    } catch (error) {
+      console.error("Failed to save attendance:", error);
+    }
+  };
+
+  // REPORT
+  const handleReport = () => {
+    console.log("Generate report for:", selectedDate);
+  };
+
+  // LOADING
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#ebe9e4] font-[Poppins]">
+        <p className="text-sm text-gray-400">
+          Loading attendance...
+        </p>
+      </div>
+    );
+  }
+
+  // ERROR
+  if (error) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#ebe9e4] font-[Poppins]">
+        <p className="text-sm text-red-400">
+          {error}
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <div>TAttendance</div>
-  )
-}
+    <div className="min-h-screen cursor-default bg-[#ebe9e4] px-5 py-6 font-[Poppins]">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
 
-export default TAttendance
+        {/* SECTION */}
+        <SectionCard2
+          sections={sections}
+          selectedId={selectedId}
+          onSelect={setSelectedId}
+        />
 
+        {/* TOOLBAR */}
+        <AttendanceToolbar
+          studentName={studentName}
+          setStudentName={setStudentName}
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+          onSearch={handleSearch}
+          onSave={handleSave}
+          onReport={handleReport}
+        />
+
+        {/* ATTENDANCE TABLE */}
+        {filteredStudents.length > 0 ? (
+          <AttendanceChecker
+            students={filteredStudents}
+            attendance={attendance}
+            attendanceOptions={attendanceOptions}
+            onAttendanceChange={handleAttendanceChange}
+          />
+        ) : (
+          <div className="flex h-40 items-center justify-center">
+            <p className="text-sm text-gray-400">
+              No students in this section.
+            </p>
+          </div>
+        )}
+
+      </div>
+    </div>
+  );
+};
+
+export default TAttendance;
