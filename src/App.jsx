@@ -18,6 +18,7 @@ import TDashBoard from "./Teacher-Side/TDashBoard.jsx";
 import TAttendance from "./Teacher-Side/TAttendance.jsx";
 import TGrades from "./Teacher-Side/TGrades.jsx";
 import TWeeklySchedule from "./Teacher-Side/TWeeklySchedule.jsx";
+import TReport from "./Teacher-Side/TReport.jsx";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="attendance" element={<TAttendance />} />
           <Route path="grades" element={<TGrades />} />
           <Route path="weekly-schedule" element={<TWeeklySchedule />} />
+          <Route path="report" element={<TReport />} />
         </Route>
       </>,
     ),

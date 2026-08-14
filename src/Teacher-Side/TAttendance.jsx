@@ -1,6 +1,8 @@
+import React from "react";
 import { useState } from "react";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
+import { Loader2 } from "lucide-react";
 import SectionCard2 from "../Components/TAttendance/SectionCard2";
 import AttendanceToolbar from "../Components/TAttendance/AttendanceToolbar";
 import AttendanceChecker from "../Components/TAttendance/AttendanceChecker";
@@ -83,6 +85,7 @@ const STUDENTS = [
 ];
 
 const TAttendance = () => {
+  const navigate = useNavigate();
   const [sections] = useState(CLASS_SECTIONS);
   const [students] = useState(STUDENTS);
   const [attendanceOptions] = useState(ATTENDANCE_OPTIONS);
@@ -164,15 +167,21 @@ const TAttendance = () => {
 
   // REPORT
   const handleReport = () => {
-    console.log("Generate report for:", selectedDate);
+    navigate("/teacher/report");
   };
 
   // LOADING
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#ebe9e4] font-[Poppins]">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-black font-[Poppins]">
+        <Loader2 size={32} className="animate-spin text-swamp-green" />
         <p className="text-sm text-gray-400">
-          Loading attendance...
+          Loading Attendance pls wait
+          <span className="loading-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
         </p>
       </div>
     );
@@ -226,7 +235,6 @@ const TAttendance = () => {
             </p>
           </div>
         )}
-
       </div>
     </div>
   );

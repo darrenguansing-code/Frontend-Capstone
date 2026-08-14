@@ -117,7 +117,7 @@ const WeeklySchedule = () => {
         </div>
 
         {/* TABLE */}
-        <div className="overflow-hidden rounded-md border border-gray-200 bg-[#f7f8fc] shadow-md">
+        <div className="no-scrollbar overflow-x-auto rounded-md border border-gray-200 bg-[#f7f8fc] shadow-md">
           <div className="min-w-200">
 
             {/* TABLE HEADER */}

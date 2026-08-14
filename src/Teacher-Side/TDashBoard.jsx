@@ -130,7 +130,7 @@ const TDashBoard = () => {
       <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-black font-[Poppins]">
         <Loader2 size={32} className="animate-spin text-swamp-green" />
         <p className="text-sm text-gray-400">
-          Loading dashboard pls wait
+          Loading Dashboard pls wait
           <span className="loading-dots">
             <span></span>
             <span></span>
@@ -152,7 +152,7 @@ const TDashBoard = () => {
   }
 
   return (
-    <div className="min-h-screen cursor-default bg-bg-[#ebe9e4] px-5 py-6 font-[Poppins]">
+    <div className="min-h-screen cursor-default bg-[#ebe9e4] px-5 py-6 font-[Poppins]">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
 
         <SectionCard
