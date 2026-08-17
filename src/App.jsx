@@ -12,6 +12,10 @@ import ParentsDashboard from "./Parents-Side/ParentsDashboard.jsx";
 import Grades from "./Parents-Side/Grades.jsx";
 import Security from "./Parents-Side/Security.jsx";
 
+// ----- LOGIN -----
+import Login from "./Login - Forget/Login.jsx";
+import ForgotPassword from "./Login - Forget/ForgotPassword.jsx";
+
 // ----- TEACHER SIDE -----
 import TeacherLayout from "./Layout/TeacherLayout.jsx";
 import TDashBoard from "./Teacher-Side/TDashBoard.jsx";
@@ -25,6 +29,8 @@ const App = () => {
     createRoutesFromElements(
       <>
         <Route path="/" element={<Navigate to="/parents" replace />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/parents" element={<ParentsLayout />}>
           <Route index element={<ParentsDashboard />} />
           <Route path="grades" element={<Grades />} />

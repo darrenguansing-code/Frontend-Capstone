@@ -25,7 +25,7 @@ const ParentsHeader = () => {
 
   const handleLogout = () => {
     setUserMenu(false);
-    navigate("/");
+    navigate("/login");
   };
 
   return (
@@ -37,7 +37,7 @@ const ParentsHeader = () => {
         />
       )}
 
-      <nav className="relative z-50 flex h-20 w-full items-center justify-between bg-bone px-4 text-xs inset-shadow-med sm:px-10">
+      <nav className="relative z-50 flex h-20 w-full items-center justify-between bg-[#0c2423] px-4 text-xs inset-shadow-med sm:px-10">
         <Link
           to="/"
           className="flex min-w-0 items-center gap-x-2"
@@ -49,11 +49,11 @@ const ParentsHeader = () => {
           />
 
           <div className="min-w-0">
-            <p className="whitespace-nowrap text-[9px] tracking-widest text-ashlight sm:text-xs sm:tracking-[0.15em] md:text-sm md:tracking-[0.30em]">
+            <p className="whitespace-nowrap text-[9px] tracking-widest text-gray-200 sm:text-xs sm:tracking-[0.15em] md:text-sm md:tracking-[0.30em]">
               {SCHOOL.fullName}
             </p>
 
-            <p className="whitespace-nowrap font-[PoppinsBold] text-xs text-egg-dark sm:text-sm md:text-base">
+            <p className="whitespace-nowrap font-[PoppinsBold] text-xs text-bone sm:text-sm md:text-base">
               {SCHOOL.name}
             </p>
           </div>
@@ -67,7 +67,7 @@ const ParentsHeader = () => {
               `flex items-center gap-x-2 font-[PoppinsBold] tracking-wide transition-colors duration-300 ${
                 isActive
                   ? "text-swamp-green"
-                  : "text-gray-600 hover:text-swamp-green"
+                  : "text-bone hover:text-swamp-green"
               }`
             }
           >
@@ -81,7 +81,7 @@ const ParentsHeader = () => {
             <button
               type="button"
               onClick={() => setUserMenu((prev) => !prev)}
-              className="flex items-center gap-x-2 text-gray-600 transition-colors hover:text-swamp-green"
+              className="flex items-center gap-x-2 text-bone transition-colors hover:text-swamp-green"
             >
               <User size={20} />
               <span className="hidden font-[PoppinsBold] sm:inline">

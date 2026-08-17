@@ -28,7 +28,7 @@ const TeacherHeader = () => {
 
   const handleLogout = () => {
     setUserMenu(false);
-    navigate("/");
+    navigate("/login");
   };
 
   return (
@@ -52,7 +52,7 @@ const TeacherHeader = () => {
           />
 
           <div className="min-w-0">
-            <p className="whitespace-nowrap text-[9px] tracking-widest text-bone sm:text-xs sm:tracking-[0.15em] md:text-sm md:tracking-[0.30em]">
+            <p className="whitespace-nowrap text-[9px] tracking-widest text-gray-200 sm:text-xs sm:tracking-[0.15em] md:text-sm md:tracking-[0.30em]">
               {SCHOOL.fullName}
             </p>
 
