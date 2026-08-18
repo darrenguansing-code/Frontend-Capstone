@@ -7,9 +7,9 @@ import {
   LogOut,
 } from "lucide-react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
+import logoImg from "../assets/logowbg.png";
 
 const SCHOOL = {
-  logoUrl: "/logowbg.png",
   name: "Grace Christian Academy",
   fullName: "Grace Christian Academy Cavite Inc.",
 };
@@ -43,7 +43,7 @@ const ParentsHeader = () => {
           className="flex min-w-0 items-center gap-x-2"
         >
           <img
-            src={SCHOOL.logoUrl}
+            src={logoImg}
             alt={SCHOOL.name}
             className="h-8 rounded-full lg:h-12"
           />

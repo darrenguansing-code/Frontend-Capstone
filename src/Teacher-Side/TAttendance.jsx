@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
-import SectionCard2 from "../Components/TAttendance/SectionCard2";
+import SectionCard from "../Components/TAttendance/SectionCard";
 import AttendanceToolbar from "../Components/TAttendance/AttendanceToolbar";
 import AttendanceChecker from "../Components/TAttendance/AttendanceChecker";
 
@@ -176,7 +176,7 @@ const TAttendance = () => {
       <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-black font-[Poppins]">
         <Loader2 size={32} className="animate-spin text-swamp-green" />
         <p className="text-sm text-gray-400">
-          Loading Attendance pls wait
+          Loading Attendance
           <span className="loading-dots">
             <span></span>
             <span></span>
@@ -203,7 +203,7 @@ const TAttendance = () => {
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
 
         {/* SECTION */}
-        <SectionCard2
+        <SectionCard
           sections={sections}
           selectedId={selectedId}
           onSelect={setSelectedId}

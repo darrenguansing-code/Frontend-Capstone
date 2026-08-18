@@ -12,7 +12,7 @@ function Remarks ({ remarks }) {
         <p className="text-sm leading-7 text-gray-600">
           {remarks}
         </p>
-        <p className="mt-4 border-t border-gray-200 pt-3 text-sm font-[PoppinsBold] text-swamp-green">
+        <p className="py-4 border-t border-gray-200 pt-3 text-sm font-[PoppinsBold] text-swamp-green">
           Thank you and God bless!
         </p>
       </div>

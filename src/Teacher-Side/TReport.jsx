@@ -166,7 +166,7 @@ const TReport = () => {
       <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-black font-[Poppins]">
         <Loader2 size={32} className="animate-spin text-swamp-green" />
         <p className="text-sm text-gray-400">
-          Loading Reporting pls wait
+          Loading Reporting
           <span className="loading-dots">
             <span></span>
             <span></span>

@@ -4,11 +4,8 @@ import AttendanceRow from "./AttendanceRow";
 const AttendanceTable = ({ students, dates }) => {
   return (
     <>
-      {/* Mobile (<md): single table, one sticky lane for ID + name */}
       <div className="w-full overflow-x-auto rounded-2xl bg-bone shadow-md no-scrollbar md:hidden">
         <div className="min-w-225">
-
-          {/* Header */}
           <div className="grid grid-cols-[minmax(160px,2fr)_repeat(8,1fr)] items-center">
             <span className="sticky left-0 z-10 bg-bone py-4 pl-5 pr-10 text-xs font-[PoppinsBold] uppercase text-[#9caf7d]">
               ID & Student
@@ -17,7 +14,7 @@ const AttendanceTable = ({ students, dates }) => {
             {dates.map((date) => (
               <span
                 key={date}
-                className="px-2 py-4 text-center text-xs font-[PoppinsBold] uppercase text-[#9caf7d]"
+                className="px-2 py-4 text-center text-xs font-[PoppinsBold] uppercase text-swamp-green]"
               >
                 {date}
               </span>
@@ -36,17 +33,14 @@ const AttendanceTable = ({ students, dates }) => {
         </div>
       </div>
 
-      {/* Tablet+ (md+): two panes */}
-      <div className="hidden w-full overflow-hidden rounded-2xl bg-bone shadow-md md:flex">
-
-        {/* Fixed pane: School ID + Full Name (never moves) */}
+      <div className="hidden w-full overflow-hidden rounded-2xl bg-[#e4e6f0] shadow-md md:flex">
         <div className="flex-none bg-bone">
           <div className="flex items-center gap-9 px-5 py-4">
-            <span className="w-22.5 text-xs font-[PoppinsBold] uppercase text-[#9caf7d]">
+            <span className="w-22.5 text-xs font-[PoppinsBold] uppercase text-swamp-green">
               School ID
             </span>
 
-            <span className="w-44 text-xs font-[PoppinsBold] uppercase text-[#9caf7d]">
+            <span className="w-44 text-xs font-[PoppinsBold] uppercase text-swamp-green">
               Full Name
             </span>
           </div>
@@ -67,11 +61,8 @@ const AttendanceTable = ({ students, dates }) => {
           ))}
         </div>
 
-        {/* Scrollable pane: dates (scrolls, never goes behind ID/name) */}
         <div className="min-w-0 flex-1 overflow-x-auto no-scrollbar">
           <div className="min-w-160">
-
-            {/* Date header */}
             <div className="grid grid-cols-8 gap-10 border-b border-gray-200 px-5 py-4">
               {dates.map((date) => (
                 <span
@@ -83,7 +74,6 @@ const AttendanceTable = ({ students, dates }) => {
               ))}
             </div>
 
-            {/* Attendance rows */}
             {students.map((student) => (
               <AttendanceRow
                 key={student.schoolId}

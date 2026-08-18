@@ -8,170 +8,17 @@ import GradeModal from '../Components/GradesComponents/GradeModal'
 
 const API_URL = "http://localhost:5000/grades";
 
-const STUDENT = {
-  lastName: "Santiago",
-  firstName: "Maria Leonora Teresa",
-  learnerReferenceNumber: "NOT APPLICABLE",
-  studentId: "GCA-S01",
-  gradeLevel: "NURSERY",
-};
-
-const ATTENDANCE = {
-  totalDays: "58",
-  absences: "5",
-};
-
-const DEFAULT_REMARKS =
-  "Margarett, is very attentive at class. and very good at reading and writing, although she doesnt seem to be interested much in socializing. she has early signs of being introverted. ";
-
 const QUARTERS = ["QUARTER 1", "QUARTER 2", "QUARTER 3"];
-
-const MOCK_GRADES = {
-  1: [
-    {
-      title: "PHYSICAL DEVELOPMENT",
-      grades: [
-        {
-          skill: "Gross Motor Skills",
-          description: "Hopping, Skipping, Catching, Jumping, Balance",
-          grade: "A",
-        },
-        {
-          skill: "Fine Motor Skills",
-          description: "Tying Shoes, Pegs, Beads, Crayons, Scissors",
-          grade: "A",
-        },
-        {
-          skill: "Drawing Recognize Pictures",
-          grade: "A",
-        },
-        {
-          skill: "Coloring with Lines",
-          grade: "A",
-        },
-        {
-          skill: "Printing Own Name",
-          grade: "A",
-        },
-      ],
-    },
-    {
-      title: "SOCIO-EMOTIONAL DEVELOPMENT",
-      grades: [
-        {
-          skill: "Social Interaction",
-          grade: "A",
-        },
-        {
-          skill: "Emotional Expression",
-          grade: "A",
-        },
-      ],
-    },
-    {
-      title: "COGNITIVE DEVELOPMENT",
-      grades: [
-        {
-          skill: "Problem Solving",
-          grade: "A",
-        },
-        {
-          skill: "Memory Skills",
-          grade: "A",
-        },
-      ],
-    },
-    {
-      title: "SPIRITUAL",
-      grades: [
-        {
-          skill: "Prayer",
-          grade: "A",
-        },
-        {
-          skill: "Bible Knowledge",
-          grade: "A",
-        },
-      ],
-    },
-  ],
-  2: [
-    {
-      title: "PHYSICAL DEVELOPMENT",
-      grades: [
-        { skill: "Gross Motor Skills", description: "Hopping, Skipping, Catching, Jumping, Balance", grade: "B" },
-        { skill: "Fine Motor Skills", description: "Tying Shoes, Pegs, Beads, Crayons, Scissors", grade: "A" },
-        { skill: "Drawing Recognize Pictures", grade: "B" },
-        { skill: "Coloring with Lines", grade: "A" },
-        { skill: "Printing Own Name", grade: "B" },
-      ],
-    },
-    {
-      title: "SOCIO-EMOTIONAL DEVELOPMENT",
-      grades: [
-        { skill: "Social Interaction", grade: "B" },
-        { skill: "Emotional Expression", grade: "A" },
-      ],
-    },
-    {
-      title: "COGNITIVE DEVELOPMENT",
-      grades: [
-        { skill: "Problem Solving", grade: "A" },
-        { skill: "Memory Skills", grade: "B" },
-      ],
-    },
-    {
-      title: "SPIRITUAL",
-      grades: [
-        { skill: "Prayer", grade: "A" },
-        { skill: "Bible Knowledge", grade: "A" },
-      ],
-    },
-  ],
-  3: [
-    {
-      title: "PHYSICAL DEVELOPMENT",
-      grades: [
-        { skill: "Gross Motor Skills", description: "Hopping, Skipping, Catching, Jumping, Balance", grade: "A" },
-        { skill: "Fine Motor Skills", description: "Tying Shoes, Pegs, Beads, Crayons, Scissors", grade: "B" },
-        { skill: "Drawing Recognize Pictures", grade: "B" },
-        { skill: "Coloring with Lines", grade: "B" },
-        { skill: "Printing Own Name", grade: "A" },
-      ],
-    },
-    {
-      title: "SOCIO-EMOTIONAL DEVELOPMENT",
-      grades: [
-        { skill: "Social Interaction", grade: "A" },
-        { skill: "Emotional Expression", grade: "B" },
-      ],
-    },
-    {
-      title: "COGNITIVE DEVELOPMENT",
-      grades: [
-        { skill: "Problem Solving", grade: "B" },
-        { skill: "Memory Skills", grade: "A" },
-      ],
-    },
-    {
-      title: "SPIRITUAL",
-      grades: [
-        { skill: "Prayer", grade: "A" },
-        { skill: "Bible Knowledge", grade: "B" },
-      ],
-    },
-  ],
-};
 
 const Grades = () => {
   const [selectedQuarter, setSelectedQuarter] = useState(1);
   const [selectedDevelopment, setSelectedDevelopment] = useState(null);
-  const [student, setStudent] = useState(STUDENT);
-  const [attendance, setAttendance] = useState(ATTENDANCE);
+  const [student, setStudent] = useState({});
+  const [attendance, setAttendance] = useState({});
   const [serverGrades, setServerGrades] = useState(null);
-  const [remarks, setRemarks] = useState(DEFAULT_REMARKS);
+  const [remarks, setRemarks] = useState("");
 
-  const gradesData = serverGrades || MOCK_GRADES[selectedQuarter] || MOCK_GRADES[1];
+  const gradesData = serverGrades || [];
 
   useEffect(() => {
     const fetchGrades = async () => {

@@ -1,6 +1,7 @@
+import React from "react";
+
 const SCHOOL_YEAR = "2026 - 2027";
 const SectionCard = ({ sections, selectedId, onSelect }) => {
-
   return (
     <div className="flex w-full flex-col gap-4 p-4 md:p-6">
       <h2 className="flex items-center gap-2 text-sm font-[PoppinsBold] uppercase tracking-wide text-swamp-green sm:text-md">

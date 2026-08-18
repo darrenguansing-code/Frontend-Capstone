@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Loader2 } from "lucide-react";
 import ScheduleCell from "../Components/TSchedule.jsx/ScheduleCell";
 import ScheduleTime from "../Components/TSchedule.jsx/ScheduleTime";
 
@@ -22,8 +22,14 @@ const TEMP_SCHEDULE = [
   },
   {
     time: "9:30 AM - 10:30 AM",
-    monday: { section: "Kinder - Sunflower", subject: "Arts and Crafts" },
-    tuesday: { section: "Kinder - Sunflower", subject: "Arts and Crafts" },
+    monday: {
+      section: "Kinder - Sunflower",
+      subject: "Arts and Crafts",
+    },
+    tuesday: {
+      section: "Kinder - Sunflower",
+      subject: "Arts and Crafts",
+    },
     wednesday: null,
     thursday: null,
     friday: null,
@@ -31,85 +37,175 @@ const TEMP_SCHEDULE = [
   {
     time: "10:30 AM - 11:30 AM",
     monday: null,
-    tuesday: { section: "Kinder - Rose", subject: "Shapes and Colors" },
-    wednesday: { section: "Kinder - Rose", subject: "Shapes and Colors" },
-    thursday: { section: "Kinder - Rose", subject: "Shapes and Colors" },
-    friday: { section: "Kinder - Sunflower", subject: "Story Time" },
+    tuesday: {
+      section: "Kinder - Rose",
+      subject: "Shapes and Colors",
+    },
+    wednesday: {
+      section: "Kinder - Rose",
+      subject: "Shapes and Colors",
+    },
+    thursday: {
+      section: "Kinder - Rose",
+      subject: "Shapes and Colors",
+    },
+    friday: {
+      section: "Kinder - Sunflower",
+      subject: "Story Time",
+    },
   },
   {
     time: "11:30 AM - 1:00 PM",
-    monday: { section: "Snack Time", subject: "" },
-    tuesday: { section: "Snack Time", subject: "" },
-    wednesday: { section: "Snack Time", subject: "" },
-    thursday: { section: "Snack Time", subject: "" },
-    friday: { section: "Snack Time", subject: "" },
+    monday: {
+      section: "Snack Time",
+      subject: "",
+    },
+    tuesday: {
+      section: "Snack Time",
+      subject: "",
+    },
+    wednesday: {
+      section: "Snack Time",
+      subject: "",
+    },
+    thursday: {
+      section: "Snack Time",
+      subject: "",
+    },
+    friday: {
+      section: "Snack Time",
+      subject: "",
+    },
   },
   {
     time: "1:00 PM - 2:00 PM",
-    monday: { section: "Kinder - Sunflower", subject: "Story Time" },
+    monday: {
+      section: "Kinder - Sunflower",
+      subject: "Story Time",
+    },
     tuesday: null,
-    wednesday: { section: "Kinder - Sunflower", subject: "Story Time" },
+    wednesday: {
+      section: "Kinder - Sunflower",
+      subject: "Story Time",
+    },
     thursday: null,
     friday: null,
   },
   {
     time: "2:00 PM - 3:00 PM",
     monday: null,
-    tuesday: { section: "Kinder - Rose", subject: "Music and Movement" },
+    tuesday: {
+      section: "Kinder - Rose",
+      subject: "Music and Movement",
+    },
     wednesday: null,
-    thursday: { section: "Kinder - Rose", subject: "Music and Movement" },
-    friday: { section: "Kinder - Rose", subject: "Music and Movement" },
+    thursday: {
+      section: "Kinder - Rose",
+      subject: "Music and Movement",
+    },
+    friday: {
+      section: "Kinder - Rose",
+      subject: "Music and Movement",
+    },
   },
   {
     time: "3:00 PM - 4:00 PM",
-    monday: { section: "Play Time", subject: "" },
-    tuesday: { section: "Play Time", subject: "" },
-    wednesday: { section: "Play Time", subject: "" },
-    thursday: { section: "Play Time", subject: "" },
-    friday: { section: "Play Time", subject: "" },
+    monday: {
+      section: "Play Time",
+      subject: "",
+    },
+    tuesday: {
+      section: "Play Time",
+      subject: "",
+    },
+    wednesday: {
+      section: "Play Time",
+      subject: "",
+    },
+    thursday: {
+      section: "Play Time",
+      subject: "",
+    },
+    friday: {
+      section: "Play Time",
+      subject: "",
+    },
   },
 ];
 
 const WeeklySchedule = () => {
-  const navigate = useNavigate();
-
   const [schedule] = useState(TEMP_SCHEDULE);
-  const [loading] = useState(false);
-  const [error] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-//   useEffect(() => {
-//     const fetchSchedule = async () => {
-//       try {
-//         setLoading(true);
-//         setError("");
+  // useEffect(() => {
+  //   const fetchSchedule = async () => {
+  //     try {
+  //       setLoading(true);
+  //       setError("");
 
-//         const response = await axios.get(API_URL);
+  //       /*
+  //       const response = await axios.get(
+  //         "http://localhost:5000/teacher/schedule"
+  //       );
 
-//         setSchedule(response.data);
-//       } catch (error) {
-//         console.error("Failed to fetch schedule:", error);
-//         setError("Unable to load weekly schedule.");
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
+  //       setSchedule(response.data);
+  //       */
 
-//     fetchSchedule();
-//   }, []);
+  //     } catch (error) {
+  //       console.error(
+  //         "Failed to fetch schedule:",
+  //         error
+  //       );
+
+  //       setError("Unable to load weekly schedule.");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchSchedule();
+  // }, []);
+
+  // LOADING
+  if (loading) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-black font-[Poppins]">
+        <Loader2 size={32} className="animate-spin text-swamp-green" />
+        <p className="text-sm text-gray-400">
+          Loading Weekly Schedule
+          <span className="loading-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </p>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#ebe9e4] font-[Poppins]">
+        <p className="text-sm text-red-500">
+          {error}
+        </p>
+      </div>
+    );
+  }
 
   return (
-    <div className="min-h-screen bg-[#ebe9e4] px-5 py-6 font-[Poppins] cursor-default">
+    <div className="min-h-screen cursor-default bg-[#ebe9e4] px-5 py-6 font-[Poppins]">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
 
         {/* HEADER */}
-        <div className="mb-5 flex items-center justify-between">
+        <div className="py-5 flex items-center justify-between">
           <span className="font-[PoppinsBold] text-sm tracking-wide text-swamp-green sm:text-base">
             WEEKLY SCHEDULE
           </span>
 
           <button
             type="button"
-            onClick={() => navigate(-1)}
+            onClick={() => window.history.back()}
             className="rounded-full border border-gray-300 bg-bone px-5 py-2.5 text-2xs font-[PoppinsBold] text-gray-600 transition-colors hover:bg-white hover:text-swamp-green"
           >
             BACK
@@ -119,40 +215,26 @@ const WeeklySchedule = () => {
         {/* TABLE */}
         <div className="no-scrollbar overflow-x-auto rounded-md border border-gray-200 bg-[#f7f8fc] shadow-md">
           <div className="min-w-200">
+            <div className="grid grid-cols-[148px_repeat(5,1fr)] bg-swamp-green text-[11px] font-[PoppinsBold] text-white">
+              <div className="flex items-center justify-center border-r border-white/20 py-3">
+                TIME
+              </div>
 
-            {/* TABLE HEADER */}
-                <div className="grid grid-cols-[148px_repeat(5,1fr)] bg-swamp-green text-[11px] font-[PoppinsBold] text-white">
-                    <div className="flex items-center justify-center border-r border-white/20 py-3">
-                        TIME
-                    </div>
-
-                    {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"].map((day) => (
-                    <div
-                        key={day}
-                        className="flex items-center justify-center border-r border-white/20 py-3 last:border-r-0"
-                    >
-                        {day.toUpperCase()}
-                    </div>
-                    ))}
+              {[
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+              ].map((day) => (
+                <div
+                  key={day}
+                  className="flex items-center justify-center border-r border-white/20 py-3 last:border-r-0"
+                >
+                  {day.toUpperCase()}
                 </div>
-
-            {/* LOADING */}
-            {loading && (
-              <div className="flex h-64 items-center justify-center">
-                <p className="text-sm text-gray-400">
-                  Loading your Weekly Schedule pls wait ....
-                </p>
-              </div>
-            )}
-
-            {/* ERROR */}
-            {!loading && error && (
-              <div className="flex h-64 items-center justify-center">
-                <p className="text-sm text-red-400">
-                  {error}
-                </p>
-              </div>
-            )}
+              ))}
+            </div>
 
             {/* SCHEDULE */}
             {!loading &&
@@ -164,7 +246,7 @@ const WeeklySchedule = () => {
                 >
                   {/* TIME */}
                   <ScheduleTime time={row.time} />
-                  
+
                   {/* MONDAY */}
                   <div className="border-r border-gray-200">
                     <ScheduleCell
@@ -208,13 +290,16 @@ const WeeklySchedule = () => {
               ))}
 
             {/* NO DATA */}
-            {!loading && !error && schedule.length === 0 && (
-              <div className="flex h-64 items-center justify-center">
-                <p className="text-sm text-gray-400">
-                  No schedule available.
-                </p>
-              </div>
-            )}
+            {!loading &&
+              !error &&
+              schedule.length === 0 && (
+                <div className="flex h-64 items-center justify-center">
+                  <p className="text-sm text-gray-400">
+                    No schedule available.
+                  </p>
+                </div>
+              )}
+
           </div>
         </div>
       </div>

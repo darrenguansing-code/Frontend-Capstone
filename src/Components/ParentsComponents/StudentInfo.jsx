@@ -46,7 +46,7 @@ const StudentInfo = ({
           </div>
 
           {/* Learner Reference Number / Student ID Number */}
-          <div className="mt-auto flex flex-col gap-6">
+          <div className="py-auto flex flex-col gap-6">
             <div className="flex flex-wrap gap-8">
               {idFields.map(({ key, label }) => (
                 <div key={key} className="flex flex-col gap-1.5">

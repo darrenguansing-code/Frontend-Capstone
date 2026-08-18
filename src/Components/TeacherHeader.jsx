@@ -10,9 +10,9 @@ import {
   LogOut,
 } from "lucide-react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
+import logoImg from "../assets/logowbg.png";
 
 const SCHOOL = {
-  logoUrl: "/logowbg.png",
   name: "Grace Christian Academy",
   fullName: "Grace Christian Academy Cavite Inc.",
 };
@@ -46,7 +46,7 @@ const TeacherHeader = () => {
           className="flex min-w-0 items-center gap-x-2"
         >
           <img
-            src={SCHOOL.logoUrl}
+            src={logoImg}
             alt={SCHOOL.name}
             className="h-8 rounded-full lg:h-12"
           />
@@ -133,13 +133,13 @@ const TeacherHeader = () => {
             </button>
 
             {userMenu && (
-              <div className="absolute right-0 top-full mt-3 w-56 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl">
+              <div className="absolute right-0 top-full py-3 w-56 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl">
                 <div className="border-b border-gray-100 px-4 py-4">
                   <p className="font-[PoppinsBold] text-gray-800">
                     {USER.name}
                   </p>
 
-                  <p className="mt-1 text-[11px] text-gray-400">
+                  <p className="py-1 text-[11px] text-gray-400">
                     {USER.role}
                   </p>
                 </div>

@@ -12,7 +12,7 @@ const SectionCard = ({ sections, selectedId, onSelect, onBack }) => {
           onClick={onBack}
           className="rounded-full bg-bone border px-4 py-2 text-xs font-[PoppinsBold] text-gray-600 transition-colors hover:bg-swamp-green hover:text-bone sm:text-sm"
         >
-          Back →
+          Back
         </button>
       </div>
 
