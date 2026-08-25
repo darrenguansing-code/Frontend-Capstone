@@ -57,23 +57,23 @@ const TEMP_SCHEDULE = [
   {
     time: "11:30 AM - 1:00 PM",
     monday: {
-      section: "Snack Time",
+      section: "Lunch Time",
       subject: "",
     },
     tuesday: {
-      section: "Snack Time",
+      section: "Lunch Time",
       subject: "",
     },
     wednesday: {
-      section: "Snack Time",
+      section: "Lunch Time",
       subject: "",
     },
     thursday: {
-      section: "Snack Time",
+      section: "Lunch Time",
       subject: "",
     },
     friday: {
-      section: "Snack Time",
+      section: "Lunch Time",
       subject: "",
     },
   },
@@ -135,37 +135,8 @@ const TEMP_SCHEDULE = [
 
 const WeeklySchedule = () => {
   const [schedule] = useState(TEMP_SCHEDULE);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  // useEffect(() => {
-  //   const fetchSchedule = async () => {
-  //     try {
-  //       setLoading(true);
-  //       setError("");
-
-  //       /*
-  //       const response = await axios.get(
-  //         "http://localhost:5000/teacher/schedule"
-  //       );
-
-  //       setSchedule(response.data);
-  //       */
-
-  //     } catch (error) {
-  //       console.error(
-  //         "Failed to fetch schedule:",
-  //         error
-  //       );
-
-  //       setError("Unable to load weekly schedule.");
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchSchedule();
-  // }, []);
+  const [loading] = useState(false);
+  const [error] = useState("");
 
   // LOADING
   if (loading) {
@@ -194,19 +165,19 @@ const WeeklySchedule = () => {
   }
 
   return (
-    <div className="min-h-screen cursor-default bg-[#ebe9e4] px-5 py-6 font-[Poppins]">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
+    <div className="cursor-default bg-[#ebe9e4] px-3 py-4 font-[Poppins] sm:px-5 sm:py-6">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 sm:gap-4">
 
         {/* HEADER */}
-        <div className="py-5 flex items-center justify-between">
-          <span className="font-[PoppinsBold] text-sm tracking-wide text-swamp-green sm:text-base">
+        <div className="flex items-center justify-between py-3 sm:py-5">
+          <span className="font-[PoppinsBold] text-xs tracking-wide text-swamp-green sm:text-sm md:text-base">
             WEEKLY SCHEDULE
           </span>
 
           <button
             type="button"
             onClick={() => window.history.back()}
-            className="rounded-full border border-gray-300 bg-bone px-5 py-2.5 text-2xs font-[PoppinsBold] text-gray-600 transition-colors hover:bg-white hover:text-swamp-green"
+            className="rounded-full border border-gray-300 bg-bone px-3 py-1.5 text-[10px] font-[PoppinsBold] text-gray-600 transition-colors hover:bg-white hover:text-swamp-green sm:px-5 sm:py-2.5 sm:text-2xs"
           >
             BACK
           </button>
@@ -214,9 +185,9 @@ const WeeklySchedule = () => {
 
         {/* TABLE */}
         <div className="no-scrollbar overflow-x-auto rounded-md border border-gray-200 bg-[#f7f8fc] shadow-md">
-          <div className="min-w-200">
-            <div className="grid grid-cols-[148px_repeat(5,1fr)] bg-swamp-green text-[11px] font-[PoppinsBold] text-white">
-              <div className="flex items-center justify-center border-r border-white/20 py-3">
+          <div className="min-w-150">
+            <div className="grid grid-cols-[90px_repeat(5,1fr)] bg-swamp-green text-[9px] font-[PoppinsBold] text-white sm:grid-cols-[148px_repeat(5,1fr)] sm:text-[11px]">
+              <div className="flex items-center justify-center border-r border-white/20 py-2 sm:py-3">
                 TIME
               </div>
 
@@ -229,7 +200,7 @@ const WeeklySchedule = () => {
               ].map((day) => (
                 <div
                   key={day}
-                  className="flex items-center justify-center border-r border-white/20 py-3 last:border-r-0"
+                  className="flex items-center justify-center border-r border-white/20 py-2 last:border-r-0 sm:py-3"
                 >
                   {day.toUpperCase()}
                 </div>
@@ -242,7 +213,7 @@ const WeeklySchedule = () => {
               schedule.map((row) => (
                 <div
                   key={row.time}
-                  className="grid h-16.5 grid-cols-[148px_repeat(5,1fr)] border-b border-gray-200 last:border-b-0"
+                  className="grid h-14 grid-cols-[90px_repeat(5,1fr)] border-b border-gray-200 last:border-b-0 sm:h-16.5 sm:grid-cols-[148px_repeat(5,1fr)]"
                 >
                   {/* TIME */}
                   <ScheduleTime time={row.time} />

@@ -24,6 +24,7 @@ import TGrades from "./Teacher-Side/TGrades.jsx";
 import TWeeklySchedule from "./Teacher-Side/TWeeklySchedule.jsx";
 import TReport from "./Teacher-Side/TReport.jsx";
 import TGradesReport from "./Teacher-Side/TGradesReport.jsx";
+import TSettings from "./Teacher-Side/TSettings.jsx";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="weekly-schedule" element={<TWeeklySchedule />} />
           <Route path="report" element={<TReport />} />
           <Route path="gradesreport/:schoolId" element={<TGradesReport />} />
+          <Route path="security" element={<TSettings />} />
         </Route>
       </>,
     ),

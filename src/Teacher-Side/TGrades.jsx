@@ -8,7 +8,7 @@ import StudentTable from "../Components/TGrades/StudentTable";
 const CLASS_SECTIONS = [
   { id: "sampaguita", name: "Sampaguita", level: "Nursery" },
   { id: "gumamela", name: "Gumamela", level: "Nursery" },
-  { id: "waling-waling", name: "Waling - Waling", level: "Nursery" },
+  { id: "hope", name: "Hope", level: "Nursery" },
 ];
 
 const COLUMNS = [

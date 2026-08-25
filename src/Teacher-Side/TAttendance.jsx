@@ -10,7 +10,7 @@ import AttendanceChecker from "../Components/TAttendance/AttendanceChecker";
 const CLASS_SECTIONS = [
   { id: "sampaguita", name: "Sampaguita", level: "Nursery" },
   { id: "gumamela", name: "Gumamela", level: "Nursery" },
-  { id: "waling-waling", name: "Waling - Waling", level: "Nursery" },
+  { id: "hope", name: "Hope", level: "Nursery" },
 ];
 
 const ATTENDANCE_OPTIONS = [
@@ -66,7 +66,7 @@ const STUDENTS = [
   },
   {
     id: 6,
-    sectionId: "waling-waling",
+    sectionId: "hope",
     schoolId: "GCA-2026-006",
     lrn: "1232173271321",
     fullName: "Harold Mendez",
@@ -75,7 +75,7 @@ const STUDENTS = [
   },
   {
     id: 7,
-    sectionId: "waling-waling",
+    sectionId: "hope",
     schoolId: "GCA-2026-007",
     lrn: "1232173271322",
     fullName: "Liza Bautista",
@@ -199,8 +199,8 @@ const TAttendance = () => {
   }
 
   return (
-    <div className="min-h-screen cursor-default bg-[#ebe9e4] px-5 py-6 font-[Poppins]">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
+    <div className="cursor-default bg-[#ebe9e4] px-5 py-6 font-[Poppins]">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 sm:gap-4">
 
         {/* SECTION */}
         <SectionCard

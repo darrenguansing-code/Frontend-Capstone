@@ -6,7 +6,7 @@ import StudentTable from "../Components/TeacherDashboard/StudentTable";
 const CLASS_SECTIONS = [
   { id: "sampaguita", name: "Sampaguita", level: "Nursery" },
   { id: "gumamela", name: "Gumamela", level: "Nursery" },
-  { id: "waling-waling", name: "Waling - Waling", level: "Nursery" },
+  { id: "hope", name: "Hope", level: "Nursery" },
 ];
 
 const STUDENTS = [
@@ -62,7 +62,7 @@ const STUDENTS = [
   },
   {
     id: 6,
-    sectionId: "waling-waling",
+    sectionId: "hope",
     schoolId: "GCA-2026-006",
     lrn: "1232173271321",
     fullName: "Harold Mendez",
@@ -72,7 +72,7 @@ const STUDENTS = [
   },
   {
     id: 7,
-    sectionId: "waling-waling",
+    sectionId: "hope",
     schoolId: "GCA-2026-007",
     lrn: "1232173271322",
     fullName: "Liza Bautista",

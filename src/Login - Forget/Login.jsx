@@ -59,8 +59,8 @@ const Login = () => {
     <>
       <LoginHeader />
 
-      <div className="flex min-h-screen items-center justify-center bg-[#ebe9e4] px-4 py-8">
-        <div className="flex w-full max-w-4xl overflow-hidden rounded-3xl bg-bone shadow-lg transition-all duration-700 ease-in-out md:h-130">
+      <div className="flex min-h-dvh items-center justify-center bg-[#ebe9e4] px-3 py-6 sm:px-4 sm:py-8">
+        <div className="flex w-full max-w-4xl overflow-hidden rounded-2xl bg-bone shadow-lg transition-all duration-700 ease-in-out sm:rounded-3xl md:h-130">
           <div className={`relative hidden w-1/2 overflow-hidden md:block ${
               exiting
                 ? "animate-slide-out-left"
@@ -91,31 +91,31 @@ const Login = () => {
             </div>
           </div>
 
-          <div className="flex w-full flex-col justify-center px-6 py-10 sm:px-10 md:w-1/2 md:px-14">
+          <div className="flex w-full flex-col justify-center px-4 py-4 sm:px-8 sm:py-6 md:w-1/2 md:px-14">
             <div className="text-center">
-              <div className="mb-4 flex items-center justify-center gap-3 md:hidden">
+              <div className="py-3 flex items-center justify-center gap-2 md:hidden">
                 <img
                   src={logoImg}
                   alt="GCA Logo"
-                  className="h-10 w-10 rounded-full object-contain"
+                  className="h-8 w-8 rounded-full object-contain sm:h-10 sm:w-10"
                 />
-                <p className="font-[PoppinsBold] text-sm text-swamp-green">
+                <p className="font-[PoppinsBold] text-xs text-swamp-green sm:text-sm">
                   Grace Christian Academy
                 </p>
               </div>
-              <h1 className="font-Handpicked-seashells text-3xl font-bold text-swamp-green">
+              <h1 className="font-Handpicked-seashells text-2xl font-bold text-swamp-green sm:text-3xl">
                 WELCOME
               </h1>
-              <p className="py-3 text-xs text-gray-600">
+              <p className="py-2 text-2xs text-gray-600 sm:text-xs">
                 Log in using your Grace Christian Academy Account
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="py-5">
+            <form onSubmit={handleSubmit} className="py-2 sm:py-5">
               <div>
                 <label
                   htmlFor="email"
-                  className="font-Handmade text-lg font-bold text-gray-700"
+                  className="font-Handmade text-base font-bold text-gray-700 sm:text-lg"
                 >
                   Email
                 </label>
@@ -123,17 +123,14 @@ const Login = () => {
                 <input
                   id="email"
                   type="email"
-                  // value={email}
-                  // onChange={(e) => setEmail(e.target.value)}
-                  // required
-                  className="w-full rounded-lg border border-swamp-green bg-transparent px-4 py-3 text-sm outline-none transition-all duration-500 ease-in-out focus:ring-2 focus:ring-swamp-green focus:shadow-[0_0_0_4px_rgba(7,59,50,0.1)]"
+                  className="w-full rounded-lg border border-swamp-green bg-transparent px-3 py-2.5 text-xs outline-none transition-all duration-500 ease-in-out focus:ring-2 focus:ring-swamp-green focus:shadow-[0_0_0_4px_rgba(7,59,50,0.1)] sm:px-4 sm:py-3 sm:text-sm"
                 />
               </div>
 
-              <div className="py-4">
+              <div className="py-2 sm:py-4">
                 <label
                   htmlFor="password"
-                  className="font-Handmade text-lg font-bold text-gray-700"
+                  className="font-Handmade text-base font-bold text-gray-700 sm:text-lg"
                 >
                   Password
                 </label>
@@ -142,39 +139,27 @@ const Login = () => {
                   <input
                     id="password"
                     type={showPassword ? "text" : "password"}
-                    // value={password}
-                    // onChange={(e) => setPassword(e.target.value)}
-                    // required
-                    className="w-full rounded-lg border border-swamp-green bg-transparent px-4 py-3 pr-12 text-sm outline-none transition-all duration-500 ease-in-out focus:ring-2 focus:ring-swamp-green focus:shadow-[0_0_0_4px_rgba(7,59,50,0.1)]"
+                    className="w-full rounded-lg border border-swamp-green bg-transparent px-3 py-2.5 pr-10 text-xs outline-none transition-all duration-500 ease-in-out focus:ring-2 focus:ring-swamp-green focus:shadow-[0_0_0_4px_rgba(7,59,50,0.1)] sm:px-4 sm:py-3 sm:pr-12 sm:text-sm"
                   />
 
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 transition-all duration-300 ease-in-out hover:text-swamp-green"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 transition-all duration-300 ease-in-out hover:text-swamp-green sm:right-4"
                   >
                     {showPassword ? (
-                      <EyeOff size={18} />
+                      <EyeOff size={16} />
                     ) : (
-                      <Eye size={18} />
+                      <Eye size={16} />
                     )}
                   </button>
                 </div>
               </div>
 
-              {/* {error && (
-                <p className="py-2 text-center text-xs text-red-500">
-                  {error}
-                </p>
-              )} */}
-
               <button
                 type="submit"
-                // disabled={loading}
-                className="font-Handpicked-seashells w-full rounded-full border border-[#a5b78d] py-3 text-lg font-bold text-swamp-green transition-all duration-500 ease-in-out hover:bg-[#91a77a] hover:text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
-                // disabled:cursor-not-allowed disabled:opacity-50
+                className="font-Handpicked-seashells w-full rounded-full border border-[#a5b78d] py-2.5 text-base font-bold text-swamp-green transition-all duration-500 ease-in-out hover:bg-[#91a77a] hover:text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] sm:py-3 sm:text-lg"
               >
-                {/* {loading ? "LOGGING IN..." : "LOGIN"} */}
                 LOGIN
               </button>
 
@@ -182,7 +167,7 @@ const Login = () => {
                 <button
                   type="button"
                   onClick={handleForgotPassword}
-                  className="text-xs text-gray-600 underline transition-all duration-300 ease-in-out hover:text-swamp-green"
+                  className="text-2xs text-gray-600 underline transition-all duration-300 ease-in-out hover:text-swamp-green sm:text-xs"
                 >
                   Forgot Password?
                 </button>

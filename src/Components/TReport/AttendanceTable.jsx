@@ -5,16 +5,16 @@ const AttendanceTable = ({ students, dates }) => {
   return (
     <>
       <div className="w-full overflow-x-auto rounded-2xl bg-bone shadow-md no-scrollbar md:hidden">
-        <div className="min-w-225">
-          <div className="grid grid-cols-[minmax(160px,2fr)_repeat(8,1fr)] items-center">
-            <span className="sticky left-0 z-10 bg-bone py-4 pl-5 pr-10 text-xs font-[PoppinsBold] uppercase text-[#9caf7d]">
+        <div className="min-w-140">
+          <div className="grid grid-cols-[minmax(110px,1.5fr)_repeat(8,minmax(32px,1fr))] items-center">
+            <span className="sticky left-0 z-10 bg-bone py-3 pl-3 pr-6 text-[9px] font-[PoppinsBold] uppercase text-[#9caf7d] sm:text-xs">
               ID & Student
             </span>
 
             {dates.map((date) => (
               <span
                 key={date}
-                className="px-2 py-4 text-center text-xs font-[PoppinsBold] uppercase text-swamp-green]"
+                className="px-1 py-3 text-center text-[8px] font-[PoppinsBold] uppercase text-swamp-green sm:text-2xs"
               >
                 {date}
               </span>

@@ -7,7 +7,7 @@ const FilterSelect = ({ value, options, onChange, className = "" }) => {
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="h-9 w-full appearance-none rounded-xl border border-gray-300 bg-white pl-4 pr-9 text-xs text-gray-600 outline-none transition-colors focus:border-swamp-green"
+        className="block h-7 w-full appearance-none rounded-xl border border-gray-300 bg-white px-2 py-0 text-[9px] leading-7 text-gray-600 outline-none transition-colors focus:border-swamp-green sm:h-8 sm:px-3 sm:text-xs sm:leading-8"
       >
         {options.map((option) => (
           <option key={option} value={option}>
@@ -17,8 +17,8 @@ const FilterSelect = ({ value, options, onChange, className = "" }) => {
       </select>
 
       <ChevronDown
-        size={14}
-        className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+        className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 sm:right-3"
+        size={12}
       />
     </div>
   );

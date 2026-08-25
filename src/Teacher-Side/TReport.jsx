@@ -10,7 +10,7 @@ import AttendanceTable from "../Components/TReport/AttendanceTable";
 const CLASS_SECTIONS = [
   { id: "sampaguita", name: "Sampaguita", level: "Nursery" },
   { id: "gumamela", name: "Gumamela", level: "Nursery" },
-  { id: "waling-waling", name: "Waling - Waling", level: "Nursery" },
+  { id: "hope", name: "Hope", level: "Nursery" },
 ];
 
 const MONTHS = [
@@ -188,7 +188,7 @@ const TReport = () => {
   }
 
   return (
-    <div className="min-h-screen cursor-default bg-[#ebe9e4] px-5 py-6 font-[Poppins]">
+    <div className="min-h-screen cursor-default bg-[#ebe9e4] px-3 py-4 font-[Poppins] sm:px-5 sm:py-6">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
 
         <SectionCard

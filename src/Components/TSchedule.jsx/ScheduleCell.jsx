@@ -4,25 +4,25 @@ const ScheduleCell = ({ section, subject }) => {
     return <div className="h-full" />;
   }
   
-  const isSnackTime = section === "Snack Time";
+  const isLunchTime = section === "Lunch Time";
 
   return (
     <div
-      className={`flex h-full flex-col justify-center px-5 py-4 ${
-        isSnackTime ? "bg-red-50" : ""
+      className={`flex h-full flex-col justify-center px-2 py-2 sm:px-5 sm:py-4 ${
+        isLunchTime ? "bg-red-50" : ""
       }`}
     >
       <p
-        className={`font-[PoppinsBold] text-sm ${
-          isSnackTime ? "text-red-500" : "text-gray-600"
+        className={`font-[PoppinsBold] text-[7px] sm:text-[9px] ${
+          isLunchTime ? "text-red-500" : "text-gray-600"
         }`}
       >
         {section}
       </p>
 
       <p
-        className={`py-2 text-[11px] ${
-          isSnackTime ? "text-red-400" : "text-gray-500"
+        className={`py-1 text-[7px] sm:py-2 sm:text-[9px] ${
+          isLunchTime ? "text-red-400" : "text-gray-500"
         }`}
       >
         {subject}

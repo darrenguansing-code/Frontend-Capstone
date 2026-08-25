@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Mail } from "lucide-react";
 import LoginHeader from "../Components/LoginHeader.jsx";
 import Copyright from "../Components/Copyright.jsx";
 import logoImg from "../assets/logowbg.png";
@@ -64,37 +63,37 @@ const ForgotPassword = () => {
     <>
       <LoginHeader />
 
-      <div className="flex min-h-screen items-center justify-center bg-[#ebe9e4] px-4 py-8">
-        <div className="flex w-full max-w-4xl overflow-hidden rounded-3xl bg-bone shadow-lg transition-all duration-700 ease-in-out md:h-130">
-          <div className="flex w-full flex-col justify-center px-6 py-10 sm:px-10 md:w-1/2 md:px-14">
+      <div className="flex min-h-dvh items-center justify-center bg-[#ebe9e4] px-3 py-6 sm:px-4 sm:py-8">
+        <div className="flex w-full max-w-4xl overflow-hidden rounded-2xl bg-bone shadow-lg transition-all duration-700 ease-in-out sm:rounded-3xl md:h-130">
+          <div className="flex w-full flex-col justify-center px-4 py-4 sm:px-8 sm:py-6 md:w-1/2 md:px-14">
             <div className="text-center">
-              <div className="py-4 flex items-center justify-center gap-3 md:hidden">
+              <div className="py-3 flex items-center justify-center gap-2 md:hidden">
                 <img
                   src={logoImg}
                   alt="GCA Logo"
-                  className="h-10 w-10 rounded-full object-contain"
+                  className="h-8 w-8 rounded-full object-contain sm:h-10 sm:w-10"
                 />
 
-                <p className="font-[PoppinsBold] text-sm text-swamp-green">
+                <p className="font-[PoppinsBold] text-xs text-swamp-green sm:text-sm">
                   Grace Christian Academy
                 </p>
               </div>
 
-              <h1 className="font-Handpicked-seashells text-3xl font-bold text-swamp-green">
+              <h1 className="font-Handpicked-seashells text-2xl font-bold text-swamp-green sm:text-3xl">
                 FORGOT PASSWORD?
               </h1>
 
-              <p className="py-3 text-xs leading-relaxed text-gray-600">
+              <p className="py-2 text-2xs leading-relaxed text-gray-600 sm:text-xs">
                 Enter your email address and we'll send you a link
                 to reset your password.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="py-5">
-              <div className="py-4">
+            <form onSubmit={handleSubmit} className="py-2 sm:py-5">
+              <div className="py-2 sm:py-4">
                 <label
                   htmlFor="email"
-                  className="font-Handmade text-lg font-bold text-gray-700"
+                  className="font-Handmade text-base font-bold text-gray-700 sm:text-lg"
                 >
                   Email
                 </label>
@@ -107,24 +106,19 @@ const ForgotPassword = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
                     required
-                    className="w-full rounded-lg border border-swamp-green bg-transparent px-4 py-3 pr-12 text-sm outline-none transition-all duration-500 ease-in-out placeholder:text-gray-400 focus:ring-2 focus:ring-swamp-green focus:shadow-[0_0_0_4px_rgba(7,59,50,0.1)]"
-                  />
-
-                  <Mail
-                    size={18}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 transition-all duration-300 ease-in-out"
+                    className="w-full rounded-lg border border-swamp-green bg-transparent px-3 py-2.5 text-xs outline-none transition-all duration-500 ease-in-out placeholder:text-gray-400 focus:ring-2 focus:ring-swamp-green focus:shadow-[0_0_0_4px_rgba(7,59,50,0.1)] sm:px-4 sm:py-3 sm:text-sm"
                   />
                 </div>
               </div>
 
               {message && (
-                <p className="py-2 text-center text-xs text-swamp-green">
+                <p className="py-2 text-center text-2xs text-swamp-green sm:text-xs">
                   {message}
                 </p>
               )}
 
               {error && (
-                <p className="py-2 text-center text-xs text-red-500">
+                <p className="py-2 text-center text-2xs text-red-500 sm:text-xs">
                   {error}
                 </p>
               )}
@@ -132,7 +126,7 @@ const ForgotPassword = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full rounded-full border border-swamp-green py-3 font-Handpicked-seashells text-lg font-bold text-swamp-green transition-all duration-500 ease-in-out hover:bg-[#91a77a] hover:text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
+                className="w-full rounded-full border border-swamp-green py-2.5 font-Handpicked-seashells text-base font-bold text-swamp-green transition-all duration-500 ease-in-out hover:bg-[#91a77a] hover:text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100 sm:py-3 sm:text-lg"
               >
                 {loading ? "SENDING..." : "SEND RESET LINK"}
               </button>
@@ -141,7 +135,7 @@ const ForgotPassword = () => {
                 <button
                   type="button"
                   onClick={handleBackToLogin}
-                  className="text-xs text-gray-600 underline transition-all duration-300 ease-in-out hover:text-swamp-green"
+                  className="text-2xs text-gray-600 underline transition-all duration-300 ease-in-out hover:text-swamp-green sm:text-xs"
                 >
                   Back to Login
                 </button>

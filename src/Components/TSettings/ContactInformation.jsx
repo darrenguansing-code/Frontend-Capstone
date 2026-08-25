@@ -1,21 +1,18 @@
-const EmergencyContact = ({
-  fullName,
-  contactNo,
-  relationship,
-  onManage,
-}) => {
+import React from "react";
+
+const ContactInformation = ({ contact, onManage }) => {
   const contactDetails = [
     {
-      label: "Full Name:",
-      value: fullName,
+      label: "Address",
+      value: contact.address,
     },
     {
-      label: "Contact No. :",
-      value: contactNo,
+      label: "Email",
+      value: contact.email,
     },
     {
-      label: "Relation w/ student:",
-      value: relationship,
+      label: "Contact No.",
+      value: contact.contactNumber,
     },
   ];
 
@@ -24,10 +21,11 @@ const EmergencyContact = ({
       <div className="flex h-full flex-col justify-center gap-5">
         <div className="flex items-center justify-between">
           <h2 className="text-xs font-bold uppercase text-swamp-green sm:text-sm">
-            Student Emergency Contact Information
+            CONTACT INFORMATION
           </h2>
 
           <button
+            type="button"
             onClick={onManage}
             className="text-2xs text-gray-400 underline"
           >
@@ -41,13 +39,19 @@ const EmergencyContact = ({
               key={detail.label}
               className="flex min-w-0 flex-col gap-1"
             >
-              <p className="text-2xs text-swamp-green">
+              <span className="text-2xs text-swamp-green">
                 {detail.label}
-              </p>
+              </span>
 
-              <p className="wrap-break-word sm:whitespace-nowrap text-xs font-bold text-swamp-green">
+              <span
+                className={`wrap-break-word text-xs font-bold text-swamp-green ${
+                  detail.label === "Address"
+                    ? "whitespace-pre-line"
+                    : "sm:whitespace-nowrap"
+                }`}
+              >
                 {detail.value}
-              </p>
+              </span>
             </div>
           ))}
         </div>
@@ -56,4 +60,4 @@ const EmergencyContact = ({
   );
 };
 
-export default EmergencyContact;
+export default ContactInformation;

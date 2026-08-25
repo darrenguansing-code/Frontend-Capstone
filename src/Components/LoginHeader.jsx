@@ -10,7 +10,7 @@ const SCHOOL = {
 const LoginHeader = () => {
   return (
     <header className="font-[Poppins]">
-      <nav className="flex h-20 w-full items-center justify-between bg-[#0c2423] px-4 text-xs inset-shadow-med sm:px-10">
+      <nav className="flex h-16 w-full items-center justify-between bg-[#0c2423] px-4 text-xs inset-shadow-med sm:h-20 sm:px-10">
         <Link
           to="/"
           className="flex min-w-0 items-center gap-x-2"
@@ -18,15 +18,15 @@ const LoginHeader = () => {
           <img
             src={logoImg}
             alt={SCHOOL.name}
-            className="h-8 rounded-full lg:h-12"
+            className="h-7 rounded-full sm:h-8 lg:h-10"
           />
 
           <div className="min-w-0">
-            <p className="whitespace-nowrap text-[9px] tracking-widest text-gray-200 sm:text-xs sm:tracking-[0.15em] md:text-sm md:tracking-[0.30em]">
+            <p className="whitespace-nowrap text-[7px] tracking-widest text-gray-200 sm:text-[9px] sm:tracking-[0.15em] lg:text-[10px] lg:tracking-[0.18em]">
               {SCHOOL.fullName}
             </p>
 
-            <p className="whitespace-nowrap font-[PoppinsBold] text-xs text-bone sm:text-sm md:text-base">
+            <p className="whitespace-nowrap font-[PoppinsBold] text-[9px] text-bone sm:text-[11px] lg:text-xs">
               {SCHOOL.name}
             </p>
           </div>
@@ -45,10 +45,9 @@ const LoginHeader = () => {
             }
           >
             <Home size={20} />
-            <span 
-                className="hidden sm:inline">
-                    HOME
-                </span>
+            <span className="hidden sm:inline">
+              HOME
+            </span>
           </NavLink>
 
           <NavLink
@@ -62,10 +61,9 @@ const LoginHeader = () => {
             }
           >
             <GraduationCap size={20} />
-            <span 
-                className="hidden sm:inline">
-                    ADMISSION
-                </span>
+            <span className="hidden sm:inline">
+              ADMISSION
+            </span>
           </NavLink>
         </div>
       </nav>
