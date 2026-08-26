@@ -4,7 +4,7 @@ import StudentCard from '../Components/GradesComponents/StudentCard'
 import Remarks from '../Components/GradesComponents/Remarks'
 import QuarterTabs from '../Components/GradesComponents/QuarterTabs'
 import DevelopmentCard from '../Components/GradesComponents/DevelopmentCard'
-import GradeModal from '../Components/GradesComponents/GradeModal'
+import GradeModal from '../Components/Modal/GradeModal'
 
 const QUARTERS = ["QUARTER 1", "QUARTER 2", "QUARTER 3"];
 

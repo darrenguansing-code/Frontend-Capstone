@@ -26,6 +26,11 @@ import TReport from "./Teacher-Side/TReport.jsx";
 import TGradesReport from "./Teacher-Side/TGradesReport.jsx";
 import TSettings from "./Teacher-Side/TSettings.jsx";
 
+// ----- ADMIN SIDE -----
+import AdminLayout from "./Layout/AdminLayout.jsx";
+import Dashboard from "./uAdmin-Side/Dashboard.jsx";
+
+
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -47,6 +52,9 @@ const App = () => {
           <Route path="gradesreport/:schoolId" element={<TGradesReport />} />
           <Route path="security" element={<TSettings />} />
         </Route>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Dashboard />} />
+          </Route>
       </>,
     ),
   );

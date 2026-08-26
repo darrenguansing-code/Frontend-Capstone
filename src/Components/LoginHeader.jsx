@@ -22,7 +22,7 @@ const LoginHeader = () => {
           />
 
           <div className="min-w-0">
-            <p className="whitespace-nowrap text-[7px] tracking-widest text-gray-200 sm:text-[9px] sm:tracking-[0.15em] lg:text-[10px] lg:tracking-[0.18em]">
+            <p className="whitespace-nowrap text-[7px] tracking-widest text-gray-200 sm:text-[9px] sm:tracking-[0.15em] lg:text-2xs lg:tracking-[0.18em]">
               {SCHOOL.fullName}
             </p>
 
@@ -51,7 +51,7 @@ const LoginHeader = () => {
           </NavLink>
 
           <NavLink
-            to="/login"
+            to="/admin"
             className={({ isActive }) =>
               `flex items-center gap-x-2 font-[PoppinsBold] tracking-wide transition-colors duration-300 ${
                 isActive
