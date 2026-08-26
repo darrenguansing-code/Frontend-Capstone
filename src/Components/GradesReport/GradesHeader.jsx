@@ -1,5 +1,3 @@
-import React from "react";
-
 const GradesHeader = ({ student, onBack }) => {
   return (
     <div className="flex flex-col gap-3 sm:gap-4 md:gap-6">
@@ -23,7 +21,7 @@ const GradesHeader = ({ student, onBack }) => {
           <span className="text-[8px] font-[PoppinsBold] uppercase text-white/60">
             Selected Student
           </span>
-          <h2 className="text-sm font-[PoppinsBold] leading-tight text-white sm:text-base">
+          <h2 className="whitespace-nowrap text-sm font-[PoppinsBold] leading-tight text-white sm:text-base">
             {student.name}
           </h2>
         </div>
@@ -64,14 +62,15 @@ const GradesHeader = ({ student, onBack }) => {
       </div>
 
       {/* Tablet/Desktop: grid layout */}
-      <div className="hidden grid-cols-[2fr_1fr_1fr_1fr] items-center gap-4 rounded-3xl bg-linear-to-r from-[#073b32] to-[#449957] px-5 py-5 shadow-md sm:px-6 sm:py-6 md:grid lg:px-8 lg:py-8">
+      <div className="hidden grid-cols-[1.5fr_1fr_1fr_1fr] items-center gap-4 rounded-3xl bg-linear-to-r from-[#073b32] to-[#449957] px-5 py-5 shadow-md sm:px-6 sm:py-6 md:grid lg:px-8 lg:py-8">
         <div className="flex flex-col gap-1">
           <span className="text-[9px] font-[PoppinsBold] uppercase text-white/60">
             Selected Student
           </span>
-          <h2 className="text-base font-[PoppinsBold] leading-tight text-white lg:text-xl">
-            {student.name}
-          </h2>
+          <div className="text-base font-[PoppinsBold] leading-tight text-white lg:text-xl">
+            <span className="md:block">{student.name.split(" ").slice(0, -1).join(" ")}</span>
+            <span className="md:block">{student.name.split(" ").slice(-1).join(" ")}</span>
+          </div>
         </div>
 
         <div className="flex flex-col gap-1">

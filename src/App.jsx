@@ -35,7 +35,7 @@ const App = () => {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/parents" element={<ParentsLayout />}>
           <Route index element={<ParentsDashboard />} />
-          <Route path="grades" element={<Grades />} />
+          <Route path="grades/:studentId" element={<Grades />} />
           <Route path="security" element={<Security />} />
         </Route>
         <Route path="/teacher" element={<TeacherLayout />}>

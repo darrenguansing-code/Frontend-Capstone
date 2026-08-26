@@ -11,7 +11,7 @@ const QuarterTabs = ({ quarters, selectedQuarter, onQuarterChange }) => {
             key={quarter}
             type="button"
             onClick={() => onQuarterChange(quarterNumber)}
-            className={`w-full rounded-full px-4 py-2.5 text-[9px] font-bold transition-all duration-200 sm:w-auto sm:px-5 sm:py-3 ${
+            className={`w-full rounded-full px-4 py-2.5 text-[9px] font-bold transition-all duration-200 sm:w-auto sm:px-5 sm:py-3 lg:text-[11px] lg:px-6 ${
               isSelected
                 ? "bg-swamp-green text-white"
                 : "text-swamp-green hover:bg-[#9caf7d]/10"

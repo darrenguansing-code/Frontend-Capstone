@@ -42,25 +42,38 @@ const announcements = [
   },
 ]
 
-const FALLBACK_STUDENT = {
-  lastName: "SANTIAGO",
-  firstName: "Maria Margarett",
-  lrn: null,
-  studentId: "GCA-S01",
-  sy: "2025 - 2026",
-  classSchedule: "Monday - Thursday",
-  gradeLevel: "Nursery",
-  room: "Mahogany - 3",
-  classTime: "7:00 AM - 11:00 AM",
-  adviser: "Ms. Rosary Mendez",
-};
+const FALLBACK_STUDENTS = [
+  {
+    lastName: "SANTIAGO",
+    firstName: "Maria Margarett",
+    lrn: "4023-1234-5678",
+    studentId: "GCA-S01",
+    sy: "2025 - 2026",
+    classSchedule: "Monday - Friday",
+    gradeLevel: "Nursery",
+    room: "Mahogany - 3",
+    classTime: "7:00 AM - 11:00 AM",
+    adviser: "Ms. Rosary Mendez",
+  },
+  {
+    lastName: "DELACRUZ",
+    firstName: "Juan Carlos",
+    lrn: "4023-5678-9012",
+    studentId: "GCA-S02",
+    sy: "2025 - 2026",
+    classSchedule: "Monday - Friday",
+    gradeLevel: "Kindergarten",
+    room: "Narra - 1",
+    classTime: "7:00 AM - 11:00 AM",
+    adviser: "Ms. Angela Torres",
+  },
+];
 
 const ParentsDashboard = () => {
   const scrollRef = useRef(null);
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [spin, setSpin] = useState(false);
 
   useEffect(() => {
     const fetchStudents = async () => {
@@ -79,7 +92,7 @@ const ParentsDashboard = () => {
     fetchStudents();
   }, []);
 
-  const student = students[0] || FALLBACK_STUDENT;
+  const displayStudents = students.length > 0 ? students : FALLBACK_STUDENTS;
 
   useEffect(() => {
     const element = scrollRef.current;
@@ -101,24 +114,22 @@ const ParentsDashboard = () => {
     <div className="min-h-screen bg-[#ebe9e4] px-5 py-6 font-[Poppins] cursor-default">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6">
 
-        {/* Student */}
+        {/* Students */}
         <div className="flex flex-col gap-4 rounded-3xl">
-          <div className="flex items-center gap-3">
-            
-          </div>
           {loading ? (
             <div className="flex h-64 items-center justify-center rounded-3xl bg-white text-sm text-gray-500">
               Pls wait...
             </div>
           ) : (
-            <StudentInfo
-              student={student}
-              spin={spin}
-              setSpin={setSpin}
-              infoFields={INFO_FIELDS}
-              idFields={ID_FIELDS}
-              schoolYearField={SCHOOL_YEAR_FIELD}
-            />
+            displayStudents.map((s, i) => (
+              <StudentInfo
+                key={s.studentId || i}
+                student={s}
+                infoFields={INFO_FIELDS}
+                idFields={ID_FIELDS}
+                schoolYearField={SCHOOL_YEAR_FIELD}
+              />
+            ))
           )}
         </div>
 

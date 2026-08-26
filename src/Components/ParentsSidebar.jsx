@@ -19,7 +19,6 @@ const USER = {
 
 const NAV_LINKS = [
   { to: "/parents", label: "DASHBOARD", icon: Home, end: true },
-  { to: "/parents/grades", label: "GRADES", icon: ClipboardList },
   { to: "/parents/security", label: "ACCOUNT SETTINGS", icon: ShieldCheck },
 ];
 

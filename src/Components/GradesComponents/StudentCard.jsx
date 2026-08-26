@@ -11,35 +11,35 @@ const StudentCard = ({ lastName, firstName, learnerReferenceNumber, studentId, t
 
           {/* Student Name */}
           <div className="flex flex-col justify-center gap-1">
-            <p className="text-2xs font-medium text-white/60">
+            <p className="text-2xs font-medium text-white/60 lg:text-xs">
               Enrolled Student/s
             </p>
 
-            <h2 className="text-lg font-bold leading-tight md:text-xl">
+            <h2 className="text-lg font-bold leading-tight md:text-xl lg:text-2xl">
               {lastName},
-              <br />
-              {firstName}
+              <br className="md:hidden" />
+              {" "}{firstName}
             </h2>
           </div>
 
           {/* Student Details */}
           <div className="grid grid-cols-2 items-center justify-center gap-4 md:grid-cols-1">
             <div className="flex flex-col gap-1">
-              <p className="text-[9px] font-medium text-white/60">
+              <p className="text-[9px] font-medium text-white/60 lg:text-[11px]">
                 LEARNER REFERENCE NUMBER
               </p>
 
-              <p className="text-xs font-bold">
+              <p className="text-xs font-bold lg:text-sm">
                 {learnerReferenceNumber}
               </p>
             </div>
 
             <div className="flex flex-col gap-1">
-              <p className="text-[9px] font-medium text-white/60">
+              <p className="text-[9px] font-medium text-white/60 lg:text-[11px]">
                 STUDENT ID NUMBER
               </p>
 
-              <p className="text-xs font-bold">
+              <p className="text-xs font-bold lg:text-sm">
                 {studentId}
               </p>
             </div>

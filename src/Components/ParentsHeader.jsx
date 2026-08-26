@@ -71,95 +71,85 @@ const ParentsHeader = ({ onMenuToggle }) => {
           </Link>
         </div>
 
-        <div className="hidden items-center gap-x-5 lg:flex lg:gap-x-8 xl:gap-x-10">
-          <NavLink
-            to="/parents"
-            end
-            className={({ isActive }) =>
-              `flex items-center gap-x-2 font-[PoppinsBold] tracking-wide transition-colors duration-300 ${
-                isActive
-                  ? "text-swamp-green"
-                  : "text-bone hover:text-swamp-green"
-              }`
-            }
-          >
-            <Home size={20} />
-            <span>DASHBOARD</span>
-          </NavLink>
+        {/* Right: Nav links + Profile */}
+        <div className="flex items-center gap-x-5 sm:gap-x-8 lg:gap-x-10">
+          <div className="hidden items-center gap-x-5 lg:flex lg:gap-x-8 xl:gap-x-10">
+            <NavLink
+              to="/parents"
+              end
+              className={({ isActive }) =>
+                `flex items-center gap-x-2 font-[PoppinsBold] tracking-wide transition-colors duration-300 ${
+                  isActive
+                    ? "text-swamp-green"
+                    : "text-bone hover:text-swamp-green"
+                }`
+              }
+            >
+              <Home size={20} />
+              <span>DASHBOARD</span>
+            </NavLink>
+          </div>
 
-          <NavLink
-            to="/parents/grades"
-            className={({ isActive }) =>
-              `flex items-center gap-x-2 font-[PoppinsBold] tracking-wide transition-colors duration-300 ${
-                isActive
-                  ? "text-swamp-green"
-                  : "text-bone hover:text-swamp-green"
-              }`
-            }
-          >
-            <ClipboardList size={20} />
-            <span>GRADES</span>
-          </NavLink>
-        </div>
+          {/* Profile */}
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setUserMenu((prev) => !prev)}
+              className="flex items-center gap-x-2 text-bone transition-colors duration-300 hover:text-swamp-green"
+            >
+              <User size={20} className="hidden lg:block" />
+              <span className="hidden font-[PoppinsBold] lg:inline">
+                {USER.name}
+              </span>
 
-        <div className="relative">
-          <button
-            type="button"
-            onClick={() => setUserMenu((prev) => !prev)}
-            className="flex items-center gap-x-2 text-bone transition-colors duration-300 hover:text-swamp-green"
-          >
-            <User size={20} className="hidden lg:block" />
-            <span className="hidden font-[PoppinsBold] lg:inline">
-              {USER.name}
-            </span>
+              <ChevronDown
+                size={18}
+                className={`hidden transition-transform duration-200 lg:block ${
+                  userMenu ? "rotate-180" : ""
+                }`}
+              />
+            </button>
 
-            <ChevronDown
-              size={18}
-              className={`hidden transition-transform duration-200 lg:block ${
-                userMenu ? "rotate-180" : ""
-              }`}
-            />
-          </button>
+            {userMenu && (
+              <div className="absolute right-0 top-full py-2 w-44 sm:w-56 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl">
+                <div className="border-b border-gray-100 px-3 py-3 sm:px-4 sm:py-4">
+                  <p className="font-[PoppinsBold] text-[11px] text-gray-800 sm:text-sm">
+                    {USER.name}
+                  </p>
 
-          {userMenu && (
-            <div className="absolute right-0 top-full py-2 w-44 sm:w-56 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl">
-              <div className="border-b border-gray-100 px-3 py-3 sm:px-4 sm:py-4">
-                <p className="font-[PoppinsBold] text-[11px] text-gray-800 sm:text-sm">
-                  {USER.name}
-                </p>
+                  <p className="py-1 text-[9px] text-gray-400 sm:text-[11px]">
+                    {USER.role}
+                  </p>
+                </div>
 
-                <p className="py-1 text-[9px] text-gray-400 sm:text-[11px]">
-                  {USER.role}
-                </p>
-              </div>
-
-              <NavLink
-                to="/parents/security"
-                onClick={() => setUserMenu(false)}
-                className={({ isActive }) =>
-                  `flex items-center gap-x-2.5 px-3 py-2.5 text-[11px] transition-colors sm:gap-x-3 sm:px-4 sm:py-3 sm:text-sm ${
-                    isActive
-                      ? "bg-green-50 font-[PoppinsBold] text-swamp-green"
-                      : "text-gray-600 hover:bg-bone hover:text-swamp-green"
-                  }`
-                }
-              >
-                <ShieldCheck size={15} />
-                <span>Account Settings</span>
-              </NavLink>
-
-              <div className="border-t border-gray-100">
-                <button
-                  type="button"
-                  onClick={handleLogout}
-                  className="flex w-full items-center gap-x-2.5 px-3 py-2.5 text-[11px] text-red-500 transition-colors hover:bg-red-50 sm:gap-x-3 sm:px-4 sm:py-3 sm:text-sm"
+                <NavLink
+                  to="/parents/security"
+                  onClick={() => setUserMenu(false)}
+                  className={({ isActive }) =>
+                    `flex items-center gap-x-2.5 px-3 py-2.5 text-[11px] transition-colors sm:gap-x-3 sm:px-4 sm:py-3 sm:text-sm ${
+                      isActive
+                        ? "bg-green-50 font-[PoppinsBold] text-swamp-green"
+                        : "text-gray-600 hover:bg-bone hover:text-swamp-green"
+                    }`
+                  }
                 >
-                  <LogOut size={15} />
-                  <span>Log out</span>
-                </button>
+                  <ShieldCheck size={15} />
+                  <span>Account Settings</span>
+                </NavLink>
+
+                <div className="border-t border-gray-100">
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="flex w-full items-center gap-x-2.5 px-3 py-2.5 text-[11px] text-red-500 transition-colors hover:bg-red-50 sm:gap-x-3 sm:px-4 sm:py-3 sm:text-sm"
+                  >
+                    <LogOut size={15} />
+                    <span>Log out</span>
+                  </button>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </nav>
     </header>

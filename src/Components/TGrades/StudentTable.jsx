@@ -10,7 +10,7 @@ const StudentTable = ({ students, columns, onGradesClick }) => {
         {/* Mobile & Tablet: Sticky scroll */}
         <div className="no-scrollbar overflow-x-auto lg:hidden">
           <div className="min-w-125">
-            <div className="grid grid-cols-[minmax(100px,1.2fr)_1fr_0.8fr_1fr] items-center gap-0">
+            <div className="grid grid-cols-[minmax(100px,1.2fr)_1fr_0.8fr_0.7fr] items-center gap-0">
               <div className="sticky left-0 z-10 bg-white py-3 pl-3 sm:pl-4">
                 <span className="text-2xs font-[PoppinsBold] uppercase tracking-wide text-[#9caf7d] sm:text-xs">
                   ID & Student
@@ -34,7 +34,7 @@ const StudentTable = ({ students, columns, onGradesClick }) => {
               {students.map((student) => (
                 <div
                   key={student.schoolId}
-                  className="grid grid-cols-[minmax(100px,1.2fr)_1fr_0.8fr_1fr] items-center gap-0 border-t border-gray-100"
+                  className="grid grid-cols-[minmax(100px,1.2fr)_1fr_0.8fr_0.7fr] items-center gap-0 border-t border-gray-100"
                 >
                   <div className="sticky left-0 z-10 min-w-0 bg-bone py-3 pl-3 sm:pl-4">
                     <p className="min-w-0 truncate text-2xs text-gray-500 sm:text-xs">
@@ -53,7 +53,7 @@ const StudentTable = ({ students, columns, onGradesClick }) => {
                     {student.gender}
                   </span>
 
-                  <div className="flex justify-end py-3 pr-3">
+                  <div className="flex justify-start py-3 -ml-1">
                     <button
                       type="button"
                       onClick={() => onGradesClick(student)}

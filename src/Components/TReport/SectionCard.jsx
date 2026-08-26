@@ -34,7 +34,7 @@ const SectionCard = ({ sections, selectedId, onSelect, onBack }) => {
                   : "bg-bone text-gray-600"
               }`}
             >
-              <span className="text-[10px] font-[PoppinsBold] uppercase tracking-wide sm:text-xs md:text-sm">
+              <span className="text-2xs font-[PoppinsBold] uppercase tracking-wide sm:text-xs md:text-sm">
                 {section.name}
               </span>
 

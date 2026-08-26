@@ -6,7 +6,7 @@ const GradeModal = ({ title, items, onClose }) => {
         
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4">
-          <h2 className="text-xs font-[PoppinsBold] text-swamp-green md:text-sm">
+          <h2 className="text-xs font-[PoppinsBold] text-swamp-green md:text-sm lg:text-base">
             {title}
           </h2>
 
@@ -31,18 +31,18 @@ const GradeModal = ({ title, items, onClose }) => {
               }`}
             >
               <div className="flex min-w-0 flex-col gap-1 pr-4">
-                <p className="text-2xs font-[PoppinsBold] text-swamp-green">
+                <p className="text-2xs font-[PoppinsBold] text-swamp-green lg:text-xs">
                   {item.skill}
                 </p>
 
                 {item.description && (
-                  <p className="text-[9px] text-gray-600">
+                  <p className="text-[9px] text-gray-600 lg:text-[11px]">
                     ({item.description})
                   </p>
                 )}
               </div>
 
-              <span className="shrink-0 text-2xl px-5 font-[PoppinsBold] text-swamp-green">
+              <span className="shrink-0 text-2xl px-5 font-[PoppinsBold] text-swamp-green lg:text-3xl">
                 {item.grade}
               </span>
             </div>
