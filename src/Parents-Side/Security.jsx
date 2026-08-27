@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import PersonalInformation from "../Components/SecurityComponents/PersonalInformation";
-import EmergencyContact from "../Components/SecurityComponents/EmergencyContact";
-import AccountSettings from "../Components/SecurityComponents/AccountSettings";
-import EditContactModal from "../Components/Modal/EditContactModal";
-import ChangePasswordModal from "../Components/Modal/ChangePasswordModal";
+import { Loader2 } from "lucide-react";
+import PersonalInformation from "../Components/Parents-Side Components/Security/PersonalInformation";
+import EmergencyContact from "../Components/Parents-Side Components/Security/EmergencyContact";
+import AccountSettings from "../Components/Parents-Side Components/Security/AccountSettings";
+import EditContactModal from "../Components/Parents-Teacher Modal/EditContactModal";
+import ChangePasswordModal from "../Components/Parents-Teacher Modal/ChangePasswordModal";
 
 const PASSWORD_FIELDS = [
   {
@@ -39,6 +40,8 @@ const INITIAL_VISIBILITY = {
 const Security = () => {
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   // TEMPORARY DATA
   const [contactData, setContactData] = useState({
@@ -53,31 +56,36 @@ const Security = () => {
     address: "",
   });
 
-  // useEffect(() => {
-  //   const fetchUserData = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "http://localhost:5000/parent/account"
-  //       );
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        setLoading(true);
+        setError("");
+        const response = await axios.get(
+          "http://localhost:5000/parent/account"
+        );
 
-  //       setContactData({
-  //         contactNumber: response.data.contactNumber,
-  //         email: response.data.email,
-  //         address: response.data.address,
-  //       });
+        setContactData({
+          contactNumber: response.data.contactNumber,
+          email: response.data.email,
+          address: response.data.address,
+        });
 
-  //       setFormData({
-  //         contactNumber: response.data.contactNumber,
-  //         email: response.data.email,
-  //         address: response.data.address,
-  //       });
-  //     } catch (error) {
-  //       console.error("Failed to fetch account data:", error);
-  //     }
-  //   };
+        setFormData({
+          contactNumber: response.data.contactNumber,
+          email: response.data.email,
+          address: response.data.address,
+        });
+      } catch (error) {
+        console.error("Failed to fetch account data:", error);
+        setError("Unable to load account data.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  //   fetchUserData();
-  // }, []);
+    fetchUserData();
+  }, []);
 
   const handlePasswordUpdate = (passwords) => {
     console.log("Password update submitted:", passwords);
@@ -119,6 +127,32 @@ const Security = () => {
       );
     */
   };
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-black font-[Poppins]">
+        <Loader2 size={32} className="animate-spin text-swamp-green" />
+        <p className="text-sm text-gray-400">
+          Loading Account Settings
+          <span className="loading-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#ebe9e4] font-[Poppins]">
+        <p className="text-sm text-red-400">
+          {error}
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="cursor-default bg-[#ebe9e4] px-3 py-4 font-[Poppins] sm:px-5 sm:py-6">

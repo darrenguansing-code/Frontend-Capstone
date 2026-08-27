@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {Loader2} from "lucide-react";
-import SectionCard from "../Components/TAttendance/SectionCard";
-import SearchBar from "../Components/TGrades/SearchBar";
-import StudentTable from "../Components/TGrades/StudentTable";
+import SectionCard from "../Components/Teacher-Side Components/AttendanceChecker/SectionCard";
+import SearchBar from "../Components/Teacher-Side Components/Grades/SearchBar";
+import StudentTable from "../Components/Teacher-Side Components/Grades/StudentTable";
 
 const CLASS_SECTIONS = [
   { id: "sampaguita", name: "Sampaguita", level: "Nursery" },
@@ -27,7 +27,7 @@ const TEMP_STUDENTS = [
   { schoolId: "GCA-2026-005", lrn: "1345698721235", name: "Bella Reyes", gender: "Female" },
 ];
 
-const TGrades = () => {
+const Grades = () => {
   const navigate = useNavigate();
 
   const [selectedId, setSelectedId] = useState(CLASS_SECTIONS[0].id);
@@ -131,4 +131,4 @@ const TGrades = () => {
   );
 };
 
-export default TGrades;
+export default Grades;

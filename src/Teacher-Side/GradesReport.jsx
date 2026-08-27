@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {Loader2} from "lucide-react";
-import GradesHeader from "../Components/GradesReport/GradesHeader";
-import QuarterSelector from "../Components/GradesReport/QuarterSelector";
-import TeacherRemarks from "../Components/GradesReport/TeacherRemarks";
-import DevelopmentCards from "../Components/GradesReport/DevelopmentCards";
+import GradesHeader from "../Components/Parents-Side Components/GradesReport/GradesHeader";
+import QuarterSelector from "../Components/Parents-Side Components/GradesReport/QuarterSelector";
+import TeacherRemarks from "../Components/Parents-Side Components/GradesReport/TeacherRemarks";
+import DevelopmentCards from "../Components/Parents-Side Components/GradesReport/DevelopmentCards";
 
 const QUARTERS = [
   {
@@ -135,7 +135,8 @@ const ALL_STUDENTS = [
 ];
 
 const TEACHER_REMARK = "";
-const TGradesReport = () => {
+
+const GradesReport = () => {
   const navigate = useNavigate();
   const { schoolId } = useParams();
   const [student] = useState(
@@ -324,4 +325,4 @@ const TGradesReport = () => {
   );
 };
 
-export default TGradesReport;
+export default GradesReport;

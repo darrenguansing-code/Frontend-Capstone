@@ -1,8 +1,8 @@
 import { useRef, useState, useEffect } from 'react'
 import axios from 'axios'
-import { CalendarDays, School, DoorOpen, Clock3, UserRound } from "lucide-react";
-import StudentInfo from '../Components/ParentsComponents/StudentInfo'
-import Announcement from '../Components/ParentsComponents/Announcement'
+import { CalendarDays, School, DoorOpen, Clock3, UserRound, Loader2 } from "lucide-react";
+import StudentInfo from '../Components/Parents-Side Components/Dashboard/StudentInfo'
+import Announcement from '../Components/Parents-Side Components/Dashboard/Announcement'
 
 const INFO_FIELDS = [
   { key: "classSchedule", label: "Class Schedule", icon: CalendarDays },
@@ -73,6 +73,7 @@ const ParentsDashboard = () => {
   const scrollRef = useRef(null);
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -83,6 +84,7 @@ const ParentsDashboard = () => {
       } 
       catch (error) {
         console.error("Failed to fetch students:", error);
+        setError("Unable to load dashboard data.");
       } 
       finally {
         setLoading(false);
@@ -110,27 +112,47 @@ const ParentsDashboard = () => {
     };
   }, []);
 
+  if (loading) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-black font-[Poppins]">
+        <Loader2 size={32} className="animate-spin text-swamp-green" />
+        <p className="text-sm text-gray-400">
+          Loading Dashboard
+          <span className="loading-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#ebe9e4] font-[Poppins]">
+        <p className="text-sm text-red-400">
+          {error}
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#ebe9e4] px-5 py-6 font-[Poppins] cursor-default">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6">
 
         {/* Students */}
         <div className="flex flex-col gap-4 rounded-3xl">
-          {loading ? (
-            <div className="flex h-64 items-center justify-center rounded-3xl bg-white text-sm text-gray-500">
-              Pls wait...
-            </div>
-          ) : (
-            displayStudents.map((s, i) => (
-              <StudentInfo
-                key={s.studentId || i}
-                student={s}
-                infoFields={INFO_FIELDS}
-                idFields={ID_FIELDS}
-                schoolYearField={SCHOOL_YEAR_FIELD}
-              />
-            ))
-          )}
+          {displayStudents.map((s, i) => (
+            <StudentInfo
+              key={s.studentId || i}
+              student={s}
+              infoFields={INFO_FIELDS}
+              idFields={ID_FIELDS}
+              schoolYearField={SCHOOL_YEAR_FIELD}
+            />
+          ))}
         </div>
 
         <span className="mx-auto max-w-7xl w-full text-sm font-[PoppinsBold] text-swamp-green sm:text-lg md:text-md uppercase">

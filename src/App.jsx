@@ -18,17 +18,19 @@ import ForgotPassword from "./Login - Forget/ForgotPassword.jsx";
 
 // ----- TEACHER SIDE -----
 import TeacherLayout from "./Layout/TeacherLayout.jsx";
-import TDashBoard from "./Teacher-Side/TDashBoard.jsx";
-import TAttendance from "./Teacher-Side/TAttendance.jsx";
-import TGrades from "./Teacher-Side/TGrades.jsx";
-import TWeeklySchedule from "./Teacher-Side/TWeeklySchedule.jsx";
-import TReport from "./Teacher-Side/TReport.jsx";
-import TGradesReport from "./Teacher-Side/TGradesReport.jsx";
-import TSettings from "./Teacher-Side/TSettings.jsx";
+import DashBoard from "./Teacher-Side/DashBoard.jsx";
+import Attendance from "./Teacher-Side/Attendance.jsx";
+import TeacherGrades from "./Teacher-Side/Grades.jsx";
+import WeeklySchedule from "./Teacher-Side/WeeklySchedule.jsx";
+import Report from "./Teacher-Side/Report.jsx";
+import GradesReport from "./Teacher-Side/GradesReport.jsx";
+import Settings from "./Teacher-Side/Settings.jsx";
 
 // ----- ADMIN SIDE -----
 import AdminLayout from "./Layout/AdminLayout.jsx";
 import Dashboard from "./uAdmin-Side/Dashboard.jsx";
+import Admission from "./uAdmin-Side/Admission.jsx";
+import AcademicManagement from "./uAdmin-Side/AcademicManagement.jsx"
 
 
 const App = () => {
@@ -44,17 +46,19 @@ const App = () => {
           <Route path="security" element={<Security />} />
         </Route>
         <Route path="/teacher" element={<TeacherLayout />}>
-          <Route index element={<TDashBoard />} />
-          <Route path="attendance" element={<TAttendance />} />
-          <Route path="grades" element={<TGrades />} />
-          <Route path="weekly-schedule" element={<TWeeklySchedule />} />
-          <Route path="report" element={<TReport />} />
-          <Route path="gradesreport/:schoolId" element={<TGradesReport />} />
-          <Route path="security" element={<TSettings />} />
+          <Route index element={<DashBoard />} />
+          <Route path="attendance" element={<Attendance />} />
+          <Route path="grades" element={<TeacherGrades />} />
+          <Route path="weekly-schedule" element={<WeeklySchedule />} />
+          <Route path="report" element={<Report />} />
+          <Route path="gradesreport/:schoolId" element={<GradesReport />} />
+          <Route path="security" element={<Settings />} />
         </Route>
           <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<Dashboard />} />
-          </Route>
+          <Route index element={<Dashboard />} />
+          <Route path="admission" element={<Admission />} />
+          <Route path="academic" element={<AcademicManagement />} />
+        </Route>
       </>,
     ),
   );

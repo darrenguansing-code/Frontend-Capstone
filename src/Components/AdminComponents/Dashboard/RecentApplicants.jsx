@@ -11,22 +11,22 @@ const TABLE_HEADERS = [
 
 const RecentApplicants = ({ applicants = [] }) => {
   return (
-    <div className="flex flex-1 flex-col">
-      <h2 className="flex items-center gap-2 py-3 text-sm font-[Poppins] text-swamp-green lg:text-lg">
-        <ClipboardList size={18} />
+    <div className="flex flex-1 flex-col min-h-0">
+      <h2 className="flex items-center gap-2 py-3 text-sm font-[Poppins] text-swamp-green lg:text-base xl:text-lg">
+        <ClipboardList size={20} />
         Recent Applicants
       </h2>
 
       <div className="flex flex-1 flex-col overflow-hidden rounded-2xl border border-gray-200 bg-bone shadow-[0_2px_4px_rgba(0,0,0,0.18)]">
-        <div className="flex flex-1 flex-col overflow-y-auto">
+        <div className="flex flex-1 flex-col overflow-y-auto min-h-0 thin-scrollbar">
           <table className="w-full">
 
-            <thead>
-              <tr className="border-b border-gray-200 text-left">
+            <thead className="sticky top-0">
+              <tr className="border-b border-gray-200 text-left bg-bone">
                 {TABLE_HEADERS.map((header) => (
                   <th
                     key={header}
-                    className="px-7 py-5 text-2xs font-bold text-swamp-green lg:text-xs"
+                    className="px-7 py-5 text-[11px] font-bold text-swamp-green lg:text-xs xl:text-sm"
                   >
                     {header}
                   </th>
@@ -38,7 +38,7 @@ const RecentApplicants = ({ applicants = [] }) => {
               {applicants.map((applicant) => (
                 <tr
                   key={applicant.id}
-                  className="border-t border-gray-200 text-[9px] text-gray-600 lg:text-xs"
+                  className="border-t border-gray-200 text-[11px] text-gray-600 lg:text-xs xl:text-sm"
                 >
                   <td className="px-7 py-3 lg:py-4">
                     {applicant.id}

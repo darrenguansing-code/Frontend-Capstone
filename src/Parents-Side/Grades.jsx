@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import StudentCard from '../Components/GradesComponents/StudentCard'
-import Remarks from '../Components/GradesComponents/Remarks'
-import QuarterTabs from '../Components/GradesComponents/QuarterTabs'
-import DevelopmentCard from '../Components/GradesComponents/DevelopmentCard'
-import GradeModal from '../Components/Modal/GradeModal'
+import { Loader2 } from 'lucide-react'
+import StudentCard from '../Components/Parents-Side Components/Grades/StudentCard'
+import Remarks from '../Components/Parents-Side Components/Grades/Remarks'
+import QuarterTabs from '../Components/Parents-Side Components/Grades/QuarterTabs'
+import DevelopmentCard from '../Components/Parents-Side Components/Grades/DevelopmentCard'
+import GradeModal from '../Components/Parents-Teacher Modal/GradeModal'
 
 const QUARTERS = ["QUARTER 1", "QUARTER 2", "QUARTER 3"];
 
@@ -245,6 +246,8 @@ const Grades = () => {
   const { studentId } = useParams();
   const [selectedQuarter, setSelectedQuarter] = useState(1);
   const [selectedDevelopment, setSelectedDevelopment] = useState(null);
+  const [loading] = useState(false);
+  const [error] = useState("");
 
   const data = ALL_STUDENTS[studentId] || ALL_STUDENTS["GCA-S01"];
   const student = data.student;
@@ -259,6 +262,32 @@ const Grades = () => {
   const handleCloseModal = () => {
     setSelectedDevelopment(null);
   };
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-black font-[Poppins]">
+        <Loader2 size={32} className="animate-spin text-swamp-green" />
+        <p className="text-sm text-gray-400">
+          Loading Grades
+          <span className="loading-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#ebe9e4] font-[Poppins]">
+        <p className="text-sm text-red-400">
+          {error}
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-[#ebe9e4] px-4 py-5 font-[Poppins] cursor-default sm:px-5 sm:py-6">

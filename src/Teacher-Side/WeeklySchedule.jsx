@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import { Loader2 } from "lucide-react";
-import ScheduleCell from "../Components/TSchedule.jsx/ScheduleCell";
-import ScheduleTime from "../Components/TSchedule.jsx/ScheduleTime";
+import ScheduleCell from "../Components/Teacher-Side Components/Schedule/ScheduleCell";
+import ScheduleTime from "../Components/Teacher-Side Components/Schedule/ScheduleTime";
 
 const TEMP_SCHEDULE = [
   {
@@ -134,9 +135,29 @@ const TEMP_SCHEDULE = [
 ];
 
 const WeeklySchedule = () => {
-  const [schedule] = useState(TEMP_SCHEDULE);
-  const [loading] = useState(false);
-  const [error] = useState("");
+  const [schedule, setSchedule] = useState(TEMP_SCHEDULE);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  // useEffect(() => {
+  //   const fetchSchedule = async () => {
+  //     try {
+  //       setLoading(true);
+  //       setError("");
+  //       const response = await axios.get(
+  //         "http://localhost:5000/teacher/schedule"
+  //       );
+  //       setSchedule(response.data);
+  //     } catch (error) {
+  //       console.error("Failed to fetch schedule:", error);
+  //       setError("Unable to load weekly schedule.");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //
+  //   fetchSchedule();
+  // }, []);
 
   // LOADING
   if (loading) {
@@ -177,7 +198,7 @@ const WeeklySchedule = () => {
           <button
             type="button"
             onClick={() => window.history.back()}
-            className="rounded-full border border-gray-300 bg-bone px-3 py-1.5 text-[10px] font-[PoppinsBold] text-gray-600 transition-colors hover:bg-white hover:text-swamp-green sm:px-5 sm:py-2.5 sm:text-2xs"
+            className="rounded-full border border-gray-300 bg-bone px-3 py-1.5 text-2xs font-[PoppinsBold] text-gray-600 transition-colors hover:bg-white hover:text-swamp-green sm:px-5 sm:py-2.5 sm:text-2xs"
           >
             BACK
           </button>
@@ -208,9 +229,7 @@ const WeeklySchedule = () => {
             </div>
 
             {/* SCHEDULE */}
-            {!loading &&
-              !error &&
-              schedule.map((row) => (
+            {schedule.map((row) => (
                 <div
                   key={row.time}
                   className="grid h-14 grid-cols-[90px_repeat(5,1fr)] border-b border-gray-200 last:border-b-0 sm:h-16.5 sm:grid-cols-[148px_repeat(5,1fr)]"
@@ -260,16 +279,13 @@ const WeeklySchedule = () => {
                 </div>
               ))}
 
-            {/* NO DATA */}
-            {!loading &&
-              !error &&
-              schedule.length === 0 && (
-                <div className="flex h-64 items-center justify-center">
-                  <p className="text-sm text-gray-400">
-                    No schedule available.
-                  </p>
-                </div>
-              )}
+            {schedule.length === 0 && (
+              <div className="flex h-64 items-center justify-center">
+                <p className="text-sm text-gray-400">
+                  No schedule available.
+                </p>
+              </div>
+            )}
 
           </div>
         </div>

@@ -3,9 +3,9 @@ import { useState } from "react";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import SectionCard from "../Components/TReport/SectionCard";
-import ReportFilters from "../Components/TReport/ReportToolbar";
-import AttendanceTable from "../Components/TReport/AttendanceTable";
+import SectionCard from "../Components/Teacher-Side Components/Report/SectionCard";
+import ReportFilters from "../Components/Teacher-Side Components/Report/ReportToolbar";
+import AttendanceTable from "../Components/Teacher-Side Components/Report/AttendanceTable";
 
 const CLASS_SECTIONS = [
   { id: "sampaguita", name: "Sampaguita", level: "Nursery" },
@@ -72,7 +72,7 @@ const STUDENTS = [
   },
 ];
 
-const TReport = () => {
+const Report = () => {
   const navigate = useNavigate();
 
   const [sections] = useState(CLASS_SECTIONS);
@@ -220,4 +220,4 @@ const TReport = () => {
   );
 };
 
-export default TReport;
+export default Report;

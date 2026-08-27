@@ -3,9 +3,9 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
-import SectionCard from "../Components/TAttendance/SectionCard";
-import AttendanceToolbar from "../Components/TAttendance/AttendanceToolbar";
-import AttendanceChecker from "../Components/TAttendance/AttendanceChecker";
+import SectionCard from "../Components/Teacher-Side Components/AttendanceChecker/SectionCard";
+import AttendanceToolbar from "../Components/Teacher-Side Components/AttendanceChecker/AttendanceToolbar";
+import AttendanceChecker from "../Components/Teacher-Side Components/AttendanceChecker/AttendanceChecker";
 
 const CLASS_SECTIONS = [
   { id: "sampaguita", name: "Sampaguita", level: "Nursery" },
@@ -84,7 +84,7 @@ const STUDENTS = [
   },
 ];
 
-const TAttendance = () => {
+const Attendance = () => {
   const navigate = useNavigate();
   const [sections] = useState(CLASS_SECTIONS);
   const [students] = useState(STUDENTS);
@@ -240,4 +240,4 @@ const TAttendance = () => {
   );
 };
 
-export default TAttendance;
+export default Attendance;

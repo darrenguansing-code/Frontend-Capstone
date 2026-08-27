@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
-import SectionCard from "../Components/TeacherDashboard/SectionCard";
-import StudentTable from "../Components/TeacherDashboard/StudentTable";
+import SectionCard from "../Components/Teacher-Side Components/Dashboard/SectionCard";
+import StudentTable from "../Components/Teacher-Side Components/Dashboard/StudentTable";
 
 const CLASS_SECTIONS = [
   { id: "sampaguita", name: "Sampaguita", level: "Nursery" },
@@ -82,7 +82,7 @@ const STUDENTS = [
   },
 ];
 
-const TDashBoard = () => {
+const DashBoard = () => {
   const [sections] = useState(CLASS_SECTIONS);
   const [students] = useState(STUDENTS);
   const [selectedId, setSelectedId] = useState(CLASS_SECTIONS[0].id);
@@ -169,4 +169,4 @@ const TDashBoard = () => {
   );
 };
 
-export default TDashBoard;
+export default DashBoard;

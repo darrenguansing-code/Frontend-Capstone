@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Loader2 } from "lucide-react";
 
-import TeacherInformation from "../Components/TSettings/TeacherInformation";
-import ContactInformation from "../Components/TSettings/ContactInformation";
-import AccountSettings from "../Components/TSettings/AccountSettings";
-import EditContactModal from "../Components/Modal/EditContactModal";
-import ChangePasswordModal from "../Components/Modal/ChangePasswordModal";
+import TeacherInformation from "../Components/Teacher-Side Components/Settings/TeacherInformation";
+import ContactInformation from "../Components/Teacher-Side Components/Settings/ContactInformation";
+import AccountSettings from "../Components/Teacher-Side Components/Settings/AccountSettings";
+import EditContactModal from "../Components/Parents-Teacher Modal/EditContactModal";
+import ChangePasswordModal from "../Components/Parents-Teacher Modal/ChangePasswordModal";
 
 const TEACHER_DATA = {
   fullName: "DELA CRUZ, JUAN P.",
@@ -49,9 +50,11 @@ const INITIAL_PASSWORDS = {
   confirm: "",
 };
 
-const TSettings = () => {
+const Settings = () => {
   const [showContactModal, setShowContactModal] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   // Temporary data
   const [teacherData, setTeacherData] = useState(TEACHER_DATA);
@@ -59,27 +62,32 @@ const TSettings = () => {
   const [accountData, setAccountData] = useState(ACCOUNT_DATA);
   const [formData, setFormData] = useState(CONTACT_DATA);
 
-  // useEffect(() => {
-  //   const fetchTeacherData = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "http://localhost:5000/teacher/account"
-  //       );
+  useEffect(() => {
+    const fetchTeacherData = async () => {
+      try {
+        setLoading(true);
+        setError("");
+        const response = await axios.get(
+          "http://localhost:5000/teacher/account"
+        );
 
-  //       setTeacherData(response.data.teacher);
-  //       setContactData(response.data.contact);
-  //       setAccountData(response.data.account);
-  //       setFormData(response.data.contact);
-  //     } catch (error) {
-  //       console.error(
-  //         "Failed to fetch teacher data:",
-  //         error
-  //       );
-  //     }
-  //   };
+        setTeacherData(response.data.teacher);
+        setContactData(response.data.contact);
+        setAccountData(response.data.account);
+        setFormData(response.data.contact);
+      } catch (error) {
+        console.error(
+          "Failed to fetch teacher data:",
+          error
+        );
+        setError("Unable to load account settings.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  //   fetchTeacherData();
-  // }, []);
+    fetchTeacherData();
+  }, []);
 
   // Open Contact Modal
   const handleManageContact = () => {
@@ -135,6 +143,32 @@ const TSettings = () => {
 
     setShowPasswordModal(false);
   };
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-black font-[Poppins]">
+        <Loader2 size={32} className="animate-spin text-swamp-green" />
+        <p className="text-sm text-gray-400">
+          Loading Account Settings
+          <span className="loading-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#ebe9e4] font-[Poppins]">
+        <p className="text-sm text-red-400">
+          {error}
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="cursor-default bg-egg px-3 py-4 font-[Poppins] sm:px-5 sm:py-6">
@@ -207,4 +241,4 @@ const TSettings = () => {
   );
 };
 
-export default TSettings;
+export default Settings;
