@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
+import {
+  getParentContact,
+  getParentProfile,
+} from "../utils/data/Parents/account";
 import PersonalInformation from "../Components/Parents-Side Components/Security/PersonalInformation";
 import EmergencyContact from "../Components/Parents-Side Components/Security/EmergencyContact";
 import AccountSettings from "../Components/Parents-Side Components/Security/AccountSettings";
@@ -37,55 +41,49 @@ const INITIAL_VISIBILITY = {
   confirm: false,
 };
 
+const PROFILE = getParentProfile();
+
 const Security = () => {
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   // TEMPORARY DATA
-  const [contactData, setContactData] = useState({
-    contactNumber: "0912345678910",
-    email: "romasanta@gmail.com",
-    address: "",
-  });
+  const [contactData, setContactData] = useState(getParentContact());
 
-  const [formData, setFormData] = useState({
-    contactNumber: "0912345678910",
-    email: "romasanta@gmail.com",
-    address: "",
-  });
+  const [formData, setFormData] = useState(getParentContact());
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        setLoading(true);
-        setError("");
-        const response = await axios.get(
-          "http://localhost:5000/parent/account"
-        );
-
-        setContactData({
-          contactNumber: response.data.contactNumber,
-          email: response.data.email,
-          address: response.data.address,
-        });
-
-        setFormData({
-          contactNumber: response.data.contactNumber,
-          email: response.data.email,
-          address: response.data.address,
-        });
-      } catch (error) {
-        console.error("Failed to fetch account data:", error);
-        setError("Unable to load account data.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchUserData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchUserData = async () => {
+  //     try {
+  //       setLoading(true);
+  //       setError("");
+  //       const response = await axios.get(
+  //         "http://localhost:5000/parent/account"
+  //       );
+  //
+  //       setContactData({
+  //         contactNumber: response.data.contactNumber,
+  //         email: response.data.email,
+  //         address: response.data.address,
+  //       });
+  //
+  //       setFormData({
+  //         contactNumber: response.data.contactNumber,
+  //         email: response.data.email,
+  //         address: response.data.address,
+  //       });
+  //     } catch (error) {
+  //       console.error("Failed to fetch account data:", error);
+  //       setError("Unable to load account data.");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //
+  //   fetchUserData();
+  // }, []);
 
   const handlePasswordUpdate = (passwords) => {
     console.log("Password update submitted:", passwords);
@@ -155,28 +153,37 @@ const Security = () => {
   }
 
   return (
-    <div className="cursor-default bg-[#ebe9e4] px-3 py-4 font-[Poppins] sm:px-5 sm:py-6">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
-        <div className="flex items-center px-1 py-1 sm:px-2 sm:py-2">
-          <h2 className="text-xs font-[PoppinsBold] uppercase text-swamp-green sm:text-sm md:text-base">
-            Account Settings
-          </h2>
+    <div className="min-h-full cursor-default bg-[#ebe9e4] px-3 py-5 font-[Poppins] sm:px-6 sm:py-8 lg:px-10 lg:pt-5 lg:pb-10">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 lg:gap-8">
+        <div className="flex flex-col gap-2 border-b border-[#0c2423]/10 pb-5 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="py-1 text-2xs font-[PoppinsBold] uppercase tracking-[0.2em] text-swamp-green">
+              Parent portal
+            </p>
+            <h2 className="font-[PoppinsBold] text-xl uppercase leading-tight text-[#0c2423] sm:text-2xl lg:text-3xl">
+              Account Settings
+            </h2>
+          </div>
+          <p className="max-w-xs text-xs leading-relaxed text-gray-500 sm:text-right">
+            Keep your contact details current and your account protected.
+          </p>
         </div>
 
         {/* PERSONAL INFORMATION */}
         <PersonalInformation
-          fullName="ROMASANTA, ROSALINE M."
+          fullName={PROFILE.fullName}
           contactNo={contactData.contactNumber}
           email={contactData.email}
+          address={contactData.address}
         />
 
         {/* CONTACT + ACCOUNT SETTINGS */}
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-[2fr_1fr]">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1.7fr_1fr] lg:gap-6">
 
           <EmergencyContact
-            fullName="ROMASANTA, ROSALINE"
+            fullName={PROFILE.emergencyFullName}
             contactNo={contactData.contactNumber}
-            relationship="MOTHER"
+            relationship={PROFILE.relationship}
             onManage={handleManageContact}
           />
 
@@ -193,13 +200,13 @@ const Security = () => {
         {/* CHANGE PASSWORD MODAL */}
         {showPasswordModal && (
           <ChangePasswordModal
-            passwordFields={PASSWORD_FIELDS}
+            fields={PASSWORD_FIELDS}
             initialPasswords={INITIAL_PASSWORDS}
             initialVisibility={INITIAL_VISIBILITY}
-            onClose={() =>
+            onCancel={() =>
               setShowPasswordModal(false)
             }
-            onSubmit={handlePasswordUpdate}
+            onSave={handlePasswordUpdate}
           />
         )}
 

@@ -1,139 +1,19 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {Loader2} from "lucide-react";
+import {
+  getGradeReportStudents,
+  getDevelopments,
+  getQuarters,
+} from "../utils/data/Teacher/grades";
 import GradesHeader from "../Components/Parents-Side Components/GradesReport/GradesHeader";
 import QuarterSelector from "../Components/Parents-Side Components/GradesReport/QuarterSelector";
 import TeacherRemarks from "../Components/Parents-Side Components/GradesReport/TeacherRemarks";
 import DevelopmentCards from "../Components/Parents-Side Components/GradesReport/DevelopmentCards";
 
-const QUARTERS = [
-  {
-    value: 1,
-    label: "Quarter 1",
-  },
-  {
-    value: 2,
-    label: "Quarter 2",
-  },
-  {
-    value: 3,
-    label: "Quarter 3",
-  },
-];
-
-const DEVELOPMENTS = [
-  {
-    id: 1,
-    name: "Physical Development",
-    grades: [
-      {
-        skill: "Gross Motor Skills",
-        description:
-          "Hopping, Skipping, Catching, Jumping, Balance",
-        grade: "A",
-      },
-      {
-        skill: "Fine Motor Skills",
-        description:
-          "Tying Shoes, Pegs, Beads, Crayons, Scissors",
-        grade: "A",
-      },
-      {
-        skill: "Drawing Recognize Pictures",
-        grade: "B",
-      },
-      {
-        skill: "Coloring with Lines",
-        grade: "A",
-      },
-      {
-        skill: "Printing Own Name",
-        grade: "B",
-      },
-    ],
-  },
-  {
-    id: 2,
-    name: "Socio-Emotional Development",
-    grades: [
-      {
-        skill: "Social Interaction",
-        grade: "A",
-      },
-      {
-        skill: "Emotional Expression",
-        grade: "B",
-      },
-    ],
-  },
-  {
-    id: 3,
-    name: "Cognitive Development",
-    grades: [
-      {
-        skill: "Problem Solving",
-        grade: "A",
-      },
-      {
-        skill: "Memory Skills",
-        grade: "B",
-      },
-    ],
-  },
-  {
-    id: 4,
-    name: "Spiritual",
-    grades: [
-      {
-        skill: "Prayer",
-        grade: "A",
-      },
-      {
-        skill: "Bible Knowledge",
-        grade: "A",
-      },
-    ],
-  },
-];
-
-const ALL_STUDENTS = [
-  {
-    schoolId: "GCA-2026-001",
-    lrn: "1204567891011",
-    name: "Rosaline Romasanta",
-    gender: "Female",
-    gradeLevel: "Nursery",
-  },
-  {
-    schoolId: "GCA-2026-002",
-    lrn: "1204567891012",
-    name: "Angela Cruz",
-    gender: "Female",
-    gradeLevel: "Nursery",
-  },
-  {
-    schoolId: "GCA-2026-003",
-    lrn: "1204567891013",
-    name: "Miguel Santos",
-    gender: "Male",
-    gradeLevel: "Nursery",
-  },
-  {
-    schoolId: "GCA-2026-004",
-    lrn: "1345698721234",
-    name: "Jake Macasinag",
-    gender: "Male",
-    gradeLevel: "Nursery",
-  },
-  {
-    schoolId: "GCA-2026-005",
-    lrn: "1345698721235",
-    name: "Bella Reyes",
-    gender: "Female",
-    gradeLevel: "Nursery",
-  },
-];
-
+const QUARTERS = getQuarters();
+const DEVELOPMENTS = getDevelopments();
+const ALL_STUDENTS = getGradeReportStudents();
 const TEACHER_REMARK = "";
 
 const GradesReport = () => {

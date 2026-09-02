@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {Loader2} from "lucide-react";
+import { getSections } from "../utils/data/Teacher/sections";
+import { getGradeRoster } from "../utils/data/Teacher/grades";
 import SectionCard from "../Components/Teacher-Side Components/AttendanceChecker/SectionCard";
 import SearchBar from "../Components/Teacher-Side Components/Grades/SearchBar";
 import StudentTable from "../Components/Teacher-Side Components/Grades/StudentTable";
-
-const CLASS_SECTIONS = [
-  { id: "sampaguita", name: "Sampaguita", level: "Nursery" },
-  { id: "gumamela", name: "Gumamela", level: "Nursery" },
-  { id: "hope", name: "Hope", level: "Nursery" },
-];
 
 const COLUMNS = [
   { key: "schoolId", label: "School ID" },
@@ -19,21 +15,13 @@ const COLUMNS = [
   { key: "actions", label: "Actions" },
 ];
 
-const TEMP_STUDENTS = [
-  { schoolId: "GCA-2026-001", lrn: "1204567891011", name: "Rosaline Romasanta", gender: "Female" },
-  { schoolId: "GCA-2026-002", lrn: "1204567891012", name: "Angela Cruz", gender: "Female" },
-  { schoolId: "GCA-2026-003", lrn: "1204567891013", name: "Miguel Santos", gender: "Male" },
-  { schoolId: "GCA-2026-004", lrn: "1345698721234", name: "Jake Macasinag", gender: "Male" },
-  { schoolId: "GCA-2026-005", lrn: "1345698721235", name: "Bella Reyes", gender: "Female" },
-];
-
 const Grades = () => {
   const navigate = useNavigate();
 
-  const [selectedId, setSelectedId] = useState(CLASS_SECTIONS[0].id);
-  const [sections] = useState(CLASS_SECTIONS);
+  const [selectedId, setSelectedId] = useState(getSections()[0].id);
+  const [sections] = useState(getSections());
   const [studentName, setStudentName] = useState("");
-  const [students] = useState(TEMP_STUDENTS);
+  const [students] = useState(getGradeRoster());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -104,8 +92,8 @@ const Grades = () => {
   )}
 
   return (
-    <div className="min-h-screen cursor-default bg-[#ebe9e4] px-5 py-6 font-[Poppins]">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
+    <div className="min-h-screen cursor-default bg-[#ebe9e4] px-5 py-6 font-[Poppins] lg:flex lg:min-h-0 lg:flex-1 lg:flex-col">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 lg:min-h-0 lg:flex-1">
 
         <SectionCard
           sections={sections}

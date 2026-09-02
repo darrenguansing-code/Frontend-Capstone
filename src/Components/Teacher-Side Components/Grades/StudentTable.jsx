@@ -4,8 +4,8 @@ const StudentTable = ({ students, columns, onGradesClick }) => {
   const colCount = columns.length;
 
   return (
-    <div className="rounded-3xl border border-swamp-green/10 bg-white p-2 shadow-sm sm:p-4 md:p-6">
-      <div className="flex flex-col gap-2">
+    <div className="rounded-3xl border border-swamp-green/10 bg-white p-2 shadow-sm sm:p-4 md:p-6 lg:flex lg:min-h-0 lg:flex-1 lg:flex-col">
+      <div className="flex flex-col gap-2 lg:min-h-0 lg:flex-1">
 
         {/* Mobile & Tablet: Sticky scroll */}
         <div className="no-scrollbar overflow-x-auto lg:hidden">
@@ -70,7 +70,7 @@ const StudentTable = ({ students, columns, onGradesClick }) => {
 
         {/* Desktop: Normal table */}
         <div className="hidden lg:block">
-          <div className="no-scrollbar overflow-x-auto">
+          <div className="no-scrollbar min-h-0 flex-1 overflow-auto">
             <div>
               <div
                 className="grid items-center gap-2 rounded-xl bg-[#e4e6f0] px-5 py-3 text-left text-xs font-[PoppinsBold] uppercase tracking-wide text-swamp-green sm:gap-3 xl:gap-4 xl:px-6"
@@ -85,7 +85,7 @@ const StudentTable = ({ students, columns, onGradesClick }) => {
                 {students.map((student) => (
                   <div
                     key={student.schoolId}
-                    className="grid items-center gap-2 rounded-xl bg-bone px-5 py-2.5 text-left text-xs text-slate-600 sm:gap-3 xl:gap-4 xl:px-6"
+                    className="grid items-center gap-2 rounded-xl border-b border-gray-200 bg-bone px-5 py-2.5 text-left text-xs text-slate-600 last:border-b-0 sm:gap-3 xl:gap-4 xl:px-6"
                     style={{ gridTemplateColumns: `1.2fr 1.5fr 2fr 1fr 1.2fr` }}
                   >
                     {columns.map((col) => (

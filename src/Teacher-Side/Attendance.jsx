@@ -3,93 +3,21 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
+import { getSections } from "../utils/data/Teacher/sections";
+import {
+  getAttendanceOptions,
+  getAttendanceStudents,
+} from "../utils/data/Teacher/attendance";
 import SectionCard from "../Components/Teacher-Side Components/AttendanceChecker/SectionCard";
 import AttendanceToolbar from "../Components/Teacher-Side Components/AttendanceChecker/AttendanceToolbar";
 import AttendanceChecker from "../Components/Teacher-Side Components/AttendanceChecker/AttendanceChecker";
 
-const CLASS_SECTIONS = [
-  { id: "sampaguita", name: "Sampaguita", level: "Nursery" },
-  { id: "gumamela", name: "Gumamela", level: "Nursery" },
-  { id: "hope", name: "Hope", level: "Nursery" },
-];
-
-const ATTENDANCE_OPTIONS = [
-  { value: "Present", label: "Present" },
-  { value: "Absent", label: "Absent" },
-];
-
-const STUDENTS = [
-  {
-    id: 1,
-    sectionId: "sampaguita",
-    schoolId: "GCA-2026-001",
-    lrn: "1204567891011",
-    fullName: "Rosaline Romasanta",
-    gender: "Female",
-    attendance: "Present",
-  },
-  {
-    id: 2,
-    sectionId: "sampaguita",
-    schoolId: "GCA-2026-002",
-    lrn: "1204567891012",
-    fullName: "Angela Cruz",
-    gender: "Female",
-    attendance: "Present",
-  },
-  {
-    id: 3,
-    sectionId: "sampaguita",
-    schoolId: "GCA-2026-003",
-    lrn: "1204567891013",
-    fullName: "Miguel Santos",
-    gender: "Male",
-    attendance: "",
-  },
-  {
-    id: 4,
-    sectionId: "gumamela",
-    schoolId: "GCA-2026-004",
-    lrn: "1345698721234",
-    fullName: "Jake Macasinag",
-    gender: "Male",
-    attendance: "Absent",
-  },
-  {
-    id: 5,
-    sectionId: "gumamela",
-    schoolId: "GCA-2026-005",
-    lrn: "1345698721235",
-    fullName: "Bella Reyes",
-    gender: "Female",
-    attendance: "",
-  },
-  {
-    id: 6,
-    sectionId: "hope",
-    schoolId: "GCA-2026-006",
-    lrn: "1232173271321",
-    fullName: "Harold Mendez",
-    gender: "Male",
-    attendance: "Absent",
-  },
-  {
-    id: 7,
-    sectionId: "hope",
-    schoolId: "GCA-2026-007",
-    lrn: "1232173271322",
-    fullName: "Liza Bautista",
-    gender: "Female",
-    attendance: "",
-  },
-];
-
 const Attendance = () => {
   const navigate = useNavigate();
-  const [sections] = useState(CLASS_SECTIONS);
-  const [students] = useState(STUDENTS);
-  const [attendanceOptions] = useState(ATTENDANCE_OPTIONS);
-  const [selectedId, setSelectedId] = useState(CLASS_SECTIONS[0].id);
+  const [sections] = useState(getSections());
+  const [students] = useState(getAttendanceStudents());
+  const [attendanceOptions] = useState(getAttendanceOptions());
+  const [selectedId, setSelectedId] = useState(getSections()[0].id);
   const [studentName, setStudentName] = useState("");
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().slice(0, 10)
@@ -199,8 +127,8 @@ const Attendance = () => {
   }
 
   return (
-    <div className="cursor-default bg-[#ebe9e4] px-5 py-6 font-[Poppins]">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 sm:gap-4">
+    <div className="cursor-default bg-[#ebe9e4] px-5 py-6 font-[Poppins] lg:flex lg:min-h-0 lg:flex-1 lg:flex-col">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 sm:gap-4 lg:min-h-0 lg:flex-1">
 
         {/* SECTION */}
         <SectionCard

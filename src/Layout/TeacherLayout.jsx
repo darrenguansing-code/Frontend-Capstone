@@ -16,7 +16,7 @@ const TeacherLayout = () => {
         onClose={() => setSidebarOpen(false)}
       />
 
-      <div className="flex-1 justify-center bg-egg font-[Poppins] text-egg-dark">
+      <div className="flex-1 justify-center bg-egg font-[Poppins] text-egg-dark lg:flex lg:min-h-0 lg:flex-col lg:justify-start">
         <Outlet />
       </div>
 

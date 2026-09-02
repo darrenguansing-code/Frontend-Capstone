@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import axios from 'axios'
 import { CalendarDays, School, DoorOpen, Clock3, UserRound, Loader2 } from "lucide-react";
+import { getParentStudents, getAnnouncements } from '../utils/data/Parents/dashboard'
 import StudentInfo from '../Components/Parents-Side Components/Dashboard/StudentInfo'
 import Announcement from '../Components/Parents-Side Components/Dashboard/Announcement'
 
@@ -17,82 +18,40 @@ const ID_FIELDS = [
   { key: "studentId", label: "Student ID Number" },
 ];
 
-const SCHOOL_YEAR_FIELD = { key: "sy", label: "School Year" };
+const SCHOOL_YEAR_FIELD = { 
+  key: "sy", 
+  label: "School Year" 
+};
 
 const API_URL = "http://localhost:5000/students";
 
-const announcements = [
-  {
-    title: "AWARDING CEREMONY",
-    posted: "June 1, 2026",
-    message:
-      "Dear [Team/Colleagues/Community], We are thrilled to announce that our Annual Awarding Ceremony is just around the corner! Join us as we celebrate excellence, hard work, and outstanding achievements within our organization, We will Incourage and Expecting all of you is Join this Oppurtunity.",
-    date: "[Day of week], [Month, Date, Year]",
-    time: "[Start Time] to [End Time]",
-    venue: "[Location Name, Address] / [Virtual Platform Link]",
-  },
-  {
-    title: "FIELD TRIP",
-    posted: "June 1, 2026",
-    message:
-      "Dear Parents and Guardians, We are excited to announce an upcoming educational field trip for [Grade Level/Class] students to [Destination] on [Date]. This trip is designed to complement our current curriculum in [Subject] by providing students with hands-on, real-world experiences outside the classroom.",
-    date: "[Day of week], [Month, Date, Year]",
-    time: "[Start Time] to [End Time]",
-    venue: "[Location Name, Address] / [Virtual Platform Link]",
-  },
-]
-
-const FALLBACK_STUDENTS = [
-  {
-    lastName: "SANTIAGO",
-    firstName: "Maria Margarett",
-    lrn: "4023-1234-5678",
-    studentId: "GCA-S01",
-    sy: "2025 - 2026",
-    classSchedule: "Monday - Friday",
-    gradeLevel: "Nursery",
-    room: "Mahogany - 3",
-    classTime: "7:00 AM - 11:00 AM",
-    adviser: "Ms. Rosary Mendez",
-  },
-  {
-    lastName: "DELACRUZ",
-    firstName: "Juan Carlos",
-    lrn: "4023-5678-9012",
-    studentId: "GCA-S02",
-    sy: "2025 - 2026",
-    classSchedule: "Monday - Friday",
-    gradeLevel: "Kindergarten",
-    room: "Narra - 1",
-    classTime: "7:00 AM - 11:00 AM",
-    adviser: "Ms. Angela Torres",
-  },
-];
+const announcements = getAnnouncements();
+const FALLBACK_STUDENTS = getParentStudents();
 
 const ParentsDashboard = () => {
   const scrollRef = useRef(null);
   const [students, setStudents] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
 
-  useEffect(() => {
-    const fetchStudents = async () => {
-      try {
-        const response = await axios.get(API_URL);
-        setStudents(Array.isArray(response.data) ? response.data : []);
-      } 
-      catch (error) {
-        console.error("Failed to fetch students:", error);
-        setError("Unable to load dashboard data.");
-      } 
-      finally {
-        setLoading(false);
-      }
-    };
-
-    fetchStudents();
-  }, []);
+  // useEffect(() => {
+  //   const fetchStudents = async () => {
+  //     try {
+  //       const response = await axios.get(API_URL);
+  //       setStudents(Array.isArray(response.data) ? response.data : []);
+  //     }
+  //     catch (error) {
+  //       console.error("Failed to fetch students:", error);
+  //       setError("Unable to load dashboard data.");
+  //     }
+  //     finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //
+  //   fetchStudents();
+  // }, []);
 
   const displayStudents = students.length > 0 ? students : FALLBACK_STUDENTS;
 

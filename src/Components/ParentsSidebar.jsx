@@ -13,7 +13,7 @@ const SCHOOL = {
 };
 
 const USER = {
-  name: "Rosamanta",
+  name: "ROMASANTA, ROSALINE M.",
   role: "Parent Account",
 };
 

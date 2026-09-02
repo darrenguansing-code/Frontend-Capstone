@@ -2,29 +2,21 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 
+import {
+  getTeacher,
+  getTeacherContact,
+  getTeacherAccount,
+} from "../utils/data/Teacher/account";
+
 import TeacherInformation from "../Components/Teacher-Side Components/Settings/TeacherInformation";
 import ContactInformation from "../Components/Teacher-Side Components/Settings/ContactInformation";
 import AccountSettings from "../Components/Teacher-Side Components/Settings/AccountSettings";
 import EditContactModal from "../Components/Parents-Teacher Modal/EditContactModal";
 import ChangePasswordModal from "../Components/Parents-Teacher Modal/ChangePasswordModal";
 
-const TEACHER_DATA = {
-  fullName: "DELA CRUZ, JUAN P.",
-  teacherId: "GCA-T4545",
-  gender: "Male",
-  birthdate: "January 1, 1990",
-  civilStatus: "Married",
-};
-
-const CONTACT_DATA = {
-  address: "Blk 48 Lot 100 Brgy.Cabuco,\nTrece Martires City, Cavite",
-  email: "juancruz@gmail.com",
-  contactNumber: "09123456789",
-};
-
-const ACCOUNT_DATA = {
-  email: "juancruz@gmail.com",
-};
+const TEACHER_DATA = getTeacher();
+const CONTACT_DATA = getTeacherContact();
+const ACCOUNT_DATA = getTeacherAccount();
 
 const PASSWORD_FIELDS = [
   {
@@ -53,7 +45,7 @@ const INITIAL_PASSWORDS = {
 const Settings = () => {
   const [showContactModal, setShowContactModal] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   // Temporary data
@@ -62,32 +54,32 @@ const Settings = () => {
   const [accountData, setAccountData] = useState(ACCOUNT_DATA);
   const [formData, setFormData] = useState(CONTACT_DATA);
 
-  useEffect(() => {
-    const fetchTeacherData = async () => {
-      try {
-        setLoading(true);
-        setError("");
-        const response = await axios.get(
-          "http://localhost:5000/teacher/account"
-        );
+  // useEffect(() => {
+  //   const fetchTeacherData = async () => {
+  //     try {
+  //       setLoading(true);
+  //       setError("");
+  //       const response = await axios.get(
+  //         "http://localhost:5000/teacher/account"
+  //       );
 
-        setTeacherData(response.data.teacher);
-        setContactData(response.data.contact);
-        setAccountData(response.data.account);
-        setFormData(response.data.contact);
-      } catch (error) {
-        console.error(
-          "Failed to fetch teacher data:",
-          error
-        );
-        setError("Unable to load account settings.");
-      } finally {
-        setLoading(false);
-      }
-    };
+  //       setTeacherData(response.data.teacher);
+  //       setContactData(response.data.contact);
+  //       setAccountData(response.data.account);
+  //       setFormData(response.data.contact);
+  //     } catch (error) {
+  //       console.error(
+  //         "Failed to fetch teacher data:",
+  //         error
+  //       );
+  //       setError("Unable to load account settings.");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchTeacherData();
-  }, []);
+  //   fetchTeacherData();
+  // }, []);
 
   // Open Contact Modal
   const handleManageContact = () => {
@@ -171,12 +163,20 @@ const Settings = () => {
   }
 
   return (
-    <div className="cursor-default bg-egg px-3 py-4 font-[Poppins] sm:px-5 sm:py-6">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
-        <div className="flex items-center px-1 py-1 sm:px-2 sm:py-2">
-          <h2 className="text-xs font-[PoppinsBold] uppercase text-swamp-green sm:text-sm md:text-base">
-            Account Settings
-          </h2>
+    <div className="min-h-full cursor-default bg-[#ebe9e4] px-3 py-5 font-[Poppins] sm:px-6 sm:py-8 lg:min-h-0 lg:flex-none lg:px-10 lg:pt-5 lg:pb-10">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 lg:gap-8">
+        <div className="flex flex-col gap-2 border-b border-[#0c2423]/10 pb-5 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="py-1 text-2xs font-[PoppinsBold] uppercase tracking-[0.2em] text-swamp-green">
+              Teacher portal
+            </p>
+            <h2 className="font-[PoppinsBold] text-xl uppercase leading-tight text-[#0c2423] sm:text-2xl lg:text-3xl">
+              Account Settings
+            </h2>
+          </div>
+          <p className="max-w-xs text-xs leading-relaxed text-gray-500 sm:text-right">
+            Keep your contact details current and your account protected.
+          </p>
         </div>
 
         {/* TEACHER INFORMATION */}
@@ -185,7 +185,7 @@ const Settings = () => {
         />
 
         {/* CONTACT + ACCOUNT */}
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-[2fr_1fr]">
+        <div className="grid grid-cols-1 items-stretch gap-5 lg:grid-cols-[1.7fr_1fr] lg:gap-6">
           <ContactInformation
             contact={contactData}
             onManage={handleManageContact}

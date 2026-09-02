@@ -1,91 +1,14 @@
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
+import { getSections } from "../utils/data/Teacher/sections";
+import { getTeacherDashboardStudents } from "../utils/data/Teacher/dashboard";
 import SectionCard from "../Components/Teacher-Side Components/Dashboard/SectionCard";
 import StudentTable from "../Components/Teacher-Side Components/Dashboard/StudentTable";
 
-const CLASS_SECTIONS = [
-  { id: "sampaguita", name: "Sampaguita", level: "Nursery" },
-  { id: "gumamela", name: "Gumamela", level: "Nursery" },
-  { id: "hope", name: "Hope", level: "Nursery" },
-];
-
-const STUDENTS = [
-  {
-    id: 1,
-    sectionId: "sampaguita",
-    schoolId: "GCA-2026-001",
-    lrn: "1204567891011",
-    fullName: "Rosaline Romasanta",
-    gender: "Female",
-    birthdate: "10/20/2021",
-    age: 4,
-  },
-  {
-    id: 2,
-    sectionId: "sampaguita",
-    schoolId: "GCA-2026-002",
-    lrn: "1204567891012",
-    fullName: "Angela Cruz",
-    gender: "Female",
-    birthdate: "11/02/2021",
-    age: 4,
-  },
-  {
-    id: 3,
-    sectionId: "sampaguita",
-    schoolId: "GCA-2026-003",
-    lrn: "1204567891013",
-    fullName: "Miguel Santos",
-    gender: "Male",
-    birthdate: "01/15/2022",
-    age: 3,
-  },
-  {
-    id: 4,
-    sectionId: "gumamela",
-    schoolId: "GCA-2026-004",
-    lrn: "1345698721234",
-    fullName: "Jake Macasinag",
-    gender: "Male",
-    birthdate: "09/15/2022",
-    age: 3,
-  },
-  {
-    id: 5,
-    sectionId: "gumamela",
-    schoolId: "GCA-2026-005",
-    lrn: "1345698721235",
-    fullName: "Bella Reyes",
-    gender: "Female",
-    birthdate: "02/28/2022",
-    age: 3,
-  },
-  {
-    id: 6,
-    sectionId: "hope",
-    schoolId: "GCA-2026-006",
-    lrn: "1232173271321",
-    fullName: "Harold Mendez",
-    gender: "Male",
-    birthdate: "09/25/2022",
-    age: 3,
-  },
-  {
-    id: 7,
-    sectionId: "hope",
-    schoolId: "GCA-2026-007",
-    lrn: "1232173271322",
-    fullName: "Liza Bautista",
-    gender: "Female",
-    birthdate: "05/14/2022",
-    age: 3,
-  },
-];
-
 const DashBoard = () => {
-  const [sections] = useState(CLASS_SECTIONS);
-  const [students] = useState(STUDENTS);
-  const [selectedId, setSelectedId] = useState(CLASS_SECTIONS[0].id);
+  const [sections] = useState(getSections());
+  const [students] = useState(getTeacherDashboardStudents());
+  const [selectedId, setSelectedId] = useState(getSections()[0].id);
 
   const [loading] = useState(false);
   const [error] = useState("");
@@ -151,8 +74,8 @@ const DashBoard = () => {
   }
 
   return (
-    <div className="min-h-screen cursor-default bg-[#ebe9e4] px-5 py-6 font-[Poppins]">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
+    <div className="min-h-screen cursor-default bg-[#ebe9e4] px-5 py-6 font-[Poppins] lg:flex lg:min-h-0 lg:flex-1 lg:flex-col">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 lg:min-h-0 lg:flex-1">
 
         <SectionCard
           sections={sections}

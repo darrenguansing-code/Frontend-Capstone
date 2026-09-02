@@ -8,7 +8,6 @@ const SearchBar = ({
 
   return (
     <div className="flex w-full flex-col gap-2 rounded-2xl bg-bone px-3 py-3 shadow-md sm:px-4 sm:py-4 md:flex-row md:items-center md:gap-4">
-      {/* Search Student */}
       <div className="flex w-full items-center gap-1.5 sm:gap-2 md:w-auto">
         <input
           type="text"

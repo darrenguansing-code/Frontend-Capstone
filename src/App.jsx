@@ -30,7 +30,8 @@ import Settings from "./Teacher-Side/Settings.jsx";
 import AdminLayout from "./Layout/AdminLayout.jsx";
 import Dashboard from "./uAdmin-Side/Dashboard.jsx";
 import Admission from "./uAdmin-Side/Admission.jsx";
-import AcademicManagement from "./uAdmin-Side/AcademicManagement.jsx"
+import Students from "./uAdmin-Side/Academic Management Page/Students.jsx"
+import SubmissionDocs from "./uAdmin-Side/SubmissionDocs.jsx";
 
 
 const App = () => {
@@ -57,7 +58,8 @@ const App = () => {
           <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="admission" element={<Admission />} />
-          <Route path="academic" element={<AcademicManagement />} />
+          <Route path="academic" element={<Students />} />
+          <Route path="submission" element={<SubmissionDocs />} />
         </Route>
       </>,
     ),

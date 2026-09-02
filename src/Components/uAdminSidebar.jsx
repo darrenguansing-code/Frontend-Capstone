@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { LayoutDashboard, UserPlus, GraduationCap, Users, Bell, Globe, Settings, LogOut } from "lucide-react";
 import logo from "../assets/logowbg.png";
 
@@ -12,7 +12,10 @@ const MENU_ITEMS = [
   { label: "Settings", icon: Settings, path: "/admin/settings" },
 ];
 
+const ADMISSION_PATHS = ["/admin/admission", "/admin/submission"];
+
 const AdminSidebar = () => {
+  const { pathname } = useLocation();
   return (
     <aside className="flex h-full w-60 shrink-0 flex-col gap-5">
       <div className="flex items-center gap-2 rounded-2xl border border-gray-200 bg-bone px-3 py-4 shadow-[0_2px_4px_rgba(0,0,0,0.18)]">
@@ -34,7 +37,9 @@ const AdminSidebar = () => {
                 end={item.path === "/admin"}
                 className={({ isActive }) =>
                   `flex items-center gap-2 whitespace-nowrap rounded-full px-7 py-3 text-left text-[9px] font-[Poppins] transition ${
-                    isActive
+                    (item.path === "/admin/admission" &&
+                      ADMISSION_PATHS.includes(pathname)) ||
+                    (item.path !== "/admin/admission" && isActive)
                       ? "bg-[#9caf7b] text-white"
                       : "text-gray-600 hover:bg-[#e9eddc]"
                   }`

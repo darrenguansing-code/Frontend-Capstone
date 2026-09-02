@@ -114,7 +114,7 @@ const ViewApplicantModal = ({ applicant, onClose }) => {
 
           {applicant.status === "Rejected" && applicant.rejectionReason && (
             <div className="col-span-3 rounded-xl border border-[#f47773] px-3 py-3">
-              <h2 className="pb-3 text-xs font-[PoppinsBold] text-[#f47773]">
+              <h2 className="py-3 text-xs font-[PoppinsBold] text-[#f47773]">
                 Reason for Rejection
               </h2>
               <p className="text-xs text-gray-600">

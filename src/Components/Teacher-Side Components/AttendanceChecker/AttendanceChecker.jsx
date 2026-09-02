@@ -1,4 +1,5 @@
 import React from "react";
+import { ChevronDown } from "lucide-react";
 
 const AttendanceChecker = ({
   students,
@@ -7,8 +8,8 @@ const AttendanceChecker = ({
   onAttendanceChange,
 }) => {
   return (
-    <div className="rounded-3xl border border-swamp-green/10 bg-white p-2 shadow-sm sm:p-4 md:p-6">
-      <div className="flex flex-col gap-2">
+    <div className="rounded-3xl border border-swamp-green/10 bg-white p-2 shadow-sm sm:p-4 md:p-6 lg:flex lg:min-h-0 lg:flex-1 lg:flex-col">
+      <div className="flex flex-col gap-2 lg:min-h-0 lg:flex-1">
 
         {/* Mobile & Tablet: Sticky scroll */}
         <div className="no-scrollbar overflow-x-auto lg:hidden">
@@ -57,18 +58,22 @@ const AttendanceChecker = ({
                   </span>
 
                   <div className="px-1 py-2 sm:py-3 md:py-3.5">
-                    <select
-                      value={attendance[student.id] || student.attendance || "Present"}
-                      onChange={(e) => onAttendanceChange(student.id, e.target.value)}
-                      style={(attendance[student.id] || student.attendance || "Present") === "Present" ? { color: "#16a34a" } : { color: "#dc2626" }}
-                      className="h-8 shrink-0 rounded-xl border-2 border-gray-300 bg-white py-1 pl-3 pr-7 text-[9px] font-semibold outline-none focus:border-swamp-green sm:h-9 sm:text-2xs md:h-10 md:text-sm"
-                    >
-                      {attendanceOptions?.map((option) => (
-                        <option key={option.value} value={option.value} style={{ color: option.value === "Present" ? "#16a34a" : "#dc2626" }}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="relative w-fit">
+                      <select
+                        value={attendance[student.id] || student.attendance || "Present"}
+                        onChange={(e) => onAttendanceChange(student.id, e.target.value)}
+                        style={(attendance[student.id] || student.attendance || "Present") === "Present" ? { color: "#16a34a" } : { color: "#dc2626" }}
+                        className={`h-8 shrink-0 appearance-none rounded-lg border border-gray-200 bg-white py-1 pl-7 pr-7 text-[9px] font-[Poppins] outline-none focus:border-swamp-green sm:h-9 sm:text-2xs md:h-10 md:text-sm ${(attendance[student.id] || student.attendance || "Present") === "Present" ? "text-green-700" : "text-red-700"}`}
+                      >
+                        {attendanceOptions?.map((option) => (
+                          <option key={option.value} value={option.value} style={{ color: option.value === "Present" ? "#16a34a" : "#dc2626" }}>
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
+                      <span className={`pointer-events-none absolute left-2 top-1/2 size-2 -translate-y-1/2 rounded-full ${(attendance[student.id] || student.attendance || "Present") === "Present" ? "bg-green-600" : "bg-red-600"}`} />
+                      <ChevronDown size={13} className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-gray-500" />
+                    </div>
                   </div>
                 </div>
               ))}
@@ -78,7 +83,7 @@ const AttendanceChecker = ({
 
         {/* Desktop: Normal table */}
         <div className="hidden lg:block">
-          <div className="no-scrollbar overflow-x-auto">
+          <div className="no-scrollbar min-h-0 flex-1 overflow-auto">
             <div>
               <div
                 className="grid items-center gap-2 rounded-xl bg-[#e4e6f0] px-5 py-3 text-left text-xs font-[PoppinsBold] uppercase tracking-wide text-swamp-green sm:gap-3 xl:gap-4 xl:px-6"
@@ -95,7 +100,7 @@ const AttendanceChecker = ({
                 {students.map((student) => (
                   <div
                     key={student.id}
-                    className="grid items-center gap-2 rounded-xl bg-bone px-5 py-2.5 text-left text-xs text-slate-600 xl:gap-3 xl:px-6"
+                    className="grid items-center gap-2 rounded-xl border-b border-gray-200 bg-bone px-5 py-2.5 text-left text-xs text-slate-600 last:border-b-0 xl:gap-3 xl:px-6"
                     style={{ gridTemplateColumns: `1.2fr 1.5fr 2fr 1fr 1.2fr` }}
                   >
                     <span className="min-w-0 whitespace-nowrap">{student.schoolId}</span>
@@ -103,21 +108,25 @@ const AttendanceChecker = ({
                     <span className="min-w-0 truncate">{student.fullName}</span>
                     <span className="min-w-0 whitespace-nowrap">{student.gender}</span>
 
-                    <select
-                      value={attendance[student.id] || student.attendance || "Present"}
-                      onChange={(e) => onAttendanceChange(student.id, e.target.value)}
-                      className={`h-9 shrink-0 rounded-xl border bg-white px-2 text-xs outline-none focus:border-swamp-green ${
-                        (attendance[student.id] || student.attendance || "Present") === "Present"
-                          ? "text-green-600"
-                          : "text-red-600"
-                      }`}
-                    >
-                      {attendanceOptions?.map((option) => (
-                        <option key={option.value} value={option.value} className={option.value === "Absent" ? "text-red-600" : "text-green-600"}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="relative w-fit">
+                      <select
+                        value={attendance[student.id] || student.attendance || "Present"}
+                        onChange={(e) => onAttendanceChange(student.id, e.target.value)}
+                        className={`h-9 shrink-0 appearance-none rounded-lg border border-gray-200 bg-white py-1 pl-7 pr-7 text-xs font-[Poppins] outline-none focus:border-swamp-green ${
+                          (attendance[student.id] || student.attendance || "Present") === "Present"
+                            ? "border-green-200 bg-green-50 text-green-700"
+                            : "border-red-200 bg-red-50 text-red-700"
+                        }`}
+                      >
+                        {attendanceOptions?.map((option) => (
+                          <option key={option.value} value={option.value} className={option.value === "Absent" ? "text-red-600" : "text-green-600"}>
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
+                      <span className={`pointer-events-none absolute left-2 top-1/2 size-2 -translate-y-1/2 rounded-full ${(attendance[student.id] || student.attendance || "Present") === "Present" ? "bg-green-600" : "bg-red-600"}`} />
+                      <ChevronDown size={13} className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-gray-500" />
+                    </div>
                   </div>
                 ))}
               </div>

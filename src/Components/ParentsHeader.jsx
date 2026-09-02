@@ -17,7 +17,7 @@ const SCHOOL = {
 };
 
 const USER = {
-  name: "Rosamanta",
+  name: "ROMASANTA, ROSALINE M.",
   role: "Parent Account",
 };
 
@@ -78,15 +78,15 @@ const ParentsHeader = ({ onMenuToggle }) => {
               to="/parents"
               end
               className={({ isActive }) =>
-                `flex items-center gap-x-2 font-[PoppinsBold] tracking-wide transition-colors duration-300 ${
+                `flex items-center gap-x-2 font-[Poppins] tracking-wide transition-colors duration-300 ${
                   isActive
-                    ? "text-swamp-green"
+                    ? "font-[PoppinsBold] border-b-2 border-swamp-green pb-1 text-swamp-green"
                     : "text-bone hover:text-swamp-green"
                 }`
               }
             >
               <Home size={20} />
-              <span>DASHBOARD</span>
+              <span className="font-[PoppinsBold]">DASHBOARD</span>
             </NavLink>
           </div>
 
@@ -128,7 +128,7 @@ const ParentsHeader = ({ onMenuToggle }) => {
                   className={({ isActive }) =>
                     `flex items-center gap-x-2.5 px-3 py-2.5 text-[11px] transition-colors sm:gap-x-3 sm:px-4 sm:py-3 sm:text-sm ${
                       isActive
-                        ? "bg-green-50 font-[PoppinsBold] text-swamp-green"
+                        ? "bg-green-50 text-swamp-green"
                         : "text-gray-600 hover:bg-bone hover:text-swamp-green"
                     }`
                   }

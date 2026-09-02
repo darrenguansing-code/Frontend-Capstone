@@ -3,74 +3,22 @@ import { useState } from "react";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { getSections } from "../utils/data/Teacher/sections";
+import {
+  getReportMonths,
+  getReportDates,
+  getReportYears,
+  getReportStudents,
+} from "../utils/data/Teacher/report";
 import SectionCard from "../Components/Teacher-Side Components/Report/SectionCard";
 import ReportFilters from "../Components/Teacher-Side Components/Report/ReportToolbar";
 import AttendanceTable from "../Components/Teacher-Side Components/Report/AttendanceTable";
 
-const CLASS_SECTIONS = [
-  { id: "sampaguita", name: "Sampaguita", level: "Nursery" },
-  { id: "gumamela", name: "Gumamela", level: "Nursery" },
-  { id: "hope", name: "Hope", level: "Nursery" },
-];
-
-const MONTHS = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-const DATES = [
-  "Jul 31",
-  "Jul 30",
-  "Jul 29",
-  "Jul 28",
-  "Jul 27",
-  "Jul 26",
-  "Jul 25",
-  "Jul 24",
-];
-
-const YEARS = ["2026", "2027", "2028"];
-
-const STUDENTS = [
-  {
-    schoolId: "GCA-2026-001",
-    name: "Rosaline Romasanta",
-    attendance: {
-      "Jul 31": true,
-      "Jul 30": true,
-      "Jul 29": false,
-      "Jul 28": true,
-      "Jul 27": true,
-      "Jul 26": true,
-      "Jul 25": true,
-      "Jul 24": true,
-    },
-  },
-  {
-    schoolId: "GCA-2026-002",
-    name: "Jake Macasing",
-    attendance: {
-      "Jul 31": false,
-      "Jul 30": true,
-      "Jul 29": true,
-      "Jul 28": false,
-      "Jul 27": true,
-      "Jul 26": true,
-      "Jul 25": true,
-      "Jul 24": false,
-    },
-  },
-];
+const CLASS_SECTIONS = getSections();
+const MONTHS = getReportMonths();
+const DATES = getReportDates();
+const YEARS = getReportYears();
+const STUDENTS = getReportStudents();
 
 const Report = () => {
   const navigate = useNavigate();
@@ -188,8 +136,8 @@ const Report = () => {
   }
 
   return (
-    <div className="min-h-screen cursor-default bg-[#ebe9e4] px-3 py-4 font-[Poppins] sm:px-5 sm:py-6">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
+    <div className="min-h-screen cursor-default bg-[#ebe9e4] px-3 py-4 font-[Poppins] sm:px-5 sm:py-6 lg:flex lg:min-h-0 lg:flex-1 lg:flex-col">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 lg:min-h-0 lg:flex-1">
 
         <SectionCard
           sections={sections}

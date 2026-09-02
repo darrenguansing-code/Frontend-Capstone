@@ -1,19 +1,28 @@
-const AdmissionHeader = ({ tabs = [], activeTab, onTabChange }) => {
-    
+import { useNavigate, useLocation } from "react-router-dom";
+
+const TABS = [
+  { label: "Applications", path: "/admin/admission" },
+  { label: "Submitted Documents", path: "/admin/submission" },
+];
+
+const AdmissionHeader = () => {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
   return (
-    <header className="flex items-center gap-7 rounded-2xl border border-gray-200 bg-bone px-4 py-4 shadow-[0_2px_4px_rgba(0,0,0,0.18)]">
-      {tabs.map((tab) => (
+    <header className="flex items-center gap-7 rounded-2xl border border-gray-200 bg-bone px-4 py-5 shadow-[0_2px_4px_rgba(0,0,0,0.18)]">
+      {TABS.map((tab) => (
         <button
-          key={tab}
+          key={tab.label}
           type="button"
-          onClick={() => onTabChange(tab)}
-          className={`rounded-full px-7 py-2 text-[11px] font-medium transition lg:text-xs xl:text-sm ${
-            activeTab === tab
-              ? "bg-swamp-green text-white"
-              : "text-gray-600 hover:bg-bone"
+          onClick={() => navigate(tab.path)}
+          className={`pb-1 text-[11px] font-medium transition lg:text-xs xl:text-sm ${
+            pathname === tab.path
+              ? "text-swamp-green underline underline-offset-8"
+              : "text-gray-600 hover:text-swamp-green"
           }`}
         >
-          {tab}
+          {tab.label}
         </button>
       ))}
     </header>

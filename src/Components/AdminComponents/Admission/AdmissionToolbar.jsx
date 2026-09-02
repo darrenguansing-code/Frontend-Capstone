@@ -12,6 +12,7 @@ const AdmissionToolbar = ({
   search,
   onStatusChange,
   onSearchChange,
+  onSearch,
   onApproveSelected,
   onClearSelection,
   selectionMode,
@@ -27,10 +28,10 @@ const AdmissionToolbar = ({
               key={status}
               type="button"
               onClick={() => onStatusChange(status)}
-              className={`rounded-full px-7 py-2 text-[11px] font-[Poppins] transition lg:text-xs xl:text-sm ${
+              className={`rounded-full px-4 py-1.5 text-[11px] font-[Poppins] transition lg:text-xs xl:text-sm ${
                 activeStatus === status
                   ? "bg-swamp-green text-white"
-                  : "text-gray-600 hover:bg-bone"
+                  : "text-gray-600 hover:text-swamp-green"
               }`}
             >
               {status}
@@ -43,9 +44,9 @@ const AdmissionToolbar = ({
           <button
             type="button"
             onClick={onToggleSelectionMode}
-            className="rounded-full bg-swamp-green px-7 py-2 text-[11px] font-medium text-white transition hover:bg-swamp-green lg:text-xs xl:text-sm"
+            className="rounded-full bg-swamp-green px-7 py-2 text-xs font-[Poppins] text-white transition hover:bg-swamp-green"
           >
-            {selectionMode ? "Done" : "Check Multiple"}
+            {selectionMode ? "Cancel" : "Check Multiple"}
           </button>
 
           {selectionMode && (
@@ -53,7 +54,7 @@ const AdmissionToolbar = ({
               <button
                 type="button"
                 onClick={onApproveSelected}
-                className="rounded-full bg-swamp-green px-5 py-2 text-[11px] font-medium text-white transition hover:bg-swamp-green lg:text-xs xl:text-sm"
+                className="rounded-full bg-swamp-green px-5 py-2 text-xs font-medium text-white transition hover:bg-swamp-green"
               >
                 Approve Selected
               </button>
@@ -61,28 +62,31 @@ const AdmissionToolbar = ({
               <button
                 type="button"
                 onClick={onClearSelection}
-                className="rounded-full border border-gray-300 px-5 py-2 text-[11px] font-medium text-gray-600 transition hover:bg-white lg:text-xs xl:text-sm"
+                className="rounded-full border border-gray-300 px-5 py-2 text-xs font-medium text-gray-600 transition hover:bg-white"
               >
                 Clear
               </button>
             </>
           )}
 
-          <div className="flex w-56 items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
-            <Search size={16} className="text-gray-400" />
+          <div className="relative">
+            <Search
+              size={15}
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+            />
 
             <input
               type="text"
               value={search}
               onChange={(event) => onSearchChange(event.target.value)}
               placeholder="Search Applicants"
-              className="w-full bg-transparent px-2 text-[11px] text-gray-600 outline-none uppercase placeholder:text-gray-400 border-none focus:outline-none focus:border-hidden focus:ring-0 focus:ring-offset-0 focus:shadow-none lg:text-xs xl:text-sm"
+              className="w-60 rounded-full border border-gray-300 bg-[#f7f7ff] py-2 pl-8 pr-4 text-xs text-gray-700 outline-none focus:border-[#9caf88]"
             />
           </div>
 
           <button
-            type="button"
-            className="rounded-full bg-swamp-green px-7 py-2 text-[11px] font-medium text-white transition hover:bg-swamp-green lg:text-xs xl:text-sm"
+            onClick={onSearch}
+            className="w-24 rounded-full bg-[#9aae82] px-6 py-2 text-xs font-medium text-white hover:bg-[#879d70] transition"
           >
             Search
           </button>

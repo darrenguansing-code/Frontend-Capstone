@@ -33,7 +33,7 @@ const AttendanceTable = ({ students, dates }) => {
         </div>
       </div>
 
-      <div className="hidden w-full overflow-hidden rounded-2xl bg-[#e4e6f0] shadow-md md:flex">
+      <div className="hidden w-full overflow-hidden rounded-2xl bg-[#e4e6f0] shadow-md md:flex lg:min-h-0 lg:flex-1">
         <div className="flex-none bg-bone">
           <div className="flex items-center gap-9 px-5 py-4">
             <span className="w-22.5 text-xs font-[PoppinsBold] uppercase text-swamp-green">
@@ -61,7 +61,7 @@ const AttendanceTable = ({ students, dates }) => {
           ))}
         </div>
 
-        <div className="min-w-0 flex-1 overflow-x-auto no-scrollbar">
+        <div className="min-w-0 flex-1 overflow-x-auto no-scrollbar lg:min-h-0 lg:overflow-auto">
           <div className="min-w-160">
             <div className="grid grid-cols-8 gap-10 border-b border-gray-200 px-5 py-4">
               {dates.map((date) => (
