@@ -4,6 +4,7 @@ import {Loader2} from "lucide-react";
 import {
   getGradeReportStudents,
   getDevelopments,
+  getRemarks,
   getQuarters,
 } from "../utils/data/Teacher/grades";
 import GradesHeader from "../Components/Parents-Side Components/GradesReport/GradesHeader";
@@ -12,9 +13,9 @@ import TeacherRemarks from "../Components/Parents-Side Components/GradesReport/T
 import DevelopmentCards from "../Components/Parents-Side Components/GradesReport/DevelopmentCards";
 
 const QUARTERS = getQuarters();
-const DEVELOPMENTS = getDevelopments();
+const ALL_DEVELOPMENTS = getDevelopments();
+const ALL_REMARKS = getRemarks();
 const ALL_STUDENTS = getGradeReportStudents();
-const TEACHER_REMARK = "";
 
 const GradesReport = () => {
   const navigate = useNavigate();
@@ -25,8 +26,13 @@ const GradesReport = () => {
   );
 
   const [selectedQuarter, setSelectedQuarter] = useState(1);
-  const [remark, setRemark] = useState(TEACHER_REMARK);
-  const [developments, setDevelopments] = useState(DEVELOPMENTS);
+  const [remark, setRemark] = useState(ALL_REMARKS[1] || "");
+  const [developments, setDevelopments] = useState(ALL_DEVELOPMENTS[1] || []);
+
+  useEffect(() => {
+    setRemark(ALL_REMARKS[selectedQuarter] || "");
+    setDevelopments(ALL_DEVELOPMENTS[selectedQuarter] || []);
+  }, [selectedQuarter]);
 
   // Backend-ready state
   const [loading] = useState(false);

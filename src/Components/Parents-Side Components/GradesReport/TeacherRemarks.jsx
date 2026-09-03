@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MessageSquareText, Pencil, Save } from "lucide-react";
 
 const TeacherRemarks = ({ remark, onSave }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [remarks, setRemarks] = useState(remark);
+
+  useEffect(() => {
+    setRemarks(remark);
+    setIsEditing(false);
+  }, [remark]);
 
   const handleSave = () => {
     onSave(remarks);

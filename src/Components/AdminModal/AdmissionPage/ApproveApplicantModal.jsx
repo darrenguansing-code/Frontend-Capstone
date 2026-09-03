@@ -8,7 +8,7 @@ const ApproveApplicantModal = ({
   onApprove,
   title = "Approve Applicant",
   purpose = applicant?.purpose || "Enrollment & Assessment",
-  email = applicant?.email || "-",
+  email = applicant?.email || (applicant?.firstName && applicant?.lastName ? `${applicant.firstName} ${applicant.lastName}` : "-"),
   scheduleTitle = "Submission and assessment schedule:",
   cancelLabel = "Cancel",
   approveLabel = "Approve",

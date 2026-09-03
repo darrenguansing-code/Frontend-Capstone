@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { Loader2 } from 'lucide-react'
+import { GraduationCap, Loader2 } from 'lucide-react'
 import {
   getParentQuarters,
   getParentGradeData,
 } from '../utils/data/Parents/grades'
 import StudentCard from '../Components/Parents-Side Components/Grades/StudentCard'
 import Remarks from '../Components/Parents-Side Components/Grades/Remarks'
-import QuarterTabs from '../Components/Parents-Side Components/Grades/QuarterTabs'
 import DevelopmentCard from '../Components/Parents-Side Components/Grades/DevelopmentCard'
 import GradeModal from '../Components/Parents-Teacher Modal/GradeModal'
 
@@ -52,7 +51,7 @@ const Grades = () => {
   const remarks = gradeData.remarks[selectedQuarter] || "";
 
   const handleGradesClick = (development) => {
-    setSelectedDevelopment(development);
+    setSelectedDevelopment(development.title);
   };
 
   const handleCloseModal = () => {
@@ -94,21 +93,22 @@ const Grades = () => {
           {...attendance}
         />
 
-        <QuarterTabs
-          quarters={QUARTERS}
-          selectedQuarter={selectedQuarter}
-          onQuarterChange={setSelectedQuarter}
-        />
-
         {/* Development Cards */}
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-          {gradesData.map((development) => (
-            <DevelopmentCard
-              key={development.title}
-              title={development.title}
-              onGradesClick={() => handleGradesClick(development)}
-            />
-          ))}
+        <div className="flex flex-col gap-3">
+          <h2 className="flex items-center gap-1.5 px-1 text-xs font-[PoppinsBold] uppercase text-[#9caf7d] sm:gap-2 sm:text-sm">
+            <GraduationCap size={16} />
+            Grades
+          </h2>
+
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+            {gradesData.map((development) => (
+              <DevelopmentCard
+                key={development.title}
+                title={development.title}
+                onGradesClick={() => handleGradesClick(development)}
+              />
+            ))}
+          </div>
         </div>
 
         <Remarks
@@ -119,8 +119,11 @@ const Grades = () => {
       {/* Grade Modal */}
       {selectedDevelopment && (
         <GradeModal
-          title={selectedDevelopment.title}
-          items={selectedDevelopment.grades}
+          title={selectedDevelopment}
+          items={gradesData.find(({ title }) => title === selectedDevelopment)?.grades || []}
+          quarters={QUARTERS}
+          selectedQuarter={selectedQuarter}
+          onQuarterChange={setSelectedQuarter}
           onClose={handleCloseModal}
         />
       )}

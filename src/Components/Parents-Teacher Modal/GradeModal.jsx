@@ -1,4 +1,11 @@
-const GradeModal = ({ title, items, onClose }) => {
+const GradeModal = ({
+  title,
+  items,
+  quarters,
+  selectedQuarter,
+  onQuarterChange,
+  onClose,
+}) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/30 px-4 py-6 font-[Poppins]">
@@ -17,6 +24,28 @@ const GradeModal = ({ title, items, onClose }) => {
           >
             Close
           </button>
+        </div>
+
+        <div className="grid grid-cols-3 gap-2 px-6 pb-4">
+          {quarters.map((quarter, index) => {
+            const quarterNumber = index + 1;
+            const isSelected = selectedQuarter === quarterNumber;
+
+            return (
+              <button
+                key={quarter}
+                type="button"
+                onClick={() => onQuarterChange(quarterNumber)}
+                className={`rounded-full px-2 py-2 text-[9px] font-[PoppinsBold] transition lg:text-2xs ${
+                  isSelected
+                    ? "bg-swamp-green text-white"
+                    : "text-swamp-green hover:bg-swamp-green/10"
+                }`}
+              >
+                {quarter}
+              </button>
+            );
+          })}
         </div>
 
         {/* Grade Items */}
