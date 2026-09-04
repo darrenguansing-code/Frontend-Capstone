@@ -17,8 +17,8 @@ const QuarterSelector = ({
               onClick={() => onQuarterChange(quarter.value)}
               className={`rounded-full px-2 py-1 text-[8px] font-[PoppinsBold] uppercase transition sm:px-3 sm:py-2 sm:text-[9px] md:px-4 ${
                 isSelected
-                  ? "bg-[#9caf7d] text-white"
-                  : "text-[#9caf7d] hover:bg-[#9caf7d]/10"
+                  ? "bg-swamp-green text-white"
+                  : "text-swamp-green hover:bg-[#9caf7d]/10"
               }`}
             >
               {quarter.label}

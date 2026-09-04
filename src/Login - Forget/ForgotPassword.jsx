@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import LoginHeader from "../Components/LoginHeader.jsx";
+import HomeSidebar from "../Components/LandingpageComponents/HomeSidebar.jsx";
 import Copyright from "../Components/Copyright.jsx";
 import logoImg from "../assets/logowbg.png";
 import logImg from "../assets/p2.jpg";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [exiting, setExiting] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -61,7 +63,8 @@ const ForgotPassword = () => {
 
   return (
     <>
-      <LoginHeader />
+      <LoginHeader onMenuToggle={() => setSidebarOpen(true)} />
+      <HomeSidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
       <div className="flex min-h-dvh items-center justify-center bg-[#ebe9e4] px-3 py-6 sm:px-4 sm:py-8">
         <div className="flex w-full max-w-4xl overflow-hidden rounded-2xl bg-bone shadow-lg transition-all duration-700 ease-in-out sm:rounded-3xl md:h-130">

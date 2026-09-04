@@ -3,12 +3,14 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import LoginHeader from "../Components/LoginHeader.jsx";
+import HomeSidebar from "../Components/LandingpageComponents/HomeSidebar.jsx";
 import Copyright from "../Components/Copyright.jsx";
 import logImg from "../assets/log.jpg";
 import logoImg from "../assets/logowbg.png";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [exiting, setExiting] = useState(false);
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
@@ -57,7 +59,8 @@ const Login = () => {
 
   return (
     <>
-      <LoginHeader />
+      <LoginHeader onMenuToggle={() => setSidebarOpen(true)} />
+      <HomeSidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} hideLogin />
 
       <div className="flex min-h-dvh items-center justify-center bg-[#ebe9e4] px-3 py-6 sm:px-4 sm:py-8">
         <div className="flex w-full max-w-4xl overflow-hidden rounded-2xl bg-bone shadow-lg transition-all duration-700 ease-in-out sm:rounded-3xl md:h-130">
