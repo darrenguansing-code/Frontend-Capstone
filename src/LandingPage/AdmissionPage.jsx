@@ -85,7 +85,7 @@ const AdmissionPage = () => {
                 }
                 action={
                   <Link
-                    to="/enrollment"
+                    to="/enrollmentform"
                     className="flex w-full items-center justify-center gap-2 rounded-xl bg-fit bg-swamp-green px-6 py-2.5 text-sm font-[PoppinsBold] uppercase text-white shadow-sm transition hover:opacity-80 active:scale-95 sm:w-auto"
                   >
                     <FileEdit className="h-5 w-5" />

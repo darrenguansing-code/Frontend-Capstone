@@ -9,6 +9,9 @@ import {
 import HomePage from "./LandingPage/HomePage.jsx";
 import AdmissionPage from "./LandingPage/AdmissionPage.jsx";
 import TransportationPage from "./LandingPage/TransportationPage.jsx";
+import FormPage from "./LandingPage/FormPage.jsx";
+import ThanksforApply from "./LandingPage/ThanksforApply.jsx";
+import TuitionPage from "./LandingPage/TuitionPage.jsx";
 
 // ----- PARENTS SIDE -----
 import ParentsLayout from "./Layout/ParentsLayout.jsx";
@@ -46,6 +49,9 @@ const App = () => {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/admission" element={<AdmissionPage />} />
           <Route path="/transport" element={<TransportationPage />} />
+          <Route path="/enrollmentform" element={<FormPage />} />
+          <Route path="/thanksforapply" element={<ThanksforApply />} />
+          <Route path="/tuitionfee" element={<TuitionPage />} />
           
           <Route path="/parents" element={<ParentsLayout />}>
           <Route index element={<ParentsDashboard />} />
