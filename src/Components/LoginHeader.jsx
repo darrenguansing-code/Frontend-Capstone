@@ -65,7 +65,7 @@ const LoginHeader = ({ onMenuToggle }) => {
           </NavLink>
 
           <NavLink
-            to="/admin/admission"
+            to="/admission"
             className={({ isActive }) =>
               `flex items-center gap-x-2 font-[PoppinsBold] tracking-wide transition-colors duration-300 ${
                 isActive

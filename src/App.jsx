@@ -3,11 +3,12 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
-  Navigate,
 } from "react-router-dom";
 
 // ----- LANDING PAGE -----
-import HomePage from "./LandingPage/HomePage.jsx";
+import HomePage from "./LandingPage/Homepage.jsx";
+import AdmissionPage from "./LandingPage/AdmissionPage.jsx";
+import TransportationPage from "./LandingPage/TransportationPage.jsx";
 
 // ----- PARENTS SIDE -----
 import ParentsLayout from "./Layout/ParentsLayout.jsx";
@@ -43,6 +44,8 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/admission" element={<AdmissionPage />} />
+          <Route path="/transport" element={<TransportationPage />} />
           
           <Route path="/parents" element={<ParentsLayout />}>
           <Route index element={<ParentsDashboard />} />

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import LoginHeader from "../Components/LoginHeader.jsx";
-import HomeSidebar from "../Components/LandingpageComponents/HomeSidebar.jsx";
+import HomeSidebar from "../Components/LandingpageComponents/Home/HomeSidebar.jsx";
 import Copyright from "../Components/Copyright.jsx";
 import logImg from "../assets/log.jpg";
 import logoImg from "../assets/logowbg.png";

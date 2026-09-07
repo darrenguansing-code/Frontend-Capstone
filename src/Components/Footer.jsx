@@ -10,8 +10,8 @@ const QUICK_LINKS = [
 
 const Footer = () => {
   return (
-    <footer className="w-full overflow-hidden bg-[#062421] px-5 py-5 font-[Poppins] text-bone sm:px-8 lg:px-12">
-      <div className="mx-auto grid w-full max-w-7xl gap-10 sm:grid-cols-2 lg:grid-cols-[1fr_0.8fr_1.2fr] lg:gap-16">
+    <footer className="w-full overflow-hidden bg-[#062421] px-5 py-5 font-[Poppins] text-bone sm:px-6 lg:px-12">
+      <div className="mx-auto grid w-full max-w-7xl gap-8 sm:grid-cols-2 md:gap-10 lg:grid-cols-[1fr_0.8fr_1.2fr] lg:gap-16">
         <div className="flex flex-col gap-4">
           <div>
             <p className="font-Handmade text-3xl leading-none text-lime-green">
@@ -22,27 +22,48 @@ const Footer = () => {
             </p>
           </div>
 
-          <nav className="flex flex-wrap items-center gap-x-5 gap-y-3 text-2xs font-[PoppinsBold] uppercase tracking-wider text-bone/75">
-            {QUICK_LINKS.map((link) => {
-              const Icon = link.icon;
-              return (
-                <NavLink
-                  key={link.label}
-                  to={link.path}
-                  className="flex w-fit items-center gap-3 rounded-lg bg-white/10 px-4 py-2.5 transition-colors hover:bg-white/20 hover:text-lime-green"
-                >
-                  <Icon className="h-4 w-4 shrink-0 text-lime-green" />
-                  {link.label}
-                </NavLink>
-              );
-            })}
+          <nav className="flex flex-col gap-2 font-[PoppinsBold] uppercase tracking-wider text-bone/75">
+            <div className="flex flex-row flex-wrap items-center gap-2">
+              {QUICK_LINKS.slice(0, 3).map((link) => {
+                const Icon = link.icon;
+                return (
+                  <NavLink
+                    key={link.label}
+                    to={link.path}
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                    className="flex w-fit items-center gap-1.5 rounded-lg bg-white/10 px-2.5 py-1.5 text-[9px] transition-colors hover:bg-white/20 hover:text-lime-green"
+                  >
+                    <Icon className="h-3 w-3 shrink-0 text-lime-green" />
+                    {link.label}
+                  </NavLink>
+                );
+              })}
+            </div>
 
-            <NavLink
-              to="enrollmentform"
-              className="flex w-fit items-center gap-2 rounded-lg bg-lime-green px-5 py-2.5 text-2xs font-[PoppinsBold] uppercase tracking-wider text-[#062421] transition-colors hover:bg-lime-green/80"
-            >
-              Enroll Now
-            </NavLink>
+            <div className="flex flex-row flex-wrap items-center gap-2">
+              {QUICK_LINKS.slice(3).map((link) => {
+                const Icon = link.icon;
+                return (
+                  <NavLink
+                    key={link.label}
+                    to={link.path}
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                    className="flex w-fit items-center gap-1.5 rounded-lg bg-white/10 px-2.5 py-1.5 text-[9px] transition-colors hover:bg-white/20 hover:text-lime-green"
+                  >
+                    <Icon className="h-3 w-3 shrink-0 text-lime-green" />
+                    {link.label}
+                  </NavLink>
+                );
+              })}
+
+              <NavLink
+                to="enrollmentform"
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="flex w-fit items-center gap-1.5 rounded-lg bg-lime-green px-3 py-1.5 text-2xs font-[PoppinsBold] uppercase tracking-wider text-[#062421] transition-colors hover:bg-lime-green/80"
+              >
+                Enroll Now
+              </NavLink>
+            </div>
           </nav>
         </div>
 

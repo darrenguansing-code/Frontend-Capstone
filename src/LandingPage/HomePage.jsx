@@ -1,16 +1,16 @@
-import SideBanner from "../Components/LandingpageComponents/SideBanner";
-import MainBanner from "../Components/LandingpageComponents/MainBanner";
-import AcademicCard from "../Components/LandingpageComponents/AcademicCard";
-import Mission from "../Components/LandingpageComponents/Mission";
-import Vision from "../Components/LandingpageComponents/Vision";
-import HymnSection from "../Components/LandingpageComponents/HymnSection";
-import WhyChooseUs from "../Components/LandingpageComponents/WhyChooseUs";
-import Activities from "../Components/LandingpageComponents/Activities";
-import HomeSidebar from "../Components/LandingpageComponents/HomeSidebar";
+import SideBanner from "../Components/LandingpageComponents/Home/SideBanner";
+import MainBanner from "../Components/LandingpageComponents/Home/MainBanner";
+import AcademicCard from "../Components/LandingpageComponents/Home/AcademicCard";
+import Mission from "../Components/LandingpageComponents/Home/Mission";
+import Vision from "../Components/LandingpageComponents/Home/Vision";
+import HymnSection from "../Components/LandingpageComponents/Home/HymnSection";
+import WhyChooseUs from "../Components/LandingpageComponents/Home/WhyChooseUs";
+import Activities from "../Components/LandingpageComponents/Home/Activities";
+import HomeSidebar from "../Components/LandingpageComponents/Home/HomeSidebar";
 import Footer from "../Components/Footer";
 import LoginHeader from "../Components/LoginHeader";
 import { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { Bus, GraduationCap } from "lucide-react";
 
 const BANNER_DATA = {
@@ -139,6 +139,7 @@ const HomePage = () => {
             subtitle="Services"
             icon={Bus}
             arrow="left"
+            to="/transport"
           />
 
           <MainBanner

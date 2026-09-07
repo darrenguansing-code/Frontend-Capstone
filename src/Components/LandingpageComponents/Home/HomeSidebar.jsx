@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { Bus, CheckCircle, GraduationCap, Home, LogIn, School, X } from "lucide-react";
-import logoImg from "../../assets/logowbg.png";
+import logoImg from "../../../assets/logowbg.png";
 
 const SCHOOL = {
   name: "Grace Christian Academy",

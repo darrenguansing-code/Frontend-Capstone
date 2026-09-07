@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import LoginHeader from "../Components/LoginHeader.jsx";
-import HomeSidebar from "../Components/LandingpageComponents/HomeSidebar.jsx";
+import HomeSidebar from "../Components/LandingpageComponents/Home/HomeSidebar.jsx";
 import Copyright from "../Components/Copyright.jsx";
 import logoImg from "../assets/logowbg.png";
 import logImg from "../assets/p2.jpg";
