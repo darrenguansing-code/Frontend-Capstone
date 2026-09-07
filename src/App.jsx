@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 // ----- LANDING PAGE -----
-import HomePage from "./LandingPage/Homepage.jsx";
+import HomePage from "./LandingPage/HomePage.jsx";
 import AdmissionPage from "./LandingPage/AdmissionPage.jsx";
 import TransportationPage from "./LandingPage/TransportationPage.jsx";
 
