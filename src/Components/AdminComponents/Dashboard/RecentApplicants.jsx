@@ -1,15 +1,6 @@
 import { ClipboardList } from "lucide-react";
 
-const TABLE_HEADERS = [
-  "APPLICATE ID",
-  "LAST NAME",
-  "FIRST NAME",
-  "GENDER",
-  "GRADE LEVEL",
-  "DATE APPLIED",
-];
-
-const RecentApplicants = ({ applicants = [] }) => {
+const RecentApplicants = ({ applicants, headers }) => {
   return (
     <div className="flex flex-1 flex-col min-h-0">
       <h2 className="flex items-center gap-2 py-3 text-sm font-[Poppins] text-swamp-green lg:text-base xl:text-lg">
@@ -23,7 +14,7 @@ const RecentApplicants = ({ applicants = [] }) => {
 
             <thead className="sticky top-0">
               <tr className="border-b border-gray-200 text-left bg-bone">
-                {TABLE_HEADERS.map((header) => (
+                {headers.map((header) => (
                   <th
                     key={header}
                     className="px-7 py-5 text-[11px] font-bold text-swamp-green lg:text-xs xl:text-sm"

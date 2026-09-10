@@ -1,13 +1,8 @@
 import React from "react";
 import { Search } from "lucide-react";
 
-const STATUS_ITEMS = [
-  "Pending",
-  "Approved",
-  "Rejected",
-];
-
 const AdmissionToolbar = ({
+  statuses,
   activeStatus,
   search,
   onStatusChange,
@@ -23,7 +18,7 @@ const AdmissionToolbar = ({
     <>
       <div className="flex items-center justify-between py-6">
         <nav className="flex items-center gap-5">
-          {STATUS_ITEMS.map((status) => (
+          {statuses.map((status) => (
             <button
               key={status}
               type="button"

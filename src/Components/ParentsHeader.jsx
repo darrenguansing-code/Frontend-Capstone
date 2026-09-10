@@ -3,7 +3,6 @@ import {
   User,
   ChevronDown,
   Home,
-  ClipboardList,
   ShieldCheck,
   LogOut,
   Menu,

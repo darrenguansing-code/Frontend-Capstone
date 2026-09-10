@@ -1,6 +1,6 @@
 import React from "react";
 
-const DashboardCards = ({ cards = [] }) => {
+const DashboardCards = ({ cards }) => {
   const STUDENT_CARDS = cards.slice(0, 4);
   const PAYMENT_CARDS = cards.slice(4);
 

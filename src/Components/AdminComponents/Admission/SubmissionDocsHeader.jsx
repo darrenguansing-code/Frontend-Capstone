@@ -1,7 +1,7 @@
 import { Search } from "lucide-react";
 
 const SubmissionDocsHeader = ({
-  title = "Approved Applicants",
+  title,
   date,
   onDateChange,
   search,

@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { Bus, CheckCircle, GraduationCap, Home, LogIn, School, X } from "lucide-react";
-import logoImg from "../../../assets/logowbg.png";
+import logoImg from "../assets/logowbg.png";
 
 const SCHOOL = {
   name: "Grace Christian Academy",
@@ -13,7 +13,7 @@ const NAV_LINKS = [
 const QUICK_LINKS = [
   { to: "/", label: "HOME", icon: Home, end: true },
   { to: "/transport", label: "TRANSPORT", icon: Bus },
-  { to: "/tuition", label: "TUITION", icon: School },
+  { to: "/tuitionfee", label: "TUITION", icon: School },
   { to: "/admission", label: "ADMISSION", icon: CheckCircle },
 ];
 

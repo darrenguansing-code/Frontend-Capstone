@@ -24,6 +24,13 @@ const TABLE_HEADERS = [
   "ACTION",
 ];
 
+const TABS = [
+  { label: "Applications", path: "/admin/admission" },
+  { label: "Submitted Documents", path: "/admin/submission" },
+];
+
+const TITLE = "Approved Applicants";
+
 const SubmissionDocs = () => {
   const [applicants, setApplicants] = useState(getApprovedApplicants);
   const [loading, setLoading] = useState(false);
@@ -150,8 +157,9 @@ const SubmissionDocs = () => {
 
   return (
     <div className="flex min-h-0 flex-1 cursor-default flex-col gap-2 bg-[#ebe9e4] font-[Poppins]">
-      <AdmissionHeader />
+      <AdmissionHeader tabs={TABS} />
       <SubmissionDocsHeader
+        title={TITLE}
         date={date}
         onDateChange={(e) => setDate(e.target.value)}
         search={search}
@@ -204,7 +212,21 @@ const SubmissionDocs = () => {
                     <td className="px-7 py-2">
                       {applicant.dateApproved || applicant.dateApplied || "-"}
                     </td>
-                    <td className="px-7 py-2">{applicant.status}</td>
+                    <td className="px-7 py-2">
+                      <span
+                        className={`inline-flex rounded-full px-3 py-1 text-[11px] font-medium lg:text-xs xl:text-sm ${
+                          applicant.status === "Pending"
+                            ? "bg-yellow-400/10 text-yellow-700"
+                            : applicant.status === "Approved"
+                              ? "bg-green-400/10 text-green-700"
+                              : applicant.status === "Rejected"
+                                ? "bg-red-400/10 text-red-700"
+                                : "bg-gray-100 text-gray-600"
+                        }`}
+                      >
+                        {applicant.status}
+                      </span>
+                    </td>
                     <td className="px-7 py-2">
                       <div className="flex items-center gap-2">
                         <button

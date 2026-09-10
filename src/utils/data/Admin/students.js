@@ -1,4 +1,4 @@
-import { readStore, writeStore } from "../core";
+import { readAcademicStore, writeAcademicStore } from "../core";
 
 const DEFAULT_STUDENTS = [
   { id: "1601", lastName: "Reyes", firstName: "John", gradeLevel: "Kinder", section: "Kinder-1", status: "Active", payment: "Full Cash" },
@@ -14,21 +14,21 @@ const DEFAULT_ENROLLED = [
 ];
 
 export function getStudents() {
-  return readStore().students ?? DEFAULT_STUDENTS;
+  return readAcademicStore().students ?? DEFAULT_STUDENTS;
 }
 
 export function saveStudents(students) {
-  writeStore({ students });
+  writeAcademicStore({ students });
   return students;
 }
 
 export function getEnrolled() {
-  return readStore().enrolledStudents ?? DEFAULT_ENROLLED;
+  return readAcademicStore().enrolledStudents ?? DEFAULT_ENROLLED;
 }
 
 export function addEnrolled(student) {
   const enrolled = getEnrolled();
   if (enrolled.some((s) => s.id === student.id)) return enrolled;
-  writeStore({ enrolledStudents: [...enrolled, student] });
+  writeAcademicStore({ enrolledStudents: [...enrolled, student] });
   return [...enrolled, student];
 }

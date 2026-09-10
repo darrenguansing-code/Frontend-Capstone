@@ -1,17 +1,7 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
-const NAV_ITEMS = [
-  { name: "Students", path: "/admin/academic" },
-  { name: "Teachers", path: "/admin/academic/teachers" },
-  { name: "Parents", path: "/admin/academic/parents" },
-  { name: "Classes", path: "/admin/academic/classes" },
-  { name: "Schedules", path: "/admin/academic/schedules" },
-  { name: "Grade Levels", path: "/admin/academic/grade-levels" },
-  { name: "School Years", path: "/admin/academic/school-years" },
-];
-
-const Header = () => {
+const Header = ({ navItems }) => {
   const { pathname } = useLocation();
 
   const isActive = (item) => {
@@ -24,7 +14,7 @@ const Header = () => {
   return (
     <div className="flex w-full flex-wrap items-center justify-between gap-x-7 gap-y-2 rounded-2xl border border-gray-200 bg-bone px-4 py-5 shadow-[0_2px_4px_rgba(0,0,0,0.18)]">
       <div className="flex flex-wrap items-center gap-x-13 gap-y-2 pl-1">
-        {NAV_ITEMS.slice(0, 5).map((item) => (
+        {navItems.slice(0, 5).map((item) => (
           <NavLink
             key={item.name}
             to={item.path}
@@ -40,7 +30,7 @@ const Header = () => {
       </div>
 
       <div className="flex flex-wrap items-center gap-x-7 gap-y-2 pr-1">
-        {NAV_ITEMS.slice(5).map((item) => (
+        {navItems.slice(5).map((item) => (
           <NavLink
             key={item.name}
             to={item.path}

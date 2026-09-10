@@ -1,20 +1,11 @@
 import React from "react";
 
-const TABLE_HEADERS = [
-  "APPL. ID",
-  "LAST NAME",
-  "FIRST NAME",
-  "GRADE LEVEL",
-  "DATE APPLIED",
-  "STATUS",
-  "ACTION",
-];
-
 const ApplicantTable = ({
   applicants,
-  dateHeader = "DATE APPLIED",
-  selectedIds = [],
-  selectable = false,
+  headers,
+  dateHeader,
+  selectedIds,
+  selectable,
   onToggleSelect,
   onSelectAll,
   onView,
@@ -48,7 +39,7 @@ const ApplicantTable = ({
                 </th>
               )}
               
-              {TABLE_HEADERS.map((header) => (
+              {headers.map((header) => (
                 <th
                   key={header}
                   className="px-7 py-5 text-xs font-[PoppinsBold] text-swamp-green lg:text-sm xl:text-base"
@@ -102,7 +93,19 @@ const ApplicantTable = ({
                 </td>
 
                 <td className="px-7 py-2">
-                  {applicant.status}
+                  <span
+                    className={`inline-flex rounded-full px-3 py-1 text-[11px] font-medium lg:text-xs xl:text-sm ${
+                      applicant.status === "Pending"
+                        ? "bg-yellow-400/10 text-yellow-700"
+                        : applicant.status === "Approved"
+                          ? "bg-green-400/10 text-green-700"
+                          : applicant.status === "Rejected"
+                            ? "bg-red-400/10 text-red-700"
+                            : "bg-gray-100 text-gray-600"
+                    }`}
+                  >
+                    {applicant.status}
+                  </span>
                 </td>
 
                 <td className="px-7 py-2">
@@ -142,7 +145,7 @@ const ApplicantTable = ({
             {applicants.length === 0 && (
               <tr>
                 <td
-                  colSpan={TABLE_HEADERS.length}
+                  colSpan={headers.length}
                   className="px-7 py-10 text-center text-[11px] text-gray-400 lg:text-xs xl:text-sm"
                 >
                   No applicants found.

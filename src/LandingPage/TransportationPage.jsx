@@ -4,7 +4,7 @@ import { Banknote, Bus, MapPinned, Route } from "lucide-react";
 import TransportationBanner from "../Components/LandingpageComponents/Transportation/TransportationBanner";
 import TransportationCard from "../Components/LandingpageComponents/Transportation/TransportationCard";
 import LoginHeader from "../Components/LoginHeader";
-import HomeSidebar from "../Components/LandingpageComponents/Home/HomeSidebar";
+import HomeSidebar from "../Components/HomeSidebar";
 import Footer from "../Components/Footer";
 
 const transpoData = [

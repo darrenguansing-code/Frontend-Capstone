@@ -1,17 +1,12 @@
 import { useNavigate, useLocation } from "react-router-dom";
 
-const TABS = [
-  { label: "Applications", path: "/admin/admission" },
-  { label: "Submitted Documents", path: "/admin/submission" },
-];
-
-const AdmissionHeader = () => {
+const AdmissionHeader = ({ tabs }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
   return (
     <header className="flex items-center gap-7 rounded-2xl border border-gray-200 bg-bone px-4 py-5 shadow-[0_2px_4px_rgba(0,0,0,0.18)]">
-      {TABS.map((tab) => (
+      {tabs.map((tab) => (
         <button
           key={tab.label}
           type="button"

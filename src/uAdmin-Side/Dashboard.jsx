@@ -5,6 +5,15 @@ import RecentApplicants from "../Components/AdminComponents/Dashboard/RecentAppl
 
 const SCHOOL_YEAR = "2026-2027";
 
+const RECENT_HEADERS = [
+  "APPLICATE ID",
+  "LAST NAME",
+  "FIRST NAME",
+  "GENDER",
+  "GRADE LEVEL",
+  "DATE APPLIED",
+];
+
 const CARDS = [
   { title: "Total Students", value: 50, icon: Users },
   { title: "Male Students", value: 19, icon: User },
@@ -48,6 +57,7 @@ const Dashboard = () => {
 
       <RecentApplicants 
         applicants={APPLICANTS} 
+        headers={RECENT_HEADERS} 
       />
 
     </div>

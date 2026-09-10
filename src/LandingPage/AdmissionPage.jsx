@@ -5,7 +5,7 @@ import AdmissionCard from "../Components/LandingpageComponents/Admission/Admissi
 import AdmissionBanner from "../Components/LandingpageComponents/Admission/AdmissionBanner.jsx";
 import StepCard from "../Components/LandingpageComponents/Admission/StepCard.jsx";
 import LoginHeader from "../Components/LoginHeader";
-import HomeSidebar from "../Components/LandingpageComponents/Home/HomeSidebar";
+import HomeSidebar from "../Components/HomeSidebar";
 import Footer from "../Components/Footer";
 import { FileBadge, Camera, FileEdit } from "lucide-react";
 

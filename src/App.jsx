@@ -38,6 +38,9 @@ import AdminLayout from "./Layout/AdminLayout.jsx";
 import Dashboard from "./uAdmin-Side/Dashboard.jsx";
 import Admission from "./uAdmin-Side/Admission.jsx";
 import Students from "./uAdmin-Side/Academic Management Page/Students.jsx"
+import Teacher from "./uAdmin-Side/Academic Management Page/Teacher.jsx"
+import Parents from "./uAdmin-Side/Academic Management Page/Parents.jsx";
+import Section from "./uAdmin-Side/Academic Management Page/Section.jsx";
 import SubmissionDocs from "./uAdmin-Side/SubmissionDocs.jsx";
 
 const App = () => {
@@ -71,6 +74,9 @@ const App = () => {
           <Route index element={<Dashboard />} />
           <Route path="admission" element={<Admission />} />
           <Route path="academic" element={<Students />} />
+          <Route path="academic/teachers" element={<Teacher />} />
+          <Route path="academic/parents" element={<Parents />} />
+          <Route path="academic/section" element={<Section />} />
           <Route path="submission" element={<SubmissionDocs />} />
         </Route>
       </>,

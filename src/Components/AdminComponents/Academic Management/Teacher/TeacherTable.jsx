@@ -1,10 +1,10 @@
 import React from "react";
 
-const ApplicantsTable = ({ applicants, columns, onView }) => {
+const TeacherTable = ({ teachers, columns, onEdit }) => {
   return (
-    <div className="flex flex-1 flex-col min-h-0">
-      <div className="flex flex-1 flex-col overflow-hidden rounded-2xl border border-gray-200 bg-bone shadow-sm">
-        <div className="flex flex-1 flex-col overflow-y-auto min-h-0 thin-scrollbar">
+    <div className="flex min-h-0 flex-1 flex-col">
+      <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border border-gray-200 bg-bone shadow-sm">
+        <div className="flex min-h-0 flex-1 flex-col overflow-y-auto thin-scrollbar">
           <table className="w-full border-collapse">
             <thead className="sticky top-0">
               <tr>
@@ -18,19 +18,15 @@ const ApplicantsTable = ({ applicants, columns, onView }) => {
                 ))}
 
                 <th className="px-6 py-5 text-left text-xs font-[PoppinsBold] text-swamp-green lg:text-sm xl:text-base">
-                  PAYMENT
-                </th>
-
-                <th className="px-6 py-5 text-left text-xs font-[PoppinsBold] text-swamp-green lg:text-sm xl:text-base">
                   ACTION
                 </th>
               </tr>
             </thead>
 
             <tbody>
-              {applicants.map((applicant, index) => (
+              {teachers.map((teacher, index) => (
                 <tr
-                  key={applicant.id}
+                  key={teacher.id}
                   className="border-b border-gray-200 text-[11px] text-gray-600 last:border-b-0 lg:text-xs xl:text-sm"
                 >
                   {columns.map((column) => (
@@ -40,30 +36,35 @@ const ApplicantsTable = ({ applicants, columns, onView }) => {
                     >
                       {column.key === "no"
                         ? index + 1
-                        : applicant[column.key]}
+                        : teacher[column.key]}
                     </td>
                   ))}
 
                   <td className="px-6 py-2.5">
-                    {applicant.payment || "—"}
-                  </td>
-
-                  <td className="px-6 py-2.5">
                     <button
-                      onClick={() => onView(applicant)}
-                      className="rounded-full border border-gray-400 px-3.5 py-1 text-[11px] text-gray-600 transition hover:bg-gray-100 lg:text-xs xl:text-sm"
+                      type="button"
+                      onClick={() => onEdit(teacher)}
+                      className="rounded-xl border border-gray-400 px-3.5 py-1 text-[11px] text-white bg-swamp-green lg:text-xs xl:text-sm"
                     >
-                      View
+                      Edit
                     </button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+
+          {teachers.length === 0 && (
+            <div className="flex flex-1 flex-col items-center justify-center gap-2 py-10">
+              <p className="text-sm text-gray-500">
+                No teachers found.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-export default ApplicantsTable;
+export default TeacherTable;

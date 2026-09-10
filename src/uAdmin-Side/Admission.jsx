@@ -10,14 +10,24 @@ import ApproveApplicantModal from "../Components/AdminModal/AdmissionPage/Approv
 import RejectApplicantModal from "../Components/AdminModal/AdmissionPage/RejectApplicantModal";
 
 const TABS = [
-  "Applications",
-  "Submitted Documents",
+  { label: "Applications", path: "/admin/admission" },
+  { label: "Submitted Documents", path: "/admin/submission" },
 ];
 
 const STATUSES = [
   "Pending",
   "Approved",
   "Rejected",
+];
+
+const TABLE_HEADERS = [
+  "APPL. ID",
+  "LAST NAME",
+  "FIRST NAME",
+  "GRADE LEVEL",
+  "DATE APPLIED",
+  "STATUS",
+  "ACTION",
 ];
 
 const REJECTION_REASONS = [
@@ -212,6 +222,7 @@ const Admission = () => {
 
       <ApplicantTable
         applicants={filteredApplicants}
+        headers={TABLE_HEADERS}
         selectedIds={selectedIds}
         selectable={activeStatus === "Pending" && selectionMode}
         onToggleSelect={handleToggleSelect}

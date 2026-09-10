@@ -6,7 +6,7 @@ import Vision from "../Components/LandingpageComponents/Home/Vision";
 import HymnSection from "../Components/LandingpageComponents/Home/HymnSection";
 import WhyChooseUs from "../Components/LandingpageComponents/Home/WhyChooseUs";
 import Activities from "../Components/LandingpageComponents/Home/Activities";
-import HomeSidebar from "../Components/LandingpageComponents/Home/HomeSidebar";
+import HomeSidebar from "../Components/HomeSidebar";
 import Footer from "../Components/Footer";
 import LoginHeader from "../Components/LoginHeader";
 import { useEffect, useState } from "react";
