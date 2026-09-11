@@ -8,6 +8,13 @@ const Header = ({ navItems }) => {
     if (item.name === "Students") {
       return pathname === "/admin/academic" || pathname === "/admin/academic/";
     }
+    if (item.name === "Section") {
+      return (
+        pathname === "/admin/academic/section" ||
+        pathname === "/admin/academic/sectionclass" ||
+        pathname === "/admin/academic/sectionInformation"
+      );
+    }
     return item.path === pathname;
   };
 

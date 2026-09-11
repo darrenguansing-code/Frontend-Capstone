@@ -41,6 +41,8 @@ import Students from "./uAdmin-Side/Academic Management Page/Students.jsx"
 import Teacher from "./uAdmin-Side/Academic Management Page/Teacher.jsx"
 import Parents from "./uAdmin-Side/Academic Management Page/Parents.jsx";
 import Section from "./uAdmin-Side/Academic Management Page/Section.jsx";
+import SectionClass from "./uAdmin-Side/Academic Management Page/SectionClass.jsx";
+import SectionInformation from "./uAdmin-Side/Academic Management Page/SectionInformation.jsx";
 import SubmissionDocs from "./uAdmin-Side/SubmissionDocs.jsx";
 
 const App = () => {
@@ -77,6 +79,8 @@ const App = () => {
           <Route path="academic/teachers" element={<Teacher />} />
           <Route path="academic/parents" element={<Parents />} />
           <Route path="academic/section" element={<Section />} />
+          <Route path="academic/sectionclass" element={<SectionClass />} />
+          <Route path="academic/sectionInformation" element={<SectionInformation />} />
           <Route path="submission" element={<SubmissionDocs />} />
         </Route>
       </>,

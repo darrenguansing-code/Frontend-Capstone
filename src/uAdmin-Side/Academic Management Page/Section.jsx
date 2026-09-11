@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../../Components/AdminComponents/Academic Management/Header'
 import SectionToolbar from '../../Components/AdminComponents/Academic Management/Section/SectionToolbar'
+import SectionCard from '../../Components/AdminComponents/Academic Management/Section/SectionCard'
+import SubjectModal from '../../Components/AdminModal/AcademicManagementPage/SubjectModal'
 
 const NAV_ITEMS = [
   { name: "Students", path: "/admin/academic" },
@@ -15,6 +17,12 @@ const NAV_ITEMS = [
 const SCHOOL_YEAR = "2026-2027";
 
 const Section = () => {
+  const [isSubjectModalOpen, setIsSubjectModalOpen] = useState(false);
+
+  const handleTabChange = (tab) => {
+    if (tab === "Subjects") setIsSubjectModalOpen(true);
+  };
+
   return (
     <div className="flex min-h-0 flex-1 cursor-default flex-col gap-2 bg-[#ebe9e4] font-[Poppins]">
 
@@ -26,7 +34,29 @@ const Section = () => {
         <SectionToolbar
           schoolYear={SCHOOL_YEAR}
         />
+
+      <div className="flex flex-wrap gap-4 p-4">
+        <SectionCard
+          level="Pre-School"
+          onTabChange={handleTabChange}
+        />
+
+        <SectionCard
+          level="Pre-Kinder"
+          onTabChange={handleTabChange}
+        />
+
+        <SectionCard
+          level="Kinder"
+          onTabChange={handleTabChange}
+        />
       </div>
+      </div>
+
+      <SubjectModal
+        isOpen={isSubjectModalOpen}
+        onClose={() => setIsSubjectModalOpen(false)}
+      />
     </div>
   )
 }

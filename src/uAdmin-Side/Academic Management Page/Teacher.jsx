@@ -67,7 +67,8 @@ const Teacher = () => {
         ...FILTER_OPTIONS.filter((option) => option !== "All"),
         teacher.status,
       ].filter(
-        (option) => option && option.trim()
+        (option, index, array) =>
+          option && option.trim() && array.indexOf(option) === index
       ),
       middleName: teacher.middleName ?? "",
       address: {
@@ -126,9 +127,9 @@ const Teacher = () => {
   return (
     <div className="flex min-h-0 flex-1 cursor-default flex-col gap-2 bg-[#ebe9e4] font-[Poppins]">
 
-        <Header 
-         navItems={NAV_ITEMS} 
-        />
+      <Header 
+        navItems={NAV_ITEMS} 
+      />
 
     <div className="flex flex-1 flex-col gap-2 min-h-0">
       <TeacherToolbar

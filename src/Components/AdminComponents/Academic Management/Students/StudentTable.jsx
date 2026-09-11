@@ -7,7 +7,7 @@ const StudentTable = ({ applicants, columns, onView }) => {
         <div className="flex flex-1 flex-col overflow-y-auto min-h-0 thin-scrollbar">
           <table className="w-full border-collapse">
             <thead className="sticky top-0">
-              <tr>
+              <tr className="bg-bone">
                 {columns.map((column) => (
                   <th
                     key={column.key}

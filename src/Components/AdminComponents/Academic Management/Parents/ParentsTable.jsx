@@ -7,7 +7,7 @@ const ParentsTable = ({ parents, columns }) => {
         <div className="flex min-h-0 flex-1 flex-col overflow-y-auto thin-scrollbar">
           <table className="w-full border-collapse">
             <thead className="sticky top-0">
-              <tr>
+              <tr className="bg-bone">
                 {columns.map((column) => (
                   <th
                     key={column.key}
