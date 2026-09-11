@@ -11,7 +11,7 @@ const TuitionBanner = ({
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            `linear-gradient(170deg, rgba(40,44,42,.4), rgba(28,30,29,.88)), url("/image/t1.webp")`,
+            `linear-gradient(170deg, rgba(40,44,42,.4), rgba(28,30,29,.88)), url("${backgroundImage}")`,
           filter: "blur(5px)",
           transform: "scale(1.05)",
         }}

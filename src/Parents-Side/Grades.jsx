@@ -113,6 +113,9 @@ const Grades = () => {
 
         <Remarks
           remarks={remarks}
+          quarters={QUARTERS}
+          selectedQuarter={selectedQuarter}
+          onQuarterChange={setSelectedQuarter}
         />
       </div>
 

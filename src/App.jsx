@@ -1,9 +1,5 @@
-import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-  RouterProvider,
-} from "react-router-dom";
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom";
+import ScrollToTop from "./Components/ScrollToTop.jsx";
 
 // ----- LANDING PAGE -----
 import HomePage from "./LandingPage/HomePage.jsx";
@@ -49,6 +45,7 @@ const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
+        <Route element={<ScrollToTop />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -82,6 +79,7 @@ const App = () => {
           <Route path="academic/sectionclass" element={<SectionClass />} />
           <Route path="academic/sectionInformation" element={<SectionInformation />} />
           <Route path="submission" element={<SubmissionDocs />} />
+        </Route>
         </Route>
       </>,
     ),

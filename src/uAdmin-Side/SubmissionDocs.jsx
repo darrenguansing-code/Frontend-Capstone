@@ -8,6 +8,7 @@ import {
 } from "../utils/data/Admin/admission";
 import { addEnrolled } from "../utils/data/Admin/students";
 import { subscribe } from "../utils/data/core";
+import { matchGlobalSearch } from "../utils/search";
 import AdmissionHeader from "../Components/AdminComponents/Admission/AdmissionHeader";
 import SubmissionDocsHeader from "../Components/AdminComponents/Admission/SubmissionDocsHeader";
 import RescheduleModal from "../Components/AdminModal/AdmissionPage/RescheduleModal";
@@ -129,15 +130,9 @@ const SubmissionDocs = () => {
 
   const filteredApplicants = applicants.filter((applicant) => {
     const term = search.trim().toLowerCase();
-    const fullName =
-      `${applicant.lastName} ${applicant.firstName}`.toLowerCase();
 
     const matchesSearch =
-      term === "" ||
-      applicant.id.toLowerCase().includes(term) ||
-      applicant.lastName.toLowerCase().includes(term) ||
-      applicant.firstName.toLowerCase().includes(term) ||
-      fullName.includes(term);
+      term === "" || matchGlobalSearch(applicant, term);
 
     const matchesDate =
       date === "" ||

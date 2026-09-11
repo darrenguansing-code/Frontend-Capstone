@@ -5,6 +5,7 @@ import ClassInformationToolbar from "../../Components/AdminComponents/Academic M
 import ClassInfoTable from "../../Components/AdminComponents/Academic Management/Section/ClassInfoTable";
 import ChangeTeacherModal from "../../Components/AdminModal/AcademicManagementPage/ChangeTeacherModal";
 import { getStudents } from "../../utils/data/Admin/students";
+import { matchGlobalSearch } from "../../utils/search";
 
 const NAV_ITEMS = [
   { name: "Students", path: "/admin/academic" },
@@ -51,14 +52,9 @@ const SectionInformation = () => {
       age: student.age ?? "",
     }));
 
-  const filteredStudents = classStudents.filter((student) => {
-    const term = searchValue.trim().toLowerCase();
-    if (term === "") return true;
-    return (
-      student.lastName.toLowerCase().includes(term) ||
-      student.firstName.toLowerCase().includes(term)
-    );
-  });
+  const filteredStudents = classStudents.filter((student) =>
+    matchGlobalSearch(student, searchValue)
+  );
 
   const handleChangeTeacher = () => {
     setIsChangeTeacherOpen(true);

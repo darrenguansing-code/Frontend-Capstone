@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import {
-  Home,
+  LayoutDashboard,
   ClipboardList,
   CalendarCheck,
   CalendarDays,
@@ -20,7 +20,7 @@ const USER = {
 };
 
 const NAV_LINKS = [
-  { to: "/teacher", label: "DASHBOARD", icon: Home, end: true },
+  { to: "/teacher", label: "DASHBOARD", icon: LayoutDashboard, end: true },
   { to: "/teacher/attendance", label: "ATTENDANCE", icon: CalendarCheck },
   { to: "/teacher/grades", label: "GRADES", icon: ClipboardList },
   { to: "/teacher/weekly-schedule", label: "SCHEDULE", icon: CalendarDays },

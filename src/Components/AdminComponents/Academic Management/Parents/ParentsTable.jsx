@@ -43,7 +43,7 @@ const ParentsTable = ({ parents, columns }) => {
           {parents.length === 0 && (
             <div className="flex flex-1 flex-col items-center justify-center gap-2 py-10">
               <p className="text-sm text-gray-500">
-                No parents found.
+                No Parents Available
               </p>
             </div>
           )}

@@ -5,6 +5,7 @@ import {
   saveStudents,
 } from "../../utils/data/Admin/students";
 import { subscribeAcademic, writeAcademicStore } from "../../utils/data/core";
+import { matchGlobalSearch } from "../../utils/search";
 import Header from "../../Components/AdminComponents/Academic Management/Header";
 import StudentTable from "../../Components/AdminComponents/Academic Management/Students/StudentTable";
 import StudentInfoModal from "../../Components/AdminModal/AcademicManagementPage/StudentInfoModal";
@@ -120,13 +121,8 @@ const Students = () => {
       activeFilter === "All" || student.status === activeFilter;
 
     const term = searchValue.trim().toLowerCase();
-    const fullName =
-      `${student.lastName} ${student.firstName}`.toLowerCase();
     const matchesSearch =
-      term === "" ||
-      student.lastName.toLowerCase().includes(term) ||
-      student.firstName.toLowerCase().includes(term) ||
-      fullName.includes(term);
+      term === "" || matchGlobalSearch(student, term);
 
     return matchesFilter && matchesSearch;
   });

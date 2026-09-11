@@ -2,7 +2,7 @@ import React from "react";
 
 const AdmissionBanner = ({
   title = "ADMISSION",
-  description = "Please follow these simple steps to complete your admission application",
+  description = "Admission requirements and procedures may vary depending on the student's grade level and enrollment status. Please make sure to prepare and submit all required documents within the given schedule. If you would like to proceed with the admission process, kindly visit the school on your selected schedule and coordinate with the school office for verification and further assistance. Thank you!",
   backgroundImage = "/image/app2.webp",
 }) => {
   return (
@@ -15,11 +15,12 @@ const AdmissionBanner = ({
           transform: "scale(1.05)",
         }}
       />
-      <div className="relative flex flex-col gap-3">
+      <div className="relative flex flex-col gap-10">
         <h2 className="font-[PoppinsBold] text-2xl sm:text-4xl">
           {title}
         </h2>
         <p className="text-[9px] leading-relaxed text-white/90 md:text-sm">
+          <span className="font-[PoppinsBold]">Note:</span>{" "}
           {description}
         </p>
       </div>

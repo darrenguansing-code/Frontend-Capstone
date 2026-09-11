@@ -63,8 +63,15 @@ const ForgotPassword = () => {
 
   return (
     <>
-      <LoginHeader onMenuToggle={() => setSidebarOpen(true)} />
-      <HomeSidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <LoginHeader 
+        onMenuToggle={() => 
+        setSidebarOpen(true)} 
+      />
+
+      <HomeSidebar 
+        open={sidebarOpen} onClose={() => 
+        setSidebarOpen(false)} 
+      />
 
       <div className="flex min-h-dvh items-center justify-center bg-[#ebe9e4] px-3 py-6 sm:px-4 sm:py-8">
         <div className="flex w-full max-w-4xl overflow-hidden rounded-2xl bg-bone shadow-lg transition-all duration-700 ease-in-out sm:rounded-3xl md:h-130">

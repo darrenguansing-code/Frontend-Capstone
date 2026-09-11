@@ -60,6 +60,14 @@ const StudentTable = ({ applicants, columns, onView }) => {
               ))}
             </tbody>
           </table>
+
+          {applicants.length === 0 && (
+            <div className="flex flex-1 flex-col items-center justify-center gap-2 py-10">
+              <p className="text-sm text-gray-500">
+                No Students Available
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -127,7 +127,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="flex h-full w-full flex-col overflow-x-hidden">
+    <div className="flex h-full w-full flex-col">
       <LoginHeader 
         onMenuToggle={() => 
         setSidebarOpen(true)} 
@@ -138,6 +138,8 @@ const HomePage = () => {
         onClose={() => 
         setSidebarOpen(false)} 
       />
+
+      <div className="flex w-full flex-col overflow-x-hidden">
       <div className="flex w-full justify-center px-3 bg-egg py-3 sm:px-5 lg:px-6 lg:py-5">
         <div className="grid h-auto w-full max-w-7xl grid-cols-1 gap-2 sm:h-87.5 lg:h-92.5 lg:grid-cols-[210px_minmax(0,1fr)_210px] lg:gap-3">
           
@@ -229,6 +231,7 @@ const HomePage = () => {
 
       <Footer />
 
+      </div>
     </div>
   );
 };

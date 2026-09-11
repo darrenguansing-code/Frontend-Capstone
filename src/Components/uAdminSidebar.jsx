@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { LayoutDashboard, UserPlus, GraduationCap, Users, Bell, Globe, Settings, LogOut } from "lucide-react";
 import logo from "../assets/logowbg.png";
 
@@ -16,11 +16,17 @@ const ADMISSION_PATHS = ["/admin/admission", "/admin/submission"];
 
 const AdminSidebar = () => {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate("/login");
+  };
+
   return (
     <aside className="flex h-full w-60 shrink-0 flex-col gap-5">
       <div className="flex items-center gap-2 rounded-2xl border border-gray-200 bg-bone px-3 py-4 shadow-[0_2px_4px_rgba(0,0,0,0.18)]">
         <img src={logo} alt="Logo" className="h-8 w-8 shrink-0 rounded-full object-cover" />
-        <h1 className="text-2xs font-medium text-gray-700">
+        <h1 className="text-2xs font-medium text-gray-700 lg:text-xs">
           Grace Christian Academy
         </h1>
       </div>
@@ -36,7 +42,7 @@ const AdminSidebar = () => {
                 to={item.path}
                 end={item.path === "/admin"}
                 className={({ isActive }) =>
-                  `flex items-center gap-2 whitespace-nowrap rounded-full px-7 py-3 text-left text-[9px] font-[Poppins] transition ${
+                  `flex items-center gap-2 whitespace-nowrap rounded-full px-5 py-3 text-left text-[9px] font-[Poppins] transition lg:px-6 lg:text-xs ${
                     (item.path === "/admin/admission" &&
                       ADMISSION_PATHS.includes(pathname)) ||
                     (item.path !== "/admin/admission" && isActive)
@@ -55,6 +61,7 @@ const AdminSidebar = () => {
         {/* Logout */}
         <button
           type="button"
+          onClick={handleLogout}
           className="mt-auto flex items-center gap-2 rounded-full bg-red-50 px-7 py-3 text-left text-xs font-medium text-red-400 transition hover:bg-red-100 hover:text-red-500"
         >
           <LogOut size={14} />

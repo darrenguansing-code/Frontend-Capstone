@@ -1,66 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import PaymentCard from "./PaymentCard";
-const TuitionFees = () => {
-  const [activeLevel, setActiveLevel] = useState("Nursery");
 
-  const tuitionData = {
-    Nursery: {
-      tuition: "₱12,000",
-      books: "₱4,000",
-      boysUniform: "₱1,000",
-      boysPE: "₱1,200",
-      girlsUniform: "₱800",
-      girlsPE: "₱1,000",
-      subtotal: "₱18,200 - ₱18,300",
-    },
-
-    "Pre-Kinder": {
-      tuition: "₱13,000",
-      books: "₱4,000",
-      boysUniform: "₱1,000",
-      boysPE: "₱1,200",
-      girlsUniform: "₱800",
-      girlsPE: "₱1,000",
-      subtotal: "₱19,200 - ₱19,300",
-    },
-
-    Kinder: {
-      tuition: "₱14,000",
-      books: "₱4,000",
-      boysUniform: "₱1,000",
-      boysPE: "₱1,200",
-      girlsUniform: "₱800",
-      girlsPE: "₱1,000",
-      subtotal: "₱20,200 - ₱20,300",
-    },
-  };
-
-  const data = tuitionData[activeLevel];
-
-  const paymentOptions = [
-    {
-      title: "FULL CASH",
-      discount: "₱1,500.00",
-      total: data.subtotal,
-      installment: "No Installment",
-      dueDate: "One Time Payment",
-    },
-    {
-      title: "PAY LITE",
-      discount: "₱1,500.00",
-      total: "₱17,200 - ₱17,300",
-      installment: "₱1,100.00",
-      dueDate: "Every 10th of the month (June '26 - March '27)",
-    },
-    {
-      title: "ALL IN",
-      discount: "No Discount",
-      total: data.subtotal,
-      installment: "₱1,800",
-      dueDate: "Every 10th of the month (June '26 - March '27)",
-    },
-  ];
-
+const TuitionFees = ({
+  tuitionData,
+  activeLevel,
+  onActiveLevelChange,
+  data,
+  paymentOptions,
+}) => {
   return (
     <div className="flex w-full flex-col gap-y-5 font-[Poppins] sm:gap-y-6">
       <div className="flex w-full flex-wrap items-center justify-center gap-4 rounded-2xl bg-bone p-1.5 shadow-sm sm:w-fit sm:gap-2 sm:p-2">
@@ -68,7 +15,7 @@ const TuitionFees = () => {
         <button
         key={level}
         type="button"
-        onClick={() => setActiveLevel(level)}
+        onClick={() => onActiveLevelChange(level)}
         aria-pressed={activeLevel === level}
         className={`rounded-xl px-3 py-2 text-xs font-Handpicked-seashells font-bold transition-colors sm:px-5 sm:text-center sm:text-sm ${
         activeLevel === level

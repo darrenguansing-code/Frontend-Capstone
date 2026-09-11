@@ -9,6 +9,7 @@ import {
   saveTeachers,
 } from "../../utils/data/Admin/teachers";
 import { subscribeAcademic } from "../../utils/data/core";
+import { matchGlobalSearch } from "../../utils/search";
 
 const NAV_ITEMS = [
   { name: "Students", path: "/admin/academic" },
@@ -110,16 +111,8 @@ const Teacher = () => {
       filter === "All" || teacher.status === filter;
 
     const term = search.trim().toLowerCase();
-    const fullName =
-      `${teacher.lastName ?? ""} ${teacher.firstName ?? ""}`.toLowerCase();
-
     const matchesSearch =
-      term === "" ||
-      (teacher.teacherId ?? "").toLowerCase().includes(term) ||
-      (teacher.lastName ?? "").toLowerCase().includes(term) ||
-      (teacher.firstName ?? "").toLowerCase().includes(term) ||
-      (teacher.email ?? "").toLowerCase().includes(term) ||
-      fullName.includes(term);
+      term === "" || matchGlobalSearch(teacher, term);
 
     return matchesFilter && matchesSearch;
   });

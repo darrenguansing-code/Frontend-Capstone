@@ -11,7 +11,7 @@ const LoginHeader = ({ onMenuToggle }) => {
   const location = useLocation();
   const isLoginPage = location.pathname === "/login";
   return (
-    <header className="font-[Poppins]">
+    <header className="sticky top-0 z-50 font-[Poppins]">
       <nav className="flex h-16 w-full items-center justify-between bg-[#0c2423] px-4 text-xs inset-shadow-med sm:h-20 sm:px-10">
         <div className="flex min-w-0 items-center gap-x-2 sm:gap-x-4">
           {onMenuToggle && (

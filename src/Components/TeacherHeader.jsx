@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   User,
   ChevronDown,
-  Home,
+  LayoutDashboard,
   ClipboardList,
   CalendarCheck,
   CalendarDays,
@@ -33,7 +33,7 @@ const TeacherHeader = ({ onMenuToggle }) => {
   };
 
   return (
-    <header className="font-[Poppins]">
+    <header className="sticky top-0 z-50 font-[Poppins]">
       {userMenu && (
         <div
           className="fixed inset-0 z-40"
@@ -88,7 +88,7 @@ const TeacherHeader = ({ onMenuToggle }) => {
                 }`
               }
             >
-              <Home size={20} />
+              <LayoutDashboard size={20} />
               <span className="font-[PoppinsBold]">DASHBOARD</span>
             </NavLink>
 

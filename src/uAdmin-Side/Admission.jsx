@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { subscribe } from "../utils/data/core";
+import { matchGlobalSearch } from "../utils/search";
 import { getApplicants, saveApplicants } from "../utils/data/Admin/admission";
 import AdmissionHeader from "../Components/AdminComponents/Admission/AdmissionHeader";
 import AdmissionToolbar from "../Components/AdminComponents/Admission/AdmissionToolbar";
@@ -65,15 +66,8 @@ const Admission = () => {
       applicant.status === activeStatus;
     const term = search.trim().toLowerCase();
 
-    const fullName =
-      `${applicant.lastName} ${applicant.firstName}`.toLowerCase();
-
     const matchesSearch =
-      term === "" ||
-      applicant.id.toLowerCase().includes(term) ||
-      applicant.lastName.toLowerCase().includes(term) ||
-      applicant.firstName.toLowerCase().includes(term) ||
-      fullName.includes(term);
+      term === "" || matchGlobalSearch(applicant, term);
 
     return matchesStatus && matchesSearch;
   });

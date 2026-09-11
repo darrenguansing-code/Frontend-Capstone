@@ -1,7 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import {
-  Home,
-  ClipboardList,
+  LayoutDashboard,
   ShieldCheck,
   LogOut,
   X,
@@ -18,7 +17,7 @@ const USER = {
 };
 
 const NAV_LINKS = [
-  { to: "/parents", label: "DASHBOARD", icon: Home, end: true },
+  { to: "/parents", label: "DASHBOARD", icon: LayoutDashboard, end: true },
   { to: "/parents/security", label: "ACCOUNT SETTINGS", icon: ShieldCheck },
 ];
 

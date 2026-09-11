@@ -25,7 +25,7 @@ const AdmissionPage = () => {
   }, []);
 
   return (
-    <div className="flex h-full w-full flex-col overflow-x-hidden">
+    <div className="flex h-full w-full flex-col">
 
       <LoginHeader 
         onMenuToggle={() => 
@@ -37,12 +37,13 @@ const AdmissionPage = () => {
         setSidebarOpen(false)} 
       />
 
+      <div className="flex w-full flex-col overflow-x-hidden">
       <div className="flex w-full flex-col bg-egg px-3 pt-3 pb-10 font-[Poppins] text-egg-dark sm:px-5 sm:pt-5 sm:pb-12 lg:px-6 lg:pt-5 lg:pb-14">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 sm:gap-10">
           <AdmissionBanner />
 
           <div className="flex flex-col gap-3">
-            <h2 className="font-Handpicked-seashells font-bold uppercase text-lg text-swamp-green">
+            <h2 className="font-[PoppinsBold] uppercase text-lg text-swamp-green">
               Required Documents
             </h2>
             <div className="flex flex-wrap items-center gap-2 sm:gap-3">
@@ -57,8 +58,8 @@ const AdmissionPage = () => {
             </div>
           </div>
 
-          <section className="flex flex-col gap-3">
-            <h2 className="font-Handpicked-seashells font-bold uppercase text-lg text-swamp-green">
+          <div className="flex flex-col gap-3">
+            <h2 className="font-[PoppinsBold] uppercase text-lg text-swamp-green">
               Admission Process
             </h2>
             <div className="flex flex-col gap-6 rounded-2xl bg-bone px-4 py-6 shadow-[0_2px_3px_rgba(0,0,0,0.25)] sm:px-8 sm:py-8 sm:gap-10">
@@ -94,8 +95,9 @@ const AdmissionPage = () => {
                 }
               />
             </div>
-          </section>
+          </div>
         </div>
+      </div>
       </div>
       <Footer />
     </div>

@@ -4,6 +4,7 @@ import ParentsToolbar from '../../Components/AdminComponents/Academic Management
 import ParentsTable from '../../Components/AdminComponents/Academic Management/Parents/ParentsTable'
 import { getParents } from '../../utils/data/Admin/parents'
 import { subscribeAcademic } from '../../utils/data/core'
+import { matchGlobalSearch } from '../../utils/search'
 
 const NAV_ITEMS = [
   { name: "Students", path: "/admin/academic" },
@@ -33,17 +34,7 @@ const Parents = () => {
 
   const filteredParents = parents.filter((parent) => {
     const term = searchValue.trim().toLowerCase();
-    const fullName =
-      `${parent.lastName ?? ""} ${parent.firstName ?? ""}`.toLowerCase();
-
-return (
-      term === "" ||
-      (parent.lastName ?? "").toLowerCase().includes(term) ||
-      (parent.firstName ?? "").toLowerCase().includes(term) ||
-      (parent.email ?? "").toLowerCase().includes(term) ||
-      String(parent.student ?? "").includes(term) ||
-      fullName.includes(term)
-    );
+    return term === "" || matchGlobalSearch(parent, term);
   });
 
   const handleSearch = () => {

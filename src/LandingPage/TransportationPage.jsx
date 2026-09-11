@@ -103,7 +103,7 @@ const TransportationPage = () => {
   const zoneOrder = ["Trece Martires City", "Tanza"];
 
   return (
-    <div className="flex h-full w-full flex-col overflow-x-hidden">
+    <div className="flex h-full w-full flex-col">
       <LoginHeader 
         onMenuToggle={() => 
         setSidebarOpen(true)} 
@@ -114,6 +114,7 @@ const TransportationPage = () => {
         setSidebarOpen(false)} 
       />
 
+      <div className="flex w-full flex-col overflow-x-hidden">
       <div className="flex w-full flex-col bg-egg px-3 pt-3 pb-10 font-[Poppins] text-egg-dark sm:px-5 sm:pt-5 sm:pb-12 lg:px-6 lg:pt-5 lg:pb-14">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 sm:gap-8">
           <TransportationBanner />
@@ -173,6 +174,7 @@ const TransportationPage = () => {
             ))}
           </section>
         </div>
+      </div>
       </div>
       <Footer />
     </div>
