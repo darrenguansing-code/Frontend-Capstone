@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import LoginHeader from "../Components/LoginHeader.jsx";
 import HomeSidebar from "../Components/HomeSidebar.jsx";
@@ -22,35 +21,11 @@ const ForgotPassword = () => {
     setError("");
   }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      setLoading(true);
-      setMessage("");
-      setError("");
-
-      const response = await axios.post(
-        "",
-        {
-          email,
-        }
-      );
-
-      setMessage(
-        response.data.message ||
-          "A password reset link has been sent to your email."
-      );
-    } catch (error) {
-      console.error("Forgot password error:", error);
-
-      setError(
-        error.response?.data?.message ||
-          "Unable to send reset link. Please try again."
-      );
-    } finally {
-      setLoading(false);
-    }
+    // TEMPORARY - navigate to admin page for now
+    navigate("/admin");
   };
 
   const handleBackToLogin = () => {
